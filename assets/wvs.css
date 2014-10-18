@@ -1,0 +1,97 @@
+/*
+lighest blue = #80DDFE
+light blue = #5AC5E6
+darker blue = #419CBD
+blue grey = #419CBD
+navy blue = #0D475F
+grey = #CDCDCC
+offwhite = #FDFDFD
+yellow = #FFE78A
+brown yellow = #BDAC5A
+brown grey = #8A8989
+brown = #6A6120
+post it note blue = #CEEBF8
+ */
+
+body {
+background-color:#CEEBF8;
+color: #000000;
+text-align:center;
+}
+
+.headerbar {
+position:fixed;
+background-color:#FDFDFD;
+width: 100%;
+height: 20px;
+padding: 10px;
+box-shadow: 0 0 0 1px #bdc3c7;
+font-family: "Myriad Pro", "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+font-weight: bold;
+font-size: 18px;
+}
+
+.header {
+width: 980px;
+min-height: 120px;
+}
+
+.content {
+float:left;
+width:725px;
+min-height: 450px;
+}
+
+.sidebar {
+overflow: hidden;
+float: right;
+width :200px;
+min-height: 450px;
+}
+
+.subcontainer {
+margin: 0;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 20px;
+width: 980px;
+min-height: 450px;
+}
+
+.container {
+text-align: left;
+width: 100%;
+}
+
+.depthOneContent {
+background-color:#FDFDFD;
+padding: 10px;
+margin-bottom: 10px;
+font-family: Georgia,"Bitstream Charter",serif;
+box-shadow: 0 0 0 1px #bdc3c7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+}
+
+h1 {
+font-size: 30px;
+margin: .2em 0px 0px 0px;
+}
+
+h2 {
+font-size: 18px;
+margin: .5em 0px 0px 0px;
+}
+
+h3 {
+font-size: 18px;
+font-weight: normal;
+margin: .5em 0px 0px 0px;
+}
+
+.blockquote {
+font-size: 16px;
+}
+
