@@ -42,21 +42,34 @@ margin-right: 30px;
 }
 
 .header {
-width: 980px;
+width: 100%;
 min-height: 120px;
 }
 
 .content {
-float:left;
+float:center;
 width:725px;
 min-height: 450px;
 }
 
+.post {
+float:center;
+width:100% - 20px;
+min-height: 200px;
+}
+
 .sidebar {
 overflow: hidden;
+display: none;
 float: right;
 width :200px;
 min-height: 450px;
+}
+
+@media all and (min-width: 1200px) {
+  .sidebar {
+    display: block;
+  }
 }
 
 .subcontainer {
