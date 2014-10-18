@@ -48,7 +48,7 @@ min-height: 120px;
 
 .content {
 float:center;
-width:725px;
+width: 600px;
 min-height: 450px;
 }
 
@@ -62,14 +62,8 @@ min-height: 200px;
 overflow: hidden;
 display: none;
 float: right;
-width :200px;
+width : 190px;
 min-height: 450px;
-}
-
-@media all and (min-width: 1200px) {
-  .sidebar {
-    display: block;
-  }
 }
 
 .subcontainer {
@@ -77,8 +71,18 @@ margin: 0;
 margin-left: auto;
 margin-right: auto;
 margin-bottom: 20px;
-width: 980px;
 min-height: 450px;
+width: 600px;
+}
+
+/* 600px for content, 20px space, 190px + 2*10 for sidebar, 40 for page margins */
+@media all and (min-width: 870px) {
+  .sidebar {
+    display: block;
+  }
+  .subcontainer {
+    width: 830px;
+  }
 }
 
 .container {
@@ -89,6 +93,7 @@ width: 100%;
 .depthOneContent {
 background-color:#366B8F;
 padding: 10px;
+padding-bottom: 25px;
 margin-bottom: 10px;
 font-family: Georgia,"Bitstream Charter",serif;
 /*box-shadow: 0 0 0 1px #bdc3c7;
