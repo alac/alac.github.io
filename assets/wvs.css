@@ -11,24 +11,34 @@ brown yellow = #BDAC5A
 brown grey = #8A8989
 brown = #6A6120
 post it note blue = #CEEBF8
+
+pa black = #010A1A
  */
 
 body {
-background-color:#CEEBF8;
-color: #000000;
+background-color: #1A2738;
+color: #5BAEDE;
 text-align:center;
 }
 
 .headerbar {
 position:fixed;
-background-color:#FDFDFD;
+background-color:#010A1A;
+color: #366B8F;
 width: 100%;
 height: 20px;
 padding: 10px;
-box-shadow: 0 0 0 1px #bdc3c7;
-font-family: "Myriad Pro", "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+/*box-shadow: 0 0 0 1px #bdc3c7;
+*/font-family: "Myriad Pro", "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
 font-weight: bold;
 font-size: 18px;
+}
+
+.headerbarMenu {
+color: #FFFFFF;
+float: right;
+/* Margin left*/
+margin-right: 30px;
 }
 
 .header {
@@ -64,15 +74,16 @@ width: 100%;
 }
 
 .depthOneContent {
-background-color:#FDFDFD;
+background-color:#366B8F;
 padding: 10px;
 margin-bottom: 10px;
 font-family: Georgia,"Bitstream Charter",serif;
-box-shadow: 0 0 0 1px #bdc3c7;
-}
+/*box-shadow: 0 0 0 1px #bdc3c7;
+*/}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+  color: #FFFFFF;
 }
 
 h1 {
