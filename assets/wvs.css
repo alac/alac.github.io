@@ -2,6 +2,21 @@ body {
 background-color: #1A2738;
 color: #D1D1D1;
 text-align:center;
+/* tacky! */
+-webkit-animation: bgfade 1s; /* Chrome, Safari, Opera */
+animation: bgfade 1s;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes bgfade {
+    from {background-color: #366B8F;}
+    to {background-color: #1A2738;}
+}
+
+/* Standard syntax */
+@keyframes bgfade {
+    from {background-color: #366B8F;}
+    to {background-color: #1A2738;}
 }
 
 .headerbar {
@@ -38,7 +53,7 @@ min-height: 450px;
 .post {
 float:center;
 width:100% - 20px;
-min-height: 200px;
+min-height: 100px;
 }
 
 .sidebar {
@@ -90,6 +105,12 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
 font-size: 30px;
 margin: .2em 0px 0px 0px;
+}
+
+h1 a {
+color: #FFFFFF;
+text-decoration: none;
+margin-bottom: 5px;
 }
 
 h2 {
