@@ -1,0 +1,130 @@
+body {
+background-color: #1A2738;
+color: #D1D1D1;
+text-align:center;
+/* tacky! */
+-webkit-animation: bgfade 1s; /* Chrome, Safari, Opera */
+animation: bgfade 1s;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes bgfade {
+    from {background-color: #366B8F;}
+    to {background-color: #1A2738;}
+}
+
+/* Standard syntax */
+@keyframes bgfade {
+    from {background-color: #366B8F;}
+    to {background-color: #1A2738;}
+}
+
+.headerbar {
+position:fixed;
+background-color:#010A1A;
+color: #366B8F;
+width: 100%;
+height: 20px;
+padding: 10px;
+/*box-shadow: 0 0 0 1px #000000;
+*/font-family: "Myriad Pro", "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+font-weight: bold;
+font-size: 18px;
+}
+
+.headerbarMenu {
+color: #FFFFFF;
+float: right;
+/* Margin left*/
+margin-right: 30px;
+}
+
+.header {
+width: 100%;
+min-height: 120px;
+}
+
+.content {
+float:center;
+width: 600px;
+min-height: 450px;
+}
+
+.post {
+float:center;
+width:100% - 20px;
+min-height: 100px;
+}
+
+.sidebar {
+overflow: hidden;
+display: none;
+float: right;
+width : 190px;
+min-height: 450px;
+}
+
+.subcontainer {
+margin: 0;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 20px;
+min-height: 450px;
+width: 600px;
+}
+
+/* 600px for content, 20px space, 190px + 2*10 for sidebar, 40 for page margins */
+@media all and (min-width: 870px) {
+  .sidebar {
+    display: block;
+  }
+  .subcontainer {
+    width: 830px;
+  }
+}
+
+.container {
+text-align: left;
+width: 100%;
+}
+
+.depthOneContent {
+background-color:#366B8F;
+padding: 10px;
+padding-bottom: 25px;
+margin-bottom: 10px;
+font-family: Georgia,"Bitstream Charter",serif;
+/*box-shadow: 0 0 0 1px #bdc3c7;
+*/}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+  color: #FFFFFF;
+}
+
+h1 {
+font-size: 30px;
+margin: .2em 0px 0px 0px;
+}
+
+h1 a {
+color: #FFFFFF;
+text-decoration: none;
+margin-bottom: 5px;
+}
+
+h2 {
+font-size: 18px;
+margin: .5em 0px 0px 0px;
+}
+
+h3 {
+font-size: 18px;
+font-weight: normal;
+margin: .5em 0px 0px 0px;
+}
+
+.blockquote {
+font-size: 16px;
+}
+
