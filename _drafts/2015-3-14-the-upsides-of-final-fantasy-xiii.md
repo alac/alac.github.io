@@ -8,6 +8,7 @@ After watching the E3 trailer for Final Fantasy XIII, my first response was "Oka
 Imperfect as they are, the three XIII's succeed at least in one way: they're interesting to think about. They represent distinct and diverse approaches to game design. They have clear flaws, most of which come from not understanding the expectations of their audience.
 
 Final Fantasy XIII in +-'s:  
+-----------
 \+ Graphical Quality  
 
 >While it didn't quite achieve what was promised in the [2006 trailer](https://www.youtube.com/watch?v=WH0OOulJKko), it was quite close. Camera angles aside, the difference between prerendered cutscenes and in-engine cutscenes came down to tiny things like hair and fingers.
@@ -21,6 +22,8 @@ Final Fantasy XIII in +-'s:
 >Naturally, such an innovative system would be divisive if not executed **perfectly**. Unfortunately:  
 >
 > 1. It wasn't clear to a player when they weren't doing things correctly. That is, if you understood the battle system, it was quick and exciting. If you didn't, battles were slow with little indication of why.  
+>    * This was compounded futher by the fact that battle strategy went from managing *character actions* (e.g. fire > ice) to managing *the pace of battle*.
+>    * Additionally, there were essentially two possible parties in battle: one with higher health, the other with higher offensive and capabilities. Players that couldn't win quickly had the option of losing slower and with more futility.
 > 2. Stat growth was capped by where you were in the plot. This meant you couldn't blindly grind to progress, breaking a time honored tradition of Final Fantasy games.  
 >
 >This meant that players were going to figure out the right strategy or they were going to have a bad time. So, a lot of people did.
@@ -41,7 +44,7 @@ Final Fantasy XIII in +-'s:
 > * Without a unifying ideal (e.g. save the world from Kefka), the interactions are often tense and unpleasant.
 > * Because we never see the characters have positive interactions, it's hard to grow attached to them.
 >
->Consistent with the world around them, characters are introduced as being frantic, irritable and unpleasant. First impressions aside, 
+>Consistent with the world around them, the main characters are introduced as being frantic, irritable and unpleasant. On paper, they get "character development": each gets introduced as a well defined trope, but is revealed to have at least one contradictory trait. While players do see the character overcome their respective obstacles, we never see the humanizing moments needed to care for them.
 
 <!-- > * Lightning: uptight and bitchy... though protective  
 > * Snow: headstrong and positive regardless of context  
@@ -52,7 +55,15 @@ Final Fantasy XIII in +-'s:
  -->
 
 >
->The plot itself couldn't be less clear: somehow, there's a goddess involved and she's actually the driver of the plot across games.
+>Last of all, the plot itself lacks clear direction. We know the goal of the main characters, but the reasons why they're put into the situation that they're in are beyond convoluted.  
 >
 
+
 What Final Fantasy XIII-2 Addressed
+-------------
+
+Linearity
+- Historia Crux
+- Monster Recruiting
+- Moogle Throw
+- Branching Story
