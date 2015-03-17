@@ -1,6 +1,6 @@
 ---
 layout: default_post
-title: "The Upsides of Final Fantasy XIII: One Engine, Erratic Approaches"
+title: "The Evolution of Final Fantasy XIII: Three Systems, One Plot"
 ---
 
 After watching the E3 trailer for Final Fantasy XIII, my first response was "Okay, I'm buying a PS3... when I have the money". Flash forward 9 years: Final Fantasy XIII and it's sequels came out to lukewarm reviews, and made everyone question what it meant to be "Final Fantasy".
@@ -31,6 +31,28 @@ Final Fantasy XIII in +-'s:
 
 \- Linearity / Lack of Exploration & Towns  
 
->In plot and level design, Final Fantasy XIII had a fractal-like linearity (brilliant for a game with the theme of choosing your own fate). 
+>In plot and level design, Final Fantasy XIII had a fractal-like linearity (brilliant for a game with the theme of choosing your own fate). Most areas had one clear path forward and few secrets to discover. Players not only lost the joy of loot, but the sense of agency that exploration afforded them.
 
 \- Weak Story / Characters  
+
+>No longer whimsical, heartwarming, or self-effacing. The plot elements of Final Fantasy XIII fall into the trap of being "serious":  
+>
+> * The main characters are *persecuted* and *forced* to come together and do-whatever-it-is-they-do.
+> * Without a unifying ideal (e.g. save the world from Kefka), the interactions are often tense and unpleasant.
+> * Because we never see the characters have positive interactions, it's hard to grow attached to them.
+>
+>Consistent with the world around them, characters are introduced as being frantic, irritable and unpleasant. First impressions aside, 
+
+<!-- > * Lightning: uptight and bitchy... though protective  
+> * Snow: headstrong and positive regardless of context  
+> * Vanille: the enthusiastic girl, but not really  
+> * Sazh: Devoted father. Also black  
+> * Hope: Angry kid.  
+> * Fang: Uncouth rogue!
+ -->
+
+>
+>The plot itself couldn't be less clear: somehow, there's a goddess involved and she's actually the driver of the plot across games.
+>
+
+What Final Fantasy XIII-2 Addressed
