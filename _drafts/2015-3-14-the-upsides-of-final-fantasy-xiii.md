@@ -17,7 +17,7 @@ Final Fantasy XIII in +-'s:
 
 >One of the bravest decisions in the history of ever, the Paradigm Shift system managed to be fast paced, challenging and very *different*. 
 
-\- Innovative Battle System  
+\- "Innovative" Battle System  
 
 >Naturally, such an innovative system would be divisive if not executed **perfectly**. Unfortunately:  
 >
@@ -62,8 +62,14 @@ Final Fantasy XIII in +-'s:
 What Final Fantasy XIII-2 Addressed
 -------------
 
-Linearity
-- Historia Crux
-- Monster Recruiting
-- Moogle Throw
-- Branching Story
+\+ Linearity
+
+>Newton's Third Law proved to be a driving force in the development of XIII-2. Linearity, easily the most hated element of XIII, was addressed across the board.  
+>
+>Environments became more [maze-like](http://finalfantasy.wikia.com/wiki/Category:Final_Fantasy_XIII-2_Map_Images?file=Academia_map_ffxiii-2_complete_guide.jpg). This time, players had a world to explore. They had the quirky tool of [Moogle Throw](https://www.youtube.com/watch?v=orbTRhHOxQY&t=32) - which made every suspicious sparkle in the distance an opportunity for free stuff. They had monsters to fight against and with, since in this installment you could recruit them as allies.
+>
+>Once again, microscopic design was mirrored on a higher level with the [Historia Crux](http://www.gamefaqs.com/ps3/619315-final-fantasy-xiii-2/faqs/63802), the overworld-map of space-time. Because one of the dimensions that the player could travel across was *time*, players had the ability to see long term of effects of their questing and boss hunting.
+>
+
+\+ "Innovative" Battle System
+
