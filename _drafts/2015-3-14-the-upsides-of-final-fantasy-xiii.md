@@ -54,9 +54,7 @@ Final Fantasy XIII in +-'s:
 > * Fang: Uncouth rogue!
  -->
 
->
 >Last of all, the plot itself lacks clear direction. We know the goal of the main characters, but the reasons why they're put into the situation that they're in are beyond convoluted.  
->
 
 
 What Final Fantasy XIII-2 Addressed
@@ -68,8 +66,16 @@ What Final Fantasy XIII-2 Addressed
 >
 >Environments became more [maze-like](http://finalfantasy.wikia.com/wiki/Category:Final_Fantasy_XIII-2_Map_Images?file=Academia_map_ffxiii-2_complete_guide.jpg). This time, players had a world to explore. They had the quirky tool of [Moogle Throw](https://www.youtube.com/watch?v=orbTRhHOxQY&t=32) - which made every suspicious sparkle in the distance an opportunity for free stuff. They had monsters to fight against and with, since in this installment you could recruit them as allies.
 >
->Once again, microscopic design was mirrored on a higher level with the [Historia Crux](http://www.gamefaqs.com/ps3/619315-final-fantasy-xiii-2/faqs/63802), the overworld-map of space-time. Because one of the dimensions that the player could travel across was *time*, players had the ability to see long term of effects of their questing and boss hunting.
+>Once again, microscopic design was mirrored on a higher level with the [Historia Crux](http://www.gamefaqs.com/ps3/619315-final-fantasy-xiii-2/faqs/63802), the overworld-map of space-time. Because one of the dimensions that the player could travel across was *time*, players had the ability to see long term of effects of their questing and boss hunting. Players not only had agency, but symbols of agency as [gameplay elements](https://www.google.com/search?q=final+fantasy+xiii-2+giant+flan&safe=off&espv=2&biw=1259&bih=1277&source=lnms&tbm=isch&sa=X&ei=qCsJVeTcKYKogwT7yIGYDA&sqi=2&ved=0CAcQ_AUoAg) in addition to the standard multiple endings.
 >
 
 \+ "Innovative" Battle System
 
+>For many the battle system of XIII was it's saving grace. But, its flaws could be potentially dealbreaking.  
+>
+> * In XIII, there was little stopping a player from choosing a suboptimal or simply *not valid* party. By virtue of having only 2 main characters and a monster ally, XIII-2 simultaneously limited the likelyhood of choosing a weak party and increased the number of potential options.
+> * Being unable to grind - while a welcome challenge to some - only exasperated player frustration. As such, the plot-based-stat-caps were removed.
+
+\+ Weak Story / Characters  
+
+>Where in XIII, 
