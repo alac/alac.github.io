@@ -57,7 +57,7 @@ Final Fantasy XIII in +-'s:
 >Last of all, the plot itself lacks clear direction. We know the goal of the main characters, but the reasons why they're put into the situation that they're in are beyond convoluted.  
 
 
-What Final Fantasy XIII-2 Addressed
+What Final Fantasy XIII-2 Addressed:
 -------------
 
 \+ Linearity
@@ -78,4 +78,8 @@ What Final Fantasy XIII-2 Addressed
 
 \+ Weak Story / Characters  
 
->Where in XIII, 
+>The story of XIII was fundamentally two stories: the tale of Lightning's party and the creation myth of XIII's universe. At the core, each is also simple to understand. Yet few did. The story of XIII's creation myth was buryed deep in it's 'datalogs'. Without that context, the events that happen to and around the main characters seem random and meaningless.
+>
+>The first major shift from XIII to XIII-2 is that the major drivers of the plot are characters that we can see. Neither 'Gods' nor the concept of 'fate', the primary actors are people with faces, motivations and baggage. The characters themselves can *show* us their actions and intentions. This makes the events of XIII-2 much less of a clusterfuck and instead a story about people.
+>
+>It's telling that XIII-2 features none of its predecessor's party members as playable characters. And it was the right move. XIII-2's characters are much more believable. While still subject to the melodrama neccessary for a 'character arc', Noel and Serah feel more like real people because they have ups and downs instead of constant tension, 

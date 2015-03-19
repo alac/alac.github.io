@@ -56,15 +56,15 @@ width:100% - 20px;
 min-height: 100px;
 }
 
-.post a:link {
+.postBody a:link {
 color: white;
 }
 
-.post a:visited {
+.postBody a:visited {
 color: #010A1A;
 }
 
-.post a:hover {
+.postBody a:hover {
 color: white;
 text-decoration: none;
 }
