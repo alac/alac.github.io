@@ -26,8 +26,8 @@ color: #366B8F;
 width: 100%;
 height: 20px;
 padding: 10px;
-/*box-shadow: 0 0 0 1px #000000;
-*/font-family: "Myriad Pro", "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+/*box-shadow: 0 0 0 1px #000000;*/
+font-family: "Myriad Pro", "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
 font-weight: bold;
 font-size: 18px;
 }
@@ -39,9 +39,16 @@ float: right;
 margin-right: 30px;
 }
 
+/* side effect of the absolute positioning trick for the header */
+.headerbarSpacer {
+height: 50px;  
+}
+
 .header {
 width: 100%;
 min-height: 120px;
+/* header is an alternative menu for thin devices */
+display: block;
 }
 
 .content {
@@ -107,6 +114,12 @@ width: 600px;
 @media all and (min-width: 870px) {
   .sidebar {
     display: block;
+  }
+  .header {
+  width: 100%;
+  min-height: 120px;
+  /* header is an alternative menu for thin devices */
+  display: none;
   }
   .subcontainer {
     width: 830px;
