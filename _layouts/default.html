@@ -22,9 +22,11 @@
 						<a name="{{ category | first }}">{{ category | first }}</a>
 						<ul>
 							{% for posts in category %}
-							  {% for post in posts %}
-							    <li><a href="{{ post.url }}">thing {{ post.title }}</a></li>
-							  {% endfor %}
+							  	{% for post in posts %}
+							  		{% if post.url %}
+								    	<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+							  		{% endif %}						  		
+							  	{% endfor %}
 							{% endfor %}
 						</ul>
     				</div>

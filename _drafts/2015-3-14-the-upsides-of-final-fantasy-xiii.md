@@ -1,6 +1,7 @@
 ---
 layout: default_post
 title: "The Evolution of Final Fantasy XIII: Three Systems, One Plot"
+
 categories:
 - Video Games
 ---
