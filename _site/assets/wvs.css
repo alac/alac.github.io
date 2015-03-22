@@ -77,6 +77,23 @@ width : 190px;
 min-height: 450px;
 }
 
+.sideBarTitle {
+  font-family: "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+  color: #FFFFFF;
+  font-size: 18px;
+  margin: .2em .2em 0px 0px;
+}
+
+.menuCategory {
+text-transform: capitalize;
+}
+
+.menuCategoryTitle {
+  font-family: "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
+  font-size: 16px;
+  margin: .3em 0em 0px 0px;
+}
+
 .subcontainer {
 margin: 0;
 margin-left: auto;
