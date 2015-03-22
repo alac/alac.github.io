@@ -19,6 +19,7 @@ animation: bgfade 1s;
     to {background-color: #1A2738;}
 }
 */
+
 .headerbar {
 position:fixed;
 background-color:#FFFFFF;
@@ -54,50 +55,25 @@ font-family: Georgia,"Bitstream Charter",serif;
 }
 
 .footer {
-  position:fixed;
-  bottom:0;
-  left:0;
-  text-align: left;
+position:fixed;
+bottom:0;
+left:0;
+text-align: left;
 margin-left: .5em;
 font-size: 12;
 }
 
-.postBody a:link {
-color: white;
-}
-
-.postBody a:visited {
+.contentBody a:link {
 color: #010A1A;
 }
 
-.postBody a:hover {
-color: white;
+.contentBody a:visited {
+color: #010A1A;
+}
+
+.contentBody a:hover {
+color: #010A1A;
 text-decoration: none;
-}
-
-.sidebar {
-overflow: hidden;
-display: none;
-float: right;
-width : 190px;
-min-height: 450px;
-}
-
-.sideBarTitle {
-  font-family: Helvetica,"Nimbus Sans L",sans-serif;
-  color: #FFFFFF;
-  font-size: 18px;
-  margin: .2em .2em 0px 0px;
-}
-
-.menuCategory {
-text-transform: capitalize;
-}
-
-.menuCategoryTitle {
-  font-family: Helvetica,"Nimbus Sans L",sans-serif;
-  font-size: 16px;
-  margin: .3em 0em 0px 0px;
 }
 
 .subcontainer {
@@ -111,9 +87,6 @@ width: 600px;
 
 /* 600px for content, 20px space, 190px + 2*10 for sidebar, 40 for page margins */
 @media all and (min-width: 870px) {
-  .sidebar {
-    display: block;
-  }
   .subcontainer {
     width: 830px;
   }
@@ -124,15 +97,6 @@ text-align: left;
 width: 100%;
 min-height: 100%;
 }
-
-.depthOneContent {
-background-color:#366B8F;
-padding: 10px;
-padding-bottom: 25px;
-margin-bottom: 10px;
-font-family: Georgia,"Bitstream Charter",serif;
-/*box-shadow: 0 0 0 1px #bdc3c7;
-*/}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Helvetica,"Nimbus Sans L",sans-serif;
