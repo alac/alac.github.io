@@ -15,7 +15,21 @@
 			</div>
 			<div class='subcontainer'>
 				<div class='header'>A</div>
-				<div class='sidebar depthOneContent'>C</div>
+				<div class='sidebar depthOneContent'>C
+<!-- 					display all categories                           -->
+	{% for category in site.categories %}
+					<div class="sidebar catagory">
+						<a name="{{ category | first }}">{{ category | first }}</a>
+						<ul>
+							{% for posts in category %}
+							  {% for post in posts %}
+							    <li><a href="{{ post.url }}">thing {{ post.title }}</a></li>
+							  {% endfor %}
+							{% endfor %}
+						</ul>
+    				</div>
+	{% endfor %}
+				</div>
 				<div class='content'>
 				  {{ content }}
 				</div>

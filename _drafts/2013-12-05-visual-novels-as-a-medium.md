@@ -1,6 +1,9 @@
 ---
 layout: default_post
 title: "Visual Novels: The w's of visual novels as a medium?"
+
+categories:
+- aimless philosophizing
 ---
 
 There's an interesting dynamic in entertainment.  People have their preferred forms of consuming it: books and poetry long ago, television and film relatively recently, and exeedingly recently, Youtube clips and Video games. The medium will differ, but what is gained usually does not.

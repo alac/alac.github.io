@@ -1,6 +1,8 @@
 ---
 layout: default_post
 title: "The Evolution of Final Fantasy XIII: Three Systems, One Plot"
+categories:
+- Video Games
 ---
 
 After watching the E3 trailer for Final Fantasy XIII, my first response was "Okay, I'm buying a PS3... when I have the money". Flash forward 9 years: Final Fantasy XIII and it's sequels came out to lukewarm reviews, and made everyone question what it meant to be "Final Fantasy".
@@ -23,7 +25,7 @@ Final Fantasy XIII in +-'s:
 >
 > 1. It wasn't clear to a player when they weren't doing things correctly. That is, if you understood the battle system, it was quick and exciting. If you didn't, battles were slow with little indication of why.  
 >    * This was compounded futher by the fact that battle strategy went from managing *character actions* (e.g. fire > ice) to managing *the pace of battle*.
->    * Additionally, there were essentially two possible parties in battle: one with higher health, the other with higher offensive and capabilities. Players that couldn't win quickly had the option of losing slower and with more futility.
+>    * Additionally, there were essentially two possible parties in battle: one with higher health, the other with higher offensive capabilities. Players who couldn't win quickly had the option of losing slower and with more futility.
 > 2. Stat growth was capped by where you were in the plot. This meant you couldn't blindly grind to progress, breaking a time honored tradition of Final Fantasy games.  
 >
 >This meant that players were going to figure out the right strategy or they were going to have a bad time. So, a lot of people did.
