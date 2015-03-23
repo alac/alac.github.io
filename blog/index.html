@@ -6,7 +6,7 @@ title: All Things
 {% for post in paginator.posts %}
 	<div class='post depthOneContent'>
     <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-		{{ post.date | date_to_string }} 
+		{{ post.date | date_to_string }} | {{ post.categories }}
     {{ post.excerpt }}
 	</div>
 {% endfor %}
