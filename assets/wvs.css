@@ -45,10 +45,24 @@ height: 50px;
 }
 
 .header {
-width: 100%;
-min-height: 120px;
+float:center;
+width:100% - 20px;
+min-height: 80px;
 /* header is an alternative menu for thin devices */
 display: block;
+}
+
+.header a:link {
+color: white;
+}
+
+.header a:visited {
+color: #010A1A;
+}
+
+.header a:hover {
+color: white;
+text-decoration: none;
 }
 
 .content {
@@ -89,6 +103,19 @@ min-height: 450px;
   color: #FFFFFF;
   font-size: 18px;
   margin: .2em .2em 0px 0px;
+}
+
+.sidebar a:link {
+color: white;
+}
+
+.sidebar a:visited {
+color: #010A1A;
+}
+
+.sidebar a:hover {
+color: white;
+text-decoration: none;
 }
 
 .menuCategory {
