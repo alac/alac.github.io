@@ -8,6 +8,8 @@ categories:
 
 After watching the E3 trailer for Final Fantasy XIII, my first response was "Okay, I'm buying a PS3... when I have the money". Flash forward 9 years: Final Fantasy XIII and it's sequels came out to lukewarm reviews, and made everyone question what it meant to be "Final Fantasy".
 
+![Final Fantasy XIII action shot](/assets/posts/ffxiii/ffxiii_1_crop.jpg "If only Lightning could hit all the problems in Final Fantasy XIII")
+
 Imperfect as they are, the three XIII's succeed at least in one way: they're interesting to think about. They represent distinct and diverse approaches to game design. They have clear flaws, most of which come from not understanding the expectations of their audience.
 
 Final Fantasy XIII in +-'s:  
@@ -86,3 +88,11 @@ What Final Fantasy XIII-2 Addressed:
 >The first major shift from XIII to XIII-2 is that the major drivers of the plot are characters that we can see. Neither 'Gods' nor the concept of 'fate', the primary actors are people with faces, motivations and baggage. The characters themselves can *show* us their actions and intentions. This makes the events of XIII-2 much less of a clusterfuck and instead a story about people.
 >
 >It's telling that XIII-2 features none of its predecessor's party members as playable characters. And it was the right move. XIII-2's characters are much more believable. While still subject to the melodrama neccessary for a 'character arc', Noel and Serah feel more have ups and downs instead of constant tension; they have motivations that aren't 'we have to'; most of all, they spend more time revealing who they are than than developing into a different character.
+
+
+And Lightning Returns:
+-------------
+
+\+ Linearity
+
+>
