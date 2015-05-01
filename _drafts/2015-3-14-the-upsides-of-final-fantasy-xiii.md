@@ -8,12 +8,15 @@ categories:
 
 After watching the E3 trailer for Final Fantasy XIII, my first response was "Okay, I'm buying a PS3... when I have the money". Flash forward 9 years: Final Fantasy XIII and it's sequels came out to lukewarm reviews, and made everyone question what it meant to be "Final Fantasy".
 
-![Final Fantasy XIII action shot](/assets/posts/ffxiii/ffxiii_1_crop.jpg "If only Lightning could hit all the problems in Final Fantasy XIII")
-
 Imperfect as they are, the three XIII's succeed at least in one way: they're interesting to think about. They represent distinct and diverse approaches to game design. They have clear flaws, most of which come from not understanding the expectations of their audience.
 
-Final Fantasy XIII in +-'s:  
+Final Fantasy XIII
 -----------
+
+![Final Fantasy XIII action shot](/assets/posts/ffxiii/ffxiii_1_crop.jpg "If only Lightning could hit all the problems in Final Fantasy XIII")
+
+What went right or wrong:
+
 \+ Graphical Quality  
 
 >While it didn't quite achieve what was promised in the [2006 trailer](https://www.youtube.com/watch?v=WH0OOulJKko), it was quite close. Camera angles aside, the difference between prerendered cutscenes and in-engine cutscenes came down to tiny things like hair and fingers.
@@ -62,8 +65,13 @@ Final Fantasy XIII in +-'s:
 >Last of all, the plot itself lacks clear direction. We know the goal of the main characters, but the reasons why they're put into the situation that they're in are beyond convoluted.  
 
 
-What Final Fantasy XIII-2 Addressed:
+Final Fantasy XIII-2
 -------------
+
+![Final Fantasy XIII action shot](/assets/posts/ffxiii/ffxiii2_crop.jpg "Suddenly, new main characters!")
+
+
+What was addressed:
 
 \+ Linearity
 
@@ -89,10 +97,23 @@ What Final Fantasy XIII-2 Addressed:
 >
 >It's telling that XIII-2 features none of its predecessor's party members as playable characters. And it was the right move. XIII-2's characters are much more believable. While still subject to the melodrama neccessary for a 'character arc', Noel and Serah feel more have ups and downs instead of constant tension; they have motivations that aren't 'we have to'; most of all, they spend more time revealing who they are than than developing into a different character.
 
-
-And Lightning Returns:
+Lightning Returns
 -------------
+
+![Final Fantasy XIII action shot](/assets/posts/ffxiii/ffxiii3_crop.jpg "Definitely, not expected from the Final Final Fantasy XIII.")
+
+What changed:
 
 \+ Linearity
 
->
+> Where XIII was a line and XIII-2 was a tree, LR was quite literally what you would expect [a strongly connected graph](https://www.google.com/search?q=strongly+connected+graph&safe=off&espv=2&biw=1102&bih=776&source=lnms&tbm=isch&sa=X&ei=YCQ_Ve_rKoyzogTH2oGIDg&ved=0CAYQ_AUoAQ&dpr=2). The main plot was based around five main quests that could be done in any order, frequently interleaved with sidequests.
+
+> As you might expect, the end result is a weaker plot and a stronger world. The oddities - like the roomba with a soul - and Lightning's interactions with them make the world more memorable than any of XIII's hallways or XIII-2's mazes. However, the cost is having a story that it's hard to see as anything but an excuse to wander around and endanger every species of monster.
+
+\+ Battle System
+
+> 
+
+\+ Tone
+
+\- The Doomsday Clock
