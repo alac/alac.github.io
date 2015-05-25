@@ -5,9 +5,14 @@ title:
 <!-- This loops through the paginated posts -->
 {% for post in paginator.posts %}
 	<div class='post depthOneContent'>
-    <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-		{{ post.date | date_to_string }} | {{ post.categories }}
-    {{ post.excerpt }}
+    <div class='postHeader'>
+      <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+    </div>
+    <div class='postBody'>
+      {{ post.date | date_to_string }} | {{ post.categories }}
+      {{ post.excerpt }}
+      <p><a href="{{ post.url }}" role="button">More...</a>
+    </p>
 	</div>
 {% endfor %}
 

@@ -6,6 +6,17 @@ categories:
 - Programming Tools
 ---
 
+In this post:
+
+* Source Control/Git Intro
+* Tools for Git
+* Super Useful Command-Line Commands!
+
+<!---
+<!–end_preview–>
+-->
+
+
 What is source control?
 -----------
 Think back to high school: it's two a.m. and you're writing an essay in Word'98. You get to the end of your conclusion and realize that you've missed the page requirement. You start thesaurousing as hard as you possible can, you change the margins and font size. But alas, you don't make it. Now, you start rewriting things to make them longer. You read it again and decide, 'wow that was a mistake' and hold CTRL-Z until everything is fine again.
