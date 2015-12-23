@@ -56,15 +56,43 @@ Anyways, I've thought of it as:
 
 > But, what happened more and more were games that I would fall way behind in the beginning, but find _some_ way to win
 
+\+ A mysterious game...
+
+> Early in Starcraft 2: Heart of the Swarm, I played one of the most interesting games I've ever played.
+
+> We both got up to three bases pretty quickly and deflected each other's harassment deftly.
+
+> The my opponent dropped his entire army in my base and I cleaned it up, but lost all of my production.
+
+> For the next minute or so, he could make an army and I could not. I thought I would lose.
+
+> So, two things occurred to me: 1. I needed to buy time to build an army 2. I needed to make a different army since if we had the same kind, but I had less, I'd obviously lose.
+
+> I sent out the only army I had (a medivac and a few marines) to buy time. Then built only hellions, which could also be used to buy time.
+
+> Twenty minutes later, I won with an almost exclusively hellion army after killing almost all his workers.
+
 \+ A game about control...
+
+> Ultimately, Starcraft 2 is a game about finding a way to get in control of your opponent.
+
+> You can rush or win a fight to bully their army directly.
+
+> You can harass or expand early to put them on a timer to either expand themselves or attack before you get too far ahead.
+
+> If they're aggressive, then you can defend and gain a lead as a result.
+
+> And if you're really good, you can do something unexpected to disrupt their play.
 
 
 Starcraft To Me
 -----------
+Starcraft is complex. Managing an economy is a thinly veiled spreadsheet, but one that has to be adjusted in real time.
 
+Starcraft is taxing. There's plenty to do in your own base and even more to do to your opponent. Making the correct call as to what deserves your attention now is satisfying.
 
-Starcraft The Esport
------------
+Starcraft is a difficult game that comes with the opportunity to play a _beautiful game_.
 
+A perfect execution of a rush strategy means something like ten minutes of a well coordinated and planned series of actions; no different from playing music.
 
-The part of it that I actually love, however, is the fact that you can play a beautiful game. A perfect execution of a rush strategy means something like ten minutes of a well coordinated and planned series of actions; no different from playing music. Most matches are closer to that scenario: following through on some rehearsed set of actions, which depend on the state of the game. On the other hand, sometimes players end up in situations wholly new to them. Because of that - and the fast pace of the game - players are given the opportunity to have incredible moments. Moments unlike our work or personal lives, moments where a split second realization or decision can reverse the outcome of a situation. And at the relatively low cost of potentially losing.
+On the other hand, sometimes players end up in situations wholly new to them. Because of that - and the fast pace of the game - players are given the opportunity to have incredible moments. Moments, unlike our work or personal lives, moments where a split second realization or decision can reverse the outcome of a situation.
