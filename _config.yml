@@ -1,7 +1,7 @@
 encoding: utf-8
 highlighter: rouge
 paginate: 5
-paginate_path: "blog/page:num"
+paginate_path: "index/page:num"
 excerpt_separator: "<!---\n<!–end_preview–>\n-->"
 
 # Serving
