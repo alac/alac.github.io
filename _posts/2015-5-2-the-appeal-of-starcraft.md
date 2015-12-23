@@ -6,7 +6,11 @@ categories:
 - Video Games
 ---
 
-Starcraft II came out in 2010 to all the hype that the successor to one of the most beloved games of all time should expect. Quite a lot has been said about it's decline, but - almost 5 years later now - quite a lot of people still play and still tune in to watch Starcraft II. It certianly deserves some credit:
+Starcraft II came out in 2010 to all the hype that the successor to one of the most beloved games of all time should expect. Quite a lot has been said about it's decline, but - almost 5 years later now - quite a lot of people still play and still tune in to watch Starcraft II. It certianly deserves some credit.
+
+<!---
+<!–end_preview–>
+-->
 
 Starcraft is a game with few rules and concepts, but tremendously complex and deep. Unlike League or Dota, there
 

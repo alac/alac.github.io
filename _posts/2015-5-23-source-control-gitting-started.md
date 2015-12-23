@@ -6,6 +6,8 @@ categories:
 - Programming
 ---
 
+![Git Meme](/assets/posts/git/git-meme.jpg "Force pushing is for jedi"){: .center-image }
+
 In this post:
 
 * Source Control/Git Intro
@@ -115,15 +117,20 @@ Many of these you may want to ALIAS into a macro in your bash_profile / zshrc. I
 
 Handling Multiple Github Accounts
 ----------
-An advanced topic and probably not an issue for most people. Disclosure: I didn't find a way to master this, but was able to get what I needed to done.
+An advanced topic and probably not an issue for most people.
+
+Basically, you shouldn't authenticate to multiple github accounts with the same ssh key. So, you'll need to switch between ssh keys whenever you switch accounts. You'll run three commands:
+
+    ssh-agent # start the ssh agent
+    ssh-add -d # remove the current identity
+    ssh-add ~.ssh/id_rsa_XYZ # add the new identity
+
+I recommend adding a macro for this. I use this
+
+    alias sshwork="ssh-agent; ssh-add -d; ssh-add ~.ssh/id_rsawork"
+
 
 A gist on the topic [here](https://gist.github.com/jexchan/2351996).
-
-Commands that will probably help you:
-
-* `ssh-add _path_to_your_rsa_key`. adds an identity.
-* `ssh-add -l`. lists available identities.
-* `ssh-add -d`. deletes an identity.
 
 
 Appendix

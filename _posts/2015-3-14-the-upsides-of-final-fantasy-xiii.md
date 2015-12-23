@@ -10,6 +10,10 @@ After watching the E3 trailer for Final Fantasy XIII, my first response was "Oka
 
 Imperfect as they are, the three XIII's succeed at least in one way: they're interesting to think about. They represent distinct and diverse approaches to game design. They have clear flaws, most of which come from not understanding the expectations of their audience.
 
+<!---
+<!–end_preview–>
+-->
+
 Final Fantasy XIII
 -----------
 

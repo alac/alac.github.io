@@ -157,7 +157,9 @@
 	</div>
 	<div class='postBody'>
 	23 May 2015 | programming
-	<p>In this post:</p>
+	<p><img src="/assets/posts/git/git-meme.jpg" alt="Git Meme" title="Force pushing is for jedi" class="center-image" /></p>
+
+<p>In this post:</p>
 
 <ul>
   <li>Source Control/Git Intro</li>
@@ -280,17 +282,21 @@
 </ul>
 
 <h2 id="handling-multiple-github-accounts">Handling Multiple Github Accounts</h2>
-<p>An advanced topic and probably not an issue for most people. Disclosure: I didn’t find a way to master this, but was able to get what I needed to done.</p>
+<p>An advanced topic and probably not an issue for most people.</p>
+
+<p>Basically, you shouldn’t authenticate to multiple github accounts with the same ssh key. So, you’ll need to switch between ssh keys whenever you switch accounts. You’ll run three commands:</p>
+
+<pre><code>ssh-agent # start the ssh agent
+ssh-add -d # remove the current identity
+ssh-add ~.ssh/id_rsa_XYZ # add the new identity
+</code></pre>
+
+<p>I recommend adding a macro for this. I use this</p>
+
+<pre><code>alias sshwork="ssh-agent; ssh-add -d; ssh-add ~.ssh/id_rsawork"
+</code></pre>
 
 <p>A gist on the topic <a href="https://gist.github.com/jexchan/2351996">here</a>.</p>
-
-<p>Commands that will probably help you:</p>
-
-<ul>
-  <li><code>ssh-add _path_to_your_rsa_key</code>. adds an identity.</li>
-  <li><code>ssh-add -l</code>. lists available identities.</li>
-  <li><code>ssh-add -d</code>. deletes an identity.</li>
-</ul>
 
 <h2 id="appendix">Appendix</h2>
 <p>Some other stuff that may be useful:</p>

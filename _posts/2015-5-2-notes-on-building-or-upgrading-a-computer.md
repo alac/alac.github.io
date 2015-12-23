@@ -12,6 +12,10 @@ Notes on Building a Computer
 ----------
 Read the manual(s).
 
+<!---
+<!–end_preview–>
+-->
+
 If upgrading an existing machine: you may not be able to! Not easily at least. You might be restricted because of a weak power supply or a finicky motherboard.
 
 When installing any piece, use compressed air (or an equivalent) to make sure that there isn’t dust. Dust is hard to debug!
