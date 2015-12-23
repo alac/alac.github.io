@@ -15,7 +15,7 @@
 					</span>
 				</a>
 				<span class='headerbarMenu'>
-					live | create | code
+					blog | notes | creations
 				</span>
 			</div>
 			<div class='subcontainer'>
@@ -43,7 +43,7 @@
 						<br>
 <!-- 					display all posts by categories                           -->
 						<div class="sideBarTitle">
-							<h3>More</h3>
+							<h3>All</h3>
 						</div>
 	{% for category in site.categories %}
 					<div class="menuCategory">
@@ -55,7 +55,7 @@
 						  	{% for post in posts %}
 						  		{% if post.url %}
 						  			<div class="menuCategoryPost">
-							    	<a href="{{ post.url }}">* {{ post.title }}</a></li>
+							    	<a href="{{ post.url }}">* {{ post.title }}</a>
 									</div>
 						  		{% endif %}						  		
 						  	{% endfor %}
