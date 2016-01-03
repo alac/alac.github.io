@@ -1,0 +1,21 @@
+objective-c string split vs string join
+http://stackoverflow.com/questions/3558888/objective-c-split
+
+Objective-c datastructures binary heap
+https://developer.apple.com/library/ios/documentation/CoreFoundation/Reference/CFBinaryHeapRef/
+
+Objective-c: print calling function
+NSArray *syms = [NSThread callStackSymbols]; if ([syms count] > 1) NSLog(@"caller: %@", [syms objectAtIndex:1U]);
+
+Objective-C adding properties in categories
+http://nshipster.com/associated-objects/
+
+[NSString stringWithFormat:] versus [[NSString alloc] initWithFormat:]
+the latter has no implied autorelease = 30% faster
+
+
+grand central dispatch
+http://www.raywenderlich.com/4295/multithreading-and-grand-central-dispatch-on-ios-for-beginners-tutorial
+
+
+http://nshipster.com/instancetype/

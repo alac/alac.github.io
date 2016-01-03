@@ -1,0 +1,20 @@
+https://blog.pivotal.io/labs/labs/all-evidence-points-to-oop-being-bullshit
+
+++++++Building a heap in linear time vs repeated insertions
+It would be O(n log n) if you built the heap by repeatedly inserting elements. However, you can create a new heap more efficiently by inserting the elements in arbitrary order and then applying an algorithm to "heapify" them into the proper order (depending on the type of heap of course).
+
+See http://en.wikipedia.org/wiki/Binary_heap, "Building a heap" for an example. In this case you essentially work up from the bottom level of the tree, swapping parent and child nodes until the heap conditions are satisfied.
+http://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity
+
+
++++++programming tips: read c declarations in a spiral
+http://c-faq.com/decl/spiral.anderson.html
+
+
+++++Coding contests
+shttp://www.topcoder.com/
+https://www.hackerrank.com/
+
+
+++++++PriorityQueue's O(n) construction
+http://stackoverflow.com/questions/9755721/build-heap-complexity

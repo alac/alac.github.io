@@ -1,0 +1,44 @@
+- Diff folders
+diff -q ~peter ~george  |sort
+REMOVE Q FOR DIFFS BETWEEN EACH FILE
+
+
+
+- find + xargs; searching for copies of files from one folder in another!
+find Resources/Parameters/DebugOnly -type f -exec basename {} \; | xargs -I{} -L 1 find temp/parameter_staging -name {} | xargs -I{} rm {}
+
+xargs...
+
+-I{} replace brackets with input
+
+-L 1 one command per line
+
+http://www.softpanorama.org/Tools/xargs.shtml
+
+
+
+
+- find files with duplicate names
+http://askubuntu.com/questions/48524/search-for-duplicate-file-names-within-folder-hierarchy
+
+ find . -type f -exec basename {} \; | sed 's/\(.*\)\..*/\1/' | sort | uniq -c | grep -v "^[ \t]*1 "
+
+
+
+- advanced shell scripting
+http://www.tldp.org/LDP/abs/abs-guide.pdf
+
+
+
+- grepping with context
+git grep -C 6 fx_RediculeAOE_red.part
+
+
+
+- shell tools: xargs and find with symlinks
+http://en.wikipedia.org/wiki/Xargs
+http://www.gnu.org/software/findutils/manual/html_node/find_html/Symbolic-Links.html
+
+
+- size of a folder
+http://superuser.com/questions/22460/how-do-i-get-the-size-of-a-linux-or-mac-os-x-directory-from-the-command-line
