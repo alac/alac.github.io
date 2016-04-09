@@ -1,6 +1,6 @@
 ---
 layout: default_post
-title: "Git / Source Control"
+title: "git / source control"
 
 categories:
 - Tools

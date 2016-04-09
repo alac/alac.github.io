@@ -1,6 +1,6 @@
 ---
 layout: default_post
-title: "Weighing common patterns"
+title: "comparing patterns"
 
 categories:
 - Objective-C
