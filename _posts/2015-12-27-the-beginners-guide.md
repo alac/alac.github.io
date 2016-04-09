@@ -28,11 +28,12 @@ The climax of the Beginner's Guide occurs during the last level that Coda shares
 
 Thoughts
 -----------
-Like many good books, The Beginner's Guide isn't about what happens, but the perspective that it takes on the events that do happen. This isn't about Coda's games or the experience of playing them, this is about Davey's experience playing Coda's games.
+Like many good books, The Beginner's Guide isn't about what happens, but the perspective that it takes on the events that do happen. This isn't about Coda's games or the experience of playing them, this is about Davey's experience with Coda's games (his experience playing them, _and_ how he presents them to the player).
 
-That is, if they are in fact _still_ Coda's games. Davey reveals early on that he doesn't particularly care for Coda's authorial intent: where Coda would intentionally make something tedious or outright impossible, Davey _modifies the code_ so that the player can experience what he experienced.
+That is, if they are in fact _still_ Coda's games. Davey reveals early on that he doesn't particularly care for Coda's authorial intent: where Coda would intentionally make something tedious or outright impossible, Davey _modifies the code_ so that the player can experience what Coda made _but intended the player to not experience_.
 
 During Coda's letter to Davey, he asks if Davey 'will stop adding lightposts' to his levels. It's clear at this point that The Beginner's Guide is a [frame game](https://en.wikipedia.org/wiki/Frame_story); through the intermediary lense of Davey, we can no longer tell the difference between the real Coda and the Coda that Davey wants us to see.
+
 
 (Nevermind that in real life Coda is an invention of the real life Davey.)
 
