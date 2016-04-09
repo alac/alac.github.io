@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
- 	<title>  Git Good: Source Control |  Aimless Bitshift</title>
+ 	<title>  Git / Source Control |  Aimless Bitshift</title>
  		<link rel='stylesheet' type='text/css' href='/assets/wvs.css'>
  		<link rel='stylesheet' type='text/css' href='/assets/normalize.css' />
 	</head>
@@ -26,7 +26,7 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
-					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* Objective-C: Weighing common patterns</a>
+					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* Weighing common patterns</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
@@ -34,7 +34,7 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
-					    	<a href="/programming/2015/05/23/source-control-gitting-started.html">* Git Good: Source Control</a>
+					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* Git / Source Control</a>
 						</div>
 					
 				</div>
@@ -45,7 +45,7 @@
 						</div>
 						
 				  			<div class="menuCategoryPost">
-						    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* Objective-C: Weighing common patterns</a>
+						    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* Weighing common patterns</a>
 							</div>
 						
 				  			<div class="menuCategoryPost">
@@ -53,11 +53,31 @@
 							</div>
 						
 				  			<div class="menuCategoryPost">
-						    	<a href="/programming/2015/05/23/source-control-gitting-started.html">* Git Good: Source Control</a>
+						    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* Git / Source Control</a>
 							</div>
 						
 						<br>
 <!-- 					display all posts by categories                           -->
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="tools">tools</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* Git / Source Control</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
@@ -73,12 +93,6 @@
 						  		
 						  			<div class="menuCategoryPost">
 							    	<a href="/programming/2015/12/25/is-my-code-shit-checklist.html">* Code Checklist</a>
-									</div>
-						  								  		
-						  	
-						  		
-						  			<div class="menuCategoryPost">
-							    	<a href="/programming/2015/05/23/source-control-gitting-started.html">* Git Good: Source Control</a>
 									</div>
 						  								  		
 						  	
@@ -98,7 +112,7 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
-							    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* Objective-C: Weighing common patterns</a>
+							    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* Weighing common patterns</a>
 									</div>
 						  								  		
 						  	
@@ -110,11 +124,11 @@
 				  <div class='post depthOneContent'>
 	<div class='postHeader'>
 	<h1>
-		Git Good: Source Control
+		Git / Source Control
 	</h1>
 	</div>
 	<div class='postBody'>
-	23 May 2015 | programming
+	23 May 2015 | tools
 	<p><img src="/assets/posts/git/git-meme.jpg" alt="Git Meme" title="Force pushing is for jedi" class="center-image" /></p>
 
 <p>In this post:</p>
@@ -130,9 +144,9 @@
 -->
 
 <h2 id="what-is-source-control">What is source control?</h2>
-<p>Think back to high school: it’s two a.m. and you’re writing an essay in Word’98. You get to the end of your conclusion and realize that you’ve missed the page requirement. You start thesaurousing as hard as you possible can, you change the margins and font size. But alas, you don’t make it. Now, you start rewriting things to make them longer. You read it again and decide, ‘wow that was a mistake’ and hold CTRL-Z until everything is fine again.</p>
+<p>Think back to high school. Your essay is 10.5 pages instead of 11, so you thesaurous <em>real hard</em>. In the sobering morning light, you realize it was a mistake and hold down CTRL-Z.</p>
 
-<p>Now, suppose you wanted CTRL-Z for code. It would need to occur for more than one line at a time, each ‘logical change’. It would need to handle multiple people working on the same code at the same time. And so on. That’s basically source control.</p>
+<p>Now, suppose you wanted CTRL-Z for code. It would need to occur for each ‘logical change’ otherwise it wouldn’t compile. It would need to handle multiple people working on the same code at the same time. And so on. That’s basically source control.</p>
 
 <p>For more see:</p>
 
@@ -237,7 +251,53 @@
 
     <p>Show an abbreviated log. More options <a href="http://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History">here</a>.</p>
   </li>
+  <li>
+    <p><code>git grep STRING</code>.</p>
+
+    <p>Search all indexed files for STRING. Lifesaver if regular <code>grep</code> gives you unwanted results from gitignored filed.</p>
+  </li>
 </ul>
+
+<h2 id="configuration">Configuration</h2>
+<p>Here’s some things you can change with your git configuration:</p>
+
+<ul>
+  <li>
+    <p><a href="https://git-scm.com/blog/2010/03/08/rerere.html">Rerere: “reuse recorded resolution”</a>. That is, automatic handling of repeated conflicts.</p>
+
+    <p>By turning rerere on with <code>git config --global rerere.enabled true</code>, git can remember every resolution to a merge conflict and recycle it. Useful for long rebases.</p>
+
+    <p>If you end up screwing up a resolution, forget it with <code>git rerere forget FILE</code> and checkout the conflicted version again <code>git checkout -m FILE</code>.</p>
+  </li>
+  <li>
+    <p>Always rebase when pulling.</p>
+
+    <p>Use <code>git config branch.autosetuprebase always</code> to rebase when pulling. Useful if you work… with others. Although, you may as well make a bash profile shortcut for pulling that includes the <code>--rebase</code> flag.</p>
+
+    <p>You can add <code>--global</code> to apply to all repos.</p>
+  </li>
+</ul>
+
+<h2 id="bisect-to-find-breaking-changes">Bisect To Find Breaking Changes</h2>
+<p>Suppose you have a bug and can’t determine the cause by inspecting the current codebase. Use a bisect to bruteforce your way to the code change that caused it.</p>
+
+<pre><code>git bisect start
+git bisect bad KNOWN_BAD_COMMIT
+git bisect good KNOWN_GOOD_COMMIT
+</code></pre>
+
+<p>Git check out commits for you. You’ll test each one, then tell git if the code was broken or not:</p>
+
+<pre><code>git bisect good # that commit wasn't broken
+git bisect bad # that commit was broken
+</code></pre>
+
+<p>Then at the end (or when you’ve decided to give up), run reset:</p>
+
+<pre><code>git bisect reset
+</code></pre>
+
+<p>Examples of other options (and automated testing) <a href="https://git-scm.com/docs/git-bisect">here</a></p>
 
 <h2 id="handling-multiple-github-accounts">Handling Multiple Github Accounts</h2>
 <p>An advanced topic and probably not an issue for most people.</p>
@@ -251,10 +311,39 @@ ssh-add ~.ssh/id_rsa_XYZ # add the new identity
 
 <p>I recommend adding a macro for this. I use this</p>
 
-<pre><code>alias sshwork="ssh-agent; ssh-add -d; ssh-add ~.ssh/id_rsawork"
+<pre><code>alias sshwork="ssh-agent; ssh-add -d; 
+ssh-add ~.ssh/id_rsawork"
 </code></pre>
 
 <p>A gist on the topic <a href="https://gist.github.com/jexchan/2351996">here</a>.</p>
+
+<h2 id="git-faster">Git Faster</h2>
+<p>If you’re using git right, you’re necessarily using git <em>a lot</em>. It would be wise to add shortcuts to your bash profile. Examples:</p>
+
+<ul>
+  <li>
+    <p>Jumping to the root directories of you repos / submodules.</p>
+
+    <p>E.g. adding <code>alias blog="cd ~/repos/blog"</code></p>
+  </li>
+  <li>
+    <p>Common general operations like pull, rebase, commit.</p>
+
+    <p><code>alias gst="git status"</code>
+ <code>alias gpr="git pull --rebase"</code>
+ <code>alias gac="git add -A; git commit"</code></p>
+  </li>
+  <li>
+    <p>Switching to popular branches, tags.</p>
+
+    <p><code>alias glatest='git checkout master; git pull --rebase origin master'</code></p>
+  </li>
+  <li>
+    <p>Nuking everything!</p>
+
+    <p><code>alias nuke="git clean -fd; git reset --hard head; git submodule foreach --recursive git reset --hard"</code></p>
+  </li>
+</ul>
 
 <h2 id="appendix">Appendix</h2>
 <p>Some other stuff that may be useful:</p>

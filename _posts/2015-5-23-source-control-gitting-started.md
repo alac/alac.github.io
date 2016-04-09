@@ -1,9 +1,9 @@
 ---
 layout: default_post
-title: "Git Good: Source Control"
+title: "Git / Source Control"
 
 categories:
-- Programming
+- Tools
 ---
 
 ![Git Meme](/assets/posts/git/git-meme.jpg "Force pushing is for jedi"){: .center-image }
@@ -21,9 +21,9 @@ In this post:
 
 What is source control?
 -----------
-Think back to high school: it's two a.m. and you're writing an essay in Word'98. You get to the end of your conclusion and realize that you've missed the page requirement. You start thesaurousing as hard as you possible can, you change the margins and font size. But alas, you don't make it. Now, you start rewriting things to make them longer. You read it again and decide, 'wow that was a mistake' and hold CTRL-Z until everything is fine again.
+Think back to high school. Your essay is 10.5 pages instead of 11, so you thesaurous _real hard_. In the sobering morning light, you realize it was a mistake and hold down CTRL-Z.
 
-Now, suppose you wanted CTRL-Z for code. It would need to occur for more than one line at a time, each 'logical change'. It would need to handle multiple people working on the same code at the same time. And so on. That's basically source control.
+Now, suppose you wanted CTRL-Z for code. It would need to occur for each 'logical change' otherwise it wouldn't compile. It would need to handle multiple people working on the same code at the same time. And so on. That's basically source control.
 
 For more see:
 
@@ -114,6 +114,47 @@ Many of these you may want to ALIAS into a macro in your bash_profile / zshrc. I
 
    Show an abbreviated log. More options [here](http://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History).
 
+* `git grep STRING`.
+
+   Search all indexed files for STRING. Lifesaver if regular `grep` gives you unwanted results from gitignored filed.
+
+
+Configuration
+---------
+Here's some things you can change with your git configuration:
+
+* [Rerere: "reuse recorded resolution"](https://git-scm.com/blog/2010/03/08/rerere.html). That is, automatic handling of repeated conflicts.
+
+   By turning rerere on with `git config --global rerere.enabled true`, git can remember every resolution to a merge conflict and recycle it. Useful for long rebases.
+
+   If you end up screwing up a resolution, forget it with `git rerere forget FILE` and checkout the conflicted version again `git checkout -m FILE`.   
+
+* Always rebase when pulling.
+
+  Use `git config branch.autosetuprebase always` to rebase when pulling. Useful if you work... with others. Although, you may as well make a bash profile shortcut for pulling that includes the `--rebase` flag.
+
+  You can add `--global` to apply to all repos.
+
+
+Bisect To Find Breaking Changes
+----------
+Suppose you have a bug and can't determine the cause by inspecting the current codebase. Use a bisect to bruteforce your way to the code change that caused it.
+
+    git bisect start
+    git bisect bad KNOWN_BAD_COMMIT
+    git bisect good KNOWN_GOOD_COMMIT
+
+Git check out commits for you. You'll test each one, then tell git if the code was broken or not:
+
+    git bisect good # that commit wasn't broken
+    git bisect bad # that commit was broken
+
+Then at the end (or when you've decided to give up), run reset:
+
+    git bisect reset
+
+Examples of other options (and automated testing) [here](https://git-scm.com/docs/git-bisect)
+
 
 Handling Multiple Github Accounts
 ----------
@@ -127,10 +168,34 @@ Basically, you shouldn't authenticate to multiple github accounts with the same 
 
 I recommend adding a macro for this. I use this
 
-    alias sshwork="ssh-agent; ssh-add -d; ssh-add ~.ssh/id_rsawork"
+    alias sshwork="ssh-agent; ssh-add -d; 
+    ssh-add ~.ssh/id_rsawork"
 
 
 A gist on the topic [here](https://gist.github.com/jexchan/2351996).
+
+
+Git Faster
+---------
+If you're using git right, you're necessarily using git _a lot_. It would be wise to add shortcuts to your bash profile. Examples:
+
+* Jumping to the root directories of you repos / submodules.
+
+   E.g. adding `alias blog="cd ~/repos/blog"`
+
+* Common general operations like pull, rebase, commit.
+
+   `alias gst="git status"`
+   `alias gpr="git pull --rebase"`
+   `alias gac="git add -A; git commit"`
+
+* Switching to popular branches, tags.
+
+    `alias glatest='git checkout master; git pull --rebase origin master'`
+
+* Nuking everything!
+
+    `alias nuke="git clean -fd; git reset --hard head; git submodule foreach --recursive git reset --hard"`
 
 
 Appendix
