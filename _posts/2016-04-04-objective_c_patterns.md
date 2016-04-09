@@ -6,22 +6,19 @@ categories:
 - Objective-C
 ---
 
-```
-         ^
-         | D
-Verbose  |
-         |       B
-		 |              N
-		 |
-         |                              K
-Subtle   ------------------------------------->
+             ^
+             | D
+    Verbose  |
+             |       B
+             |              N
+             |
+             |                              K
+    Subtle   ------------------------------------->
 
-D = Delegate patterns
-B = Block patterns
-N = Notifications
-K = Key Value Observation
-
-```
+	D = Delegate patterns
+	B = Block patterns
+	N = Notifications
+	K = Key Value Observation
 
 You can find real explanations and how to use them in this objc.io article.
 
