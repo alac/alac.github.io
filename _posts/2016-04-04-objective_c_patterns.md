@@ -10,8 +10,8 @@ categories:
              | D
     Verbose  |
              |              N
+             |              
              |              B
-             |
              |                              K
     Subtle   ------------------------------------->
 
@@ -78,7 +78,7 @@ But with how lightweight KVO is, it can be appealing to use it within a system a
    You commit, then a co-worker changes implementation of `B`. _Your co-worker can't tell that the specific timing of `B`'s state changes are important to you_, and now your code has _subtly_ broken.
 
 
-KVO Takeaway
+KVO Takeaways
 -------------
 KVO allows you to write loosy coupled code by enabling the dependency to be one-way. However, it also allows you to write _implicitly_ tightly coupled code.
 
@@ -122,29 +122,69 @@ So, where does it go wrong?
    If the delegates aren't retained elsewhere, then at the very least the class that hooks them up is likely an _okay_ (read: less bad) place to retain them.
 
 
+Delegates Takeaway
+-----------------
+Delegates are _explicit_ and therefore relatively low risk,
+
+Delegates are also verbose, potentially making code harder to follow and likely _making you not want to use them_.
+
+Delegates won't ever be a wrong answer, just not necessarily the most correct answer.
+
+
 Block Patterns
 -----------------
+Blocks are commonly used in a APIs that require a one-off callback (e.g. completion handler for a particular request), but are often used otherwise for their absurd flexibility.
+
+A block based approach can be used in most cases a delegate approach could be used. However, since the block is clearly belongs to the object that executes it, there's no question of ownership.
+
+Other upsides include:
+
+* Supplying a callback block in the invocation of a method puts logically connected pieces of code together spatially.
+
+* Blocks are closures.
+
+   You can variables in the current scope without changing the API of the reciever of the block.
+
+   If the block needs to return extra data, the API of the reciever of the block doesn't need to be modified.
+
+   The block can just use a local variable with the type `__block`.
+
+   Or, if an async block, set a property on a relevant object.
+
+On the other hand:
+
+* Used carelessly, blocks _will_ cause retain cycles.
+
+   A natural result of being a closure, a block object will retain any object referenced in it (especially, _self_).
+
+   If an instance variable is used, the block will retain _self_!
+
+   Avoid either by making a `__weak` variable and referencing that in the block instead.
+
+* 'nil' blocks will cause crashes.
+
+   Due to [_reasons_](http://stackoverflow.com/a/14703717), attempting to invoke a nil block will cause a crash.
+
+   This is particularly sad because it's the exception to the rule as far as the behavior of nil.
+
+* Block syntax is [_this confusing_](http://goshdarnblocksyntax.com/).
+
+   It roughly mirrors function pointers in C. For whatever that's worth.
+
+* It's very subtle that the _block object provides the closure behavior_.
+
+   The block object retains the local variables used in the block. If the block is deallocated during it's execution, these variables will be _zombies, even in ARC_.
+
+* Similar to _delegates_, block pattern APIs don't lend themselves to handling the situation that multiple blocks need to be called for the same action.
+
+    You can still work around this by taking an array of blocks or combining blocks.
 
 
+Block Takeaways
+------------------
+Used carelessly, blocks will leak memory and rain crashes.
 
-
-
-
-upsides:
-* places the callback code close to the invocation.
-* allows for arbitrary dependencies via block retains.
-* easily return share/values with __block type local variables.
-
-downsides:
-* retain cycles.
-* subtle retains (_ivars, _any_ reference to a variable)
-* possible to screw up by not checking that the block exists before calling it
-* very subtle that the block object retains things, bad if the block is deallocated while running it
-* block syntax is incredibly confusing.
-
-
-
-
+However, if you're confident in your understanding of block mechanics, they can drastically simplify the code you write.
 
 
 Notifications

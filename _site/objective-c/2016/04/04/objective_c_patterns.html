@@ -105,8 +105,8 @@
          | D
 Verbose  |
          |              N
+         |              
          |              B
-         |
          |                              K
 Subtle   -------------------------------------&gt;
 
@@ -177,7 +177,7 @@ K = Key Value Observation
   </li>
 </ul>
 
-<h2 id="kvo-takeaway">KVO Takeaway</h2>
+<h2 id="kvo-takeaways">KVO Takeaways</h2>
 <p>KVO allows you to write loosy coupled code by enabling the dependency to be one-way. However, it also allows you to write <em>implicitly</em> tightly coupled code.</p>
 
 <p>Situationally, KVO may also be slow. Luckily, unabusive use of it is inheriently sparse and shouldn’t result in performance issues.</p>
@@ -228,19 +228,77 @@ K = Key Value Observation
   </li>
 </ul>
 
+<h2 id="delegates-takeaway">Delegates Takeaway</h2>
+<p>Delegates are <em>explicit</em> and therefore relatively low risk,</p>
+
+<p>Delegates are also verbose, potentially making code harder to follow and likely <em>making you not want to use them</em>.</p>
+
+<p>Delegates won’t ever be a wrong answer, just not necessarily the most correct answer.</p>
+
 <h2 id="block-patterns">Block Patterns</h2>
+<p>Blocks are commonly used in a APIs that require a one-off callback (e.g. completion handler for a particular request), but are often used otherwise for their absurd flexibility.</p>
 
-<p>upsides:
-* places the callback code close to the invocation.
-* allows for arbitrary dependencies via block retains.
-* easily return share/values with __block type local variables.</p>
+<p>A block based approach can be used in most cases a delegate approach could be used. However, since the block is clearly belongs to the object that executes it, there’s no question of ownership.</p>
 
-<p>downsides:
-* retain cycles.
-* subtle retains (<em>ivars, _any</em> reference to a variable)
-* possible to screw up by not checking that the block exists before calling it
-* very subtle that the block object retains things, bad if the block is deallocated while running it
-* block syntax is incredibly confusing.</p>
+<p>Other upsides include:</p>
+
+<ul>
+  <li>
+    <p>Supplying a callback block in the invocation of a method puts logically connected pieces of code together spatially.</p>
+  </li>
+  <li>
+    <p>Blocks are closures.</p>
+
+    <p>You can variables in the current scope without changing the API of the reciever of the block.</p>
+
+    <p>If the block needs to return extra data, the API of the reciever of the block doesn’t need to be modified.</p>
+
+    <p>The block can just use a local variable with the type <code>__block</code>.</p>
+
+    <p>Or, if an async block, set a property on a relevant object.</p>
+  </li>
+</ul>
+
+<p>On the other hand:</p>
+
+<ul>
+  <li>
+    <p>Used carelessly, blocks <em>will</em> cause retain cycles.</p>
+
+    <p>A natural result of being a closure, a block object will retain any object referenced in it (especially, <em>self</em>).</p>
+
+    <p>If an instance variable is used, the block will retain <em>self</em>!</p>
+
+    <p>Avoid either by making a <code>__weak</code> variable and referencing that in the block instead.</p>
+  </li>
+  <li>
+    <p>‘nil’ blocks will cause crashes.</p>
+
+    <p>Due to <a href="http://stackoverflow.com/a/14703717"><em>reasons</em></a>, attempting to invoke a nil block will cause a crash.</p>
+
+    <p>This is particularly sad because it’s the exception to the rule as far as the behavior of nil.</p>
+  </li>
+  <li>
+    <p>Block syntax is <a href="http://goshdarnblocksyntax.com/"><em>this confusing</em></a>.</p>
+
+    <p>It roughly mirrors function pointers in C. For whatever that’s worth.</p>
+  </li>
+  <li>
+    <p>It’s very subtle that the <em>block object provides the closure behavior</em>.</p>
+
+    <p>The block object retains the local variables used in the block. If the block is deallocated during it’s execution, these variables will be <em>zombies, even in ARC</em>.</p>
+  </li>
+  <li>
+    <p>Similar to <em>delegates</em>, block pattern APIs don’t lend themselves to handling the situation that multiple blocks need to be called for the same action.</p>
+
+    <p>You can still work around this by taking an array of blocks or combining blocks.</p>
+  </li>
+</ul>
+
+<h2 id="block-takeaways">Block Takeaways</h2>
+<p>Used carelessly, blocks will leak memory and rain crashes.</p>
+
+<p>However, if you’re confident in your understanding of block mechanics, they can drastically simplify the code you write.</p>
 
 <h2 id="notifications">Notifications</h2>
 
