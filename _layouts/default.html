@@ -15,7 +15,7 @@
 					</span>
 				</a>
 				<span class='headerbarMenu'>
-					blog | notes | creations
+					notes | code | ego
 				</span>
 			</div>
 			<div class='subcontainer'>
@@ -26,7 +26,7 @@
 						</div>
 					{% for post in site.posts limit:5 %}
 			  			<div class="menuCategoryPost">
-					    	<a href="{{ post.url }}">* {{ post.title }}</a>
+					    	<a href="{{ post.url }}">* {{ post.longtitle }}</a>
 						</div>
 					{% endfor %}
 				</div>
@@ -37,7 +37,7 @@
 						</div>
 						{% for post in site.posts limit:5 %}
 				  			<div class="menuCategoryPost">
-						    	<a href="{{ post.url }}">* {{ post.title }}</a>
+						    	<a href="{{ post.url }}">* {{ post.longtitle }}</a>
 							</div>
 						{% endfor %}
 						<br>

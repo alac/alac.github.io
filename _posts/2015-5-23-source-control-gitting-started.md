@@ -1,5 +1,6 @@
 ---
 layout: default_post
+longtitle: "tools: git / source control"
 title: "git / source control"
 
 categories:

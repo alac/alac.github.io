@@ -1,5 +1,6 @@
 ---
 layout: default_post
+longtitle: "objective-c: comparing patterns"
 title: "comparing patterns"
 
 categories:
