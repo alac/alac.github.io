@@ -116,9 +116,9 @@ N = Notifications
 K = Key Value Observation
 </code></pre>
 
-<p>There’s a variety of ways to mediate the interactions between systems in your codebase. Principle forms in Objective-C are delegate relationships, setting callback blocks, using the notification system, and the observer pattern.</p>
+<p>Principle forms of interactions in Objective-C are delegate relationships, setting callback blocks, the notification system, and the observer pattern.</p>
 
-<p>You can find real explanations of what they are in <a href="http://nshipster.com/key-value-observing/">this objc.io article</a>.</p>
+<p>You can find real explanations of what they are in <a href="http://nshipster.com/key-value-observing/">short here</a> and in <a href="https://www.objc.io/issues/7-foundation/communication-patterns/#delegation">long here</a>.</p>
 
 <p>This post will - in an effort to be useful - demonstrate <em>misuses</em> and potential <em>problems</em>.</p>
 
@@ -157,7 +157,7 @@ K = Key Value Observation
     <p><em>Or</em>  it gets set too early and the KVO gets triggered <em>before some state change completes</em>, leading to the KVO callback’s behavior being incorrect.</p>
   </li>
   <li>
-    <p>It can lead to implicit assumptions.</p>
+    <p>It can <em>create a reliance on</em> implicit assumptions.</p>
 
     <p>Ex: 1</p>
 
@@ -177,12 +177,12 @@ K = Key Value Observation
   </li>
 </ul>
 
-<h2 id="takeaway">Takeaway</h2>
-<p>KVO allows you to write loosy coupled code. It also allows you to write <em>implicitly</em> tightly coupled code.</p>
+<h2 id="kvo-takeaway">KVO Takeaway</h2>
+<p>KVO allows you to write loosy coupled code by enabling the dependency to be one-way. However, it also allows you to write <em>implicitly</em> tightly coupled code.</p>
 
 <p>Situationally, KVO may also be slow. Luckily, unabusive use of it is inheriently sparse and shouldn’t result in performance issues.</p>
 
-<p>The default implementation of KVO is <a href="http://khanlou.com/2013/12/kvo-considered-harmful/">not popular</a>; mainly, an messy api, and some issues with lifecycle.</p>
+<p>The default implementation of KVO is <a href="http://khanlou.com/2013/12/kvo-considered-harmful/">not popular</a>; it has a fugly api, and some weird lifecycle behaviors.</p>
 
 <p>Notable alternative implementations:</p>
 
@@ -196,6 +196,61 @@ K = Key Value Observation
 </ul>
 
 <h2 id="delegate-patterns">Delegate Patterns</h2>
+<p>The delegate pattern takes issue with subtlety and <em>does away with it entirely</em>.</p>
+
+<p>The message sender has a reference to a delegate object that it knows conforms to a particular protocol and it calls those methods as needed.</p>
+
+<p>This works well for hiding the sender from the delegate and separating out the necessary details of the delegate from the rest of it’s implementation.</p>
+
+<p>So, where does it go wrong?</p>
+
+<ul>
+  <li>
+    <p>The delegate pattern doesn’t make sense in situations where the objects are <em>by definition tightly coupled</em> and therefore don’t need the flexibility. Instead it obfusicates an otherwise straightforward relationship.</p>
+
+    <p>The easy example is a class that does a large scale computation, with enough steps to warrent being split into other objects. Since a step is inheriently an implementation detail of the computation, defining that relationship as a delegate relationship is unlikely to have any value.</p>
+  </li>
+  <li>
+    <p>It doesn’t scale well to multiple delegates.</p>
+
+    <p>For simulatenous delegates, you’ll need to add some sort of boilerplate to track them (likely, a weak collection). The upside here, compared to other patterns, is that you’ll be able to do things like have a priority system for when the updates occur.</p>
+
+    <p>For multiple kinds of delegates, you’ll likely have a lot of <em>optional protocol methods</em> or a lot of empty implementations in the delegate classes.</p>
+  </li>
+  <li>
+    <p>Ownership relationships and delegates.</p>
+
+    <p>In general, the delegate should be kept around via a <code>weak</code> (or <code>assign</code>) reference rather than a <code>strong</code> reference to prevent retain cycles.</p>
+
+    <p>Stick to this since <em>happening to know</em> that delegates aren’t retained elsewhere is a <em>subtle</em> implementation detail.</p>
+
+    <p>If the delegates aren’t retained elsewhere, then at the very least the class that hooks them up is likely an <em>okay</em> (read: less bad) place to retain them.</p>
+  </li>
+</ul>
+
+<h2 id="block-patterns">Block Patterns</h2>
+
+<p>upsides:
+* places the callback code close to the invocation.
+* allows for arbitrary dependencies via block retains.
+* easily return share/values with __block type local variables.</p>
+
+<p>downsides:
+* retain cycles.
+* subtle retains (<em>ivars, _any</em> reference to a variable)
+* possible to screw up by not checking that the block exists before calling it
+* very subtle that the block object retains things, bad if the block is deallocated while running it
+* block syntax is incredibly confusing.</p>
+
+<h2 id="notifications">Notifications</h2>
+
+<ul>
+  <li>unregister or crash</li>
+  <li>untyped payload</li>
+</ul>
+
+<h2 id="further-reading">Further Reading</h2>
+<p>In addition to the references inline, <a href="http://nshipster.com/nsnotification-and-nsnotificationcenter/">this article on NSNotificationCenter</a> has a sweet chart about audience vs coupling of these patterns.</p>
 
 	</div>
 </div>
