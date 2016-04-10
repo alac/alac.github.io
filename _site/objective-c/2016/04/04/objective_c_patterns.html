@@ -104,8 +104,8 @@
 	<pre><code>         ^
          | D
 Verbose  |
-         |       B
          |              N
+         |              B
          |
          |                              K
 Subtle   -------------------------------------&gt;
@@ -116,11 +116,84 @@ N = Notifications
 K = Key Value Observation
 </code></pre>
 
-<p>You can find real explanations and how to use them in this objc.io article.</p>
+<p>There’s a variety of ways to mediate the interactions between systems in your codebase. Principle forms in Objective-C are delegate relationships, setting callback blocks, using the notification system, and the observer pattern.</p>
+
+<p>You can find real explanations of what they are in <a href="http://nshipster.com/key-value-observing/">this objc.io article</a>.</p>
 
 <p>This post will - in an effort to be useful - demonstrate <em>misuses</em> and potential <em>problems</em>.</p>
 
-<p>You can expect that patterns options will be more work upfront, where subtle patterns lend themselves to misuse.</p>
+<!---
+<!–end_preview–>
+-->
+
+<h2 id="trade-offs">Trade-Offs</h2>
+<p>For any of these patterns, you can expect that they’ll vary in the following ways:</p>
+
+<ul>
+  <li>Boiler plate code (‘verbose’), making your final implementation noisy.</li>
+  <li>Tendency to bizarre interactions (‘subtle’), leading to tough debugging down the line.</li>
+  <li>Awkwardness of memory-management and cleanup.</li>
+  <li>Ability to abuse them.</li>
+</ul>
+
+<h2 id="key-value-observing">Key Value Observing</h2>
+<p>If you’re completely green to KVO, go ahead and read <a href="http://nshipster.com/key-value-observing/">this</a> to get a sense of it.</p>
+
+<p>The ideal case for KVO is one of simple systems where each layer only needs to read data from the one below it.</p>
+
+<p>Imagine a view KVO-ing the properties of a model for updates. Or, <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel">MVVM</a>.</p>
+
+<p>But with how lightweight KVO is, it can be appealing to use it within a system as well. There’s two problems with this:</p>
+
+<ul>
+  <li>
+    <p>EZ infinite loops.</p>
+  </li>
+  <li>
+    <p>Suddenly, the timing of setting a property becomes very <em>intentional</em>.</p>
+
+    <p>Setting it too early might trigger a KVO that changes <em>the assumptions of the rest of the current function call</em>.</p>
+
+    <p><em>Or</em>  it gets set too early and the KVO gets triggered <em>before some state change completes</em>, leading to the KVO callback’s behavior being incorrect.</p>
+  </li>
+  <li>
+    <p>It can lead to implicit assumptions.</p>
+
+    <p>Ex: 1</p>
+
+    <p>Suppose you have an object <code>Thing</code> with a property <code>Stuff</code> and that <code>Stuff</code> has a property <code>Junk</code>.</p>
+
+    <p>You know that <code>Stuff</code> is readonly, so it’s safe for a consumer of <code>Thing</code> to KVO <code>Stuff</code>’s <code>Junk</code>.</p>
+
+    <p>You commit, then a co-worker decides to make <code>Stuff</code> readwrite. Now your code has <em>subtly</em> broken.</p>
+
+    <p>Ex: 2</p>
+
+    <p>You’re inserting a new feature into a pre-existing system. There are two relevant pre-existing components <code>A</code> and <code>B</code>.</p>
+
+    <p>You need a callback to occur at a particular time. This happens to be when <code>A</code> and <code>B</code> are in a specific state. You KVO the relevant properties to check the states of <code>A</code> and <code>B</code>.</p>
+
+    <p>You commit, then a co-worker changes implementation of <code>B</code>. <em>Your co-worker can’t tell that the specific timing of <code>B</code>’s state changes are important to you</em>, and now your code has <em>subtly</em> broken.</p>
+  </li>
+</ul>
+
+<h2 id="takeaway">Takeaway</h2>
+<p>KVO allows you to write loosy coupled code. It also allows you to write <em>implicitly</em> tightly coupled code.</p>
+
+<p>Situationally, KVO may also be slow. Luckily, unabusive use of it is inheriently sparse and shouldn’t result in performance issues.</p>
+
+<p>The default implementation of KVO is <a href="http://khanlou.com/2013/12/kvo-considered-harmful/">not popular</a>; mainly, an messy api, and some issues with lifecycle.</p>
+
+<p>Notable alternative implementations:</p>
+
+<ul>
+  <li>
+    <p>Facebook’s <a href="https://github.com/facebook/KVOController">KVOController</a></p>
+  </li>
+  <li>
+    <p>Mike Ash’s <a href="https://github.com/mikeash/MAKVONotificationCenter">MAKAVO</a>.</p>
+  </li>
+</ul>
 
 <h2 id="delegate-patterns">Delegate Patterns</h2>
 
