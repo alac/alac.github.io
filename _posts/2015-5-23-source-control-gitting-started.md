@@ -42,13 +42,9 @@ There's two ways to use git:
 
 * Command Line ([tutorial](https://try.github.io/levels/1/challenges/1))
 
-   Recommended! It'll often be faster to use a GUI for most operations. However, when things go awry there's no way that debugging with a GUI will be faster than the spamming 'uhh what if I do this' commands at the prompt.
+   It'll often be faster to use a GUI for most operations, but debugging with a GUI is needlessly difficult.
 
-   Also, enable [git rerere](https://git-scm.com/blog/2010/03/08/rerere.html).
-
-   You can also enable [rebase by default](http://stevenharman.net/git-pull-with-automatic-rebase), if you're into that.
-
-   More options [here](https://git-scm.com/book/tr/v2/Customizing-Git-Git-Configuration). Highlighting and a merging tool are both recommended.
+   You'll want an understanding of the command line for the sake of the spamming 'uhh what if I do this' commands at the prompt.
 
 * GUI tools. 
 
@@ -56,7 +52,7 @@ There's two ways to use git:
 
    For OS X, I've personally used the free [SourceTree](https://www.sourcetreeapp.com/) and [GitX-dev](http://rowanj.github.io/gitx/). Both offer more industrial layouts that make it faster to work with branches, tags and submodules. GitX-dev 
 
-   Be careful to download GitX-dev instead of GitX, only the former is still being maintained and the latter lacks many great features.
+   Be careful to download GitX-dev instead of GitX, only the former is still being maintained and the latter lacks many many great features.
 
 
 Ignoring files
@@ -135,6 +131,8 @@ Here's some things you can change with your git configuration:
   Use `git config branch.autosetuprebase always` to rebase when pulling. Useful if you work... with others. Although, you may as well make a bash profile shortcut for pulling that includes the `--rebase` flag.
 
   You can add `--global` to apply to all repos.
+
+ More options [here](https://git-scm.com/book/tr/v2/Customizing-Git-Git-Configuration). Highlighting and a merging tool are both recommended.
 
 
 Bisect To Find Breaking Changes
