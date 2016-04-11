@@ -1,7 +1,7 @@
 ---
 layout: default_post
-longtitle: "objective-c: comparing patterns"
-title: "comparing patterns"
+longtitle: "objective-c: interaction patterns"
+title: "interaction patterns"
 
 categories:
 - Objective-C
@@ -21,7 +21,9 @@ categories:
 	N = Notifications
 	K = Key Value Observation
 
-This post will demonstrate _misuses_ and potential _problems_ of the 4 common communication patterns of Objective-C.
+There are 4 common communciation patterns in Objective-C.
+
+Ever wonder how they can be _misused_?
 
 You can find real explanations of what they are in [short here](http://nshipster.com/key-value-observing/) and in [long here](https://www.objc.io/issues/7-foundation/communication-patterns/#delegation).
 
