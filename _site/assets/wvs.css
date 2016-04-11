@@ -119,13 +119,13 @@ text-decoration: none;
 }
 
 .menuCategory {
-text-transform: capitalize;
 }
 
 .menuCategoryTitle {
   font-family: "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
   font-size: 16px;
   margin: .3em 0em 0px 0px;
+  text-transform: capitalize;
 }
 
 .subcontainer {

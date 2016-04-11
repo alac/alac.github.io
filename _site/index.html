@@ -21,34 +21,38 @@
 			<div class='subcontainer'>
 				<div class='headerbarSpacer'></div>
 				<div class='header depthOneContent'>
-						<div class="sideBarTitle">
-							<h3>Recent:</h3>
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
-					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: comparing patterns</a>
+					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
 					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
 						</div>
 					
+					</div>
 				</div>
 				<div class='sidebar depthOneContent'>
 <!-- 					display recent posts by categories                           -->
-						<div class="sideBarTitle">
-							<h3>Recent:</h3>
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
 						</div>
-						
-				  			<div class="menuCategoryPost">
-						    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: comparing patterns</a>
-							</div>
-						
-				  			<div class="menuCategoryPost">
-						    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
-							</div>
-						
-						<br>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
+						</div>
+					
+					</div>
+					<br>
 <!-- 					display all posts by categories                           -->
 	
 					<div class="menuCategory">
@@ -84,7 +88,7 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
-							    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* comparing patterns</a>
+							    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* interaction patterns</a>
 									</div>
 						  								  		
 						  	
@@ -97,15 +101,15 @@
 
 	<div class='post depthOneContent'>
     <div class='postHeader'>
-      <h1><a href="/objective-c/2016/04/04/objective_c_patterns.html">objective-c: comparing patterns</a></h1>
+      <h1><a href="/objective-c/2016/04/04/objective_c_patterns.html">objective-c: interaction patterns</a></h1>
     </div>
     <div class='postBody'>
       04 Apr 2016 | objective-c
       <pre><code>         ^
          | D
 Verbose  |
+         |
          |              N
-         |              
          |              B
          |                              K
 Subtle   -------------------------------------&gt;
@@ -116,7 +120,9 @@ N = Notifications
 K = Key Value Observation
 </code></pre>
 
-<p>This post will demonstrate <em>misuses</em> and potential <em>problems</em> of the 4 common communication patterns of Objective-C.</p>
+<p>There are 4 common communciation patterns in Objective-C.</p>
+
+<p>Ever wonder how they can be <em>misused</em>?</p>
 
 <p>You can find real explanations of what they are in <a href="http://nshipster.com/key-value-observing/">short here</a> and in <a href="https://www.objc.io/issues/7-foundation/communication-patterns/#delegation">long here</a>.</p>
 

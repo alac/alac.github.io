@@ -21,26 +21,30 @@
 			<div class='subcontainer'>
 				<div class='headerbarSpacer'></div>
 				<div class='header depthOneContent'>
-						<div class="sideBarTitle">
-							<h3>Recent:</h3>
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
 						</div>
 					{% for post in site.posts limit:5 %}
 			  			<div class="menuCategoryPost">
 					    	<a href="{{ post.url }}">* {{ post.longtitle }}</a>
 						</div>
 					{% endfor %}
+					</div>
 				</div>
 				<div class='sidebar depthOneContent'>
 <!-- 					display recent posts by categories                           -->
-						<div class="sideBarTitle">
-							<h3>Recent:</h3>
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
 						</div>
-						{% for post in site.posts limit:5 %}
-				  			<div class="menuCategoryPost">
-						    	<a href="{{ post.url }}">* {{ post.longtitle }}</a>
-							</div>
-						{% endfor %}
-						<br>
+					{% for post in site.posts limit:5 %}
+			  			<div class="menuCategoryPost">
+					    	<a href="{{ post.url }}">* {{ post.longtitle }}</a>
+						</div>
+					{% endfor %}
+					</div>
+					<br>
 <!-- 					display all posts by categories                           -->
 	{% for category in site.categories %}
 					<div class="menuCategory">
