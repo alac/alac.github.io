@@ -14,7 +14,8 @@ categories:
              |              N
              |              B
              |                              K
-    Subtle   ------------------------------------->
+             ------------------------------------->
+                       Subtle
 
 	D = Delegate patterns
 	B = Block patterns
@@ -94,7 +95,7 @@ Notable alternative implementations:
 
 * Facebook's [KVOController](https://github.com/facebook/KVOController)
 
-* Mike Ash's [MAKAVO](https://github.com/mikeash/MAKVONotificationCenter).
+* Mike Ash's [MAKVO](https://github.com/mikeash/MAKVONotificationCenter).
 
 
 Delegate Patterns

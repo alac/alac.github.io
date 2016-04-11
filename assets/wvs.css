@@ -184,6 +184,11 @@ text-decoration: none;
 margin-bottom: 5px;
 }
 
+h1 a:hover {
+color: #D1D1D1;
+text-decoration: none;
+}
+
 h2 {
 font-size: 18px;
 margin: .5em 0px 0px 0px;
