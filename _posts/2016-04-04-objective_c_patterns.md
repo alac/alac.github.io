@@ -21,11 +21,10 @@ categories:
 	N = Notifications
 	K = Key Value Observation
 
-Principle forms of interactions in Objective-C are delegate relationships, setting callback blocks, the notification system, and the observer pattern.
+This post will demonstrate _misuses_ and potential _problems_ of the 4 common communication patterns of Objective-C.
 
 You can find real explanations of what they are in [short here](http://nshipster.com/key-value-observing/) and in [long here](https://www.objc.io/issues/7-foundation/communication-patterns/#delegation).
 
-This post will - in an effort to be useful - demonstrate _misuses_ and potential _problems_.
 
 <!---
 <!–end_preview–>
@@ -81,7 +80,9 @@ But with how lightweight KVO is, it can be appealing to use it within a system a
 
 KVO Takeaways
 -------------
-KVO allows you to write loosy coupled code by enabling the dependency to be one-way. However, it also allows you to write _implicitly_ tightly coupled code.
+Used correctly, KVO provides lightweight mechanism for one-way communication.
+
+Used incorrectly, KVO also allows you to write _implicitly_ tightly coupled code.
 
 Situationally, KVO may also be slow. Luckily, unabusive use of it is inheriently sparse and shouldn't result in performance issues.
 
@@ -125,7 +126,7 @@ So, where does it go wrong?
 
 Delegates Takeaway
 -----------------
-Delegates are _explicit_ and therefore relatively low risk,
+Delegates are _explicit_ and therefore relatively low risk.
 
 Delegates are also verbose, potentially making code harder to follow and likely _making you not want to use them_.
 
@@ -144,13 +145,13 @@ Other upsides include:
 
 * Blocks are closures.
 
-   You can variables in the current scope without changing the API of the reciever of the block.
+   You can use variables in the current scope without changing the API of the reciever of the block.
 
    If the block needs to return extra data, the API of the reciever of the block doesn't need to be modified.
 
    The block can just use a local variable with the type `__block`.
 
-   Or, if an async block, set a property on a relevant object.
+   Or, if it's an async block, set a property on a relevant object.
 
 On the other hand:
 
@@ -160,7 +161,7 @@ On the other hand:
 
    If an instance variable is used, the block will retain _self_!
 
-   Avoid either by making a `__weak` variable and referencing that in the block instead.
+   But it's easy to avoid: make a `__weak` variable and referencing that in the block instead.
 
 * 'nil' blocks will cause crashes.
 
@@ -190,14 +191,64 @@ However, if you're confident in your understanding of block mechanics, they can 
 
 Notifications
 ------------------
+Notifications (and KVO) work out of the box for multiple listeners/responders to an event.
+
+As the name implies, they're intended to _broadcast a message_ and work well for the situation that _a response is not required_.
+
+Tips:
+
+* Ensure that the Notification Name will always be consistent between listener and sender.
+
+   A header containing an `const NSString *` works well enough.
+
+   If the notification identifier can vary dynamically, expose function or method to construct it.
+
+* Unregister for all notifications in `dealloc`.
+
+   Receiving a message after dealloc will cause crashes.
+
+   You want to be registered for notifications when you can handle them and unregister when you no longer care.
+
+* Don't unregister for all notifications just because you only currently have one.
+
+And negatives:
+
+* You'll receive a notification the number of times you've registered for it without unregistering.
+
+   If you're doing something wrong, the code _might_ misbehave.
+
+   Workaround: unregister for that particular notification before (re-)registering.
+
+* Notifications allow for _an untyped payload_.
+
+   While `userinfo` is useful for passing data, it doesn't provide runtime checks for being the expected type.
+
+   If the type changes, you won't get a compiler warning. 
+
+   You will get _subtle_ issues.
+
+   Like not working.
+
+* As noted above, forgetting to unregister for a notification before dealloc will lead to crashes.
+
+* Notificiations can be difficult to debug.
+
+   It can be hard to reason (and identify) which objects are _currently_ listening to a particular _notificiation_.
+
+   When stepping through, if there are _many listeners_ it can be hard to find _the right one_. This gets worse if many listeners are of the same class.
 
 
-* unregister or crash
-* untyped payload
+Notifications Takeaways
+------------------
+Of all the options provided so far, notifications are the _loosest coupling_.
 
+It provides great flexibility in that neither the sender not receiver knows about the other at all.
 
+The cost of that flexibility is a poorly defined API, lack of compiler checking, and no guarantee that anything was actually listening.
 
 
 Further Reading
 ------------------
 In addition to the references inline, [this article on NSNotificationCenter](http://nshipster.com/nsnotification-and-nsnotificationcenter/) has a sweet chart about audience vs coupling of these patterns.
+
+The grownups at objc.io have [written much about this topic](https://www.objc.io/issues/7-foundation/communication-patterns/#delegation).
