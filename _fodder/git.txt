@@ -1,8 +1,0 @@
-git: recursive reset hard head
-git submodule foreach --recursive git reset --hard
-
-tracking a remote branch
-http://stackoverflow.com/questions/520650/make-an-existing-git-branch-track-a-remote-branch
-
-pre-push examples
-http://blog.ittybittyapps.com/blog/2013/09/03/git-pre-push/

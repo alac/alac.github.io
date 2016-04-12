@@ -1,7 +1,7 @@
-- Diff folders
-diff -q ~peter ~george  |sort
-REMOVE Q FOR DIFFS BETWEEN EACH FILE
+- Cut
+Cut the first 45 characters of each line
 
+cat /Users/alanlac/Desktop/after | cut -c 45- > /Users/alanlac/Desktop/after.trim
 
 
 - find + xargs; searching for copies of files from one folder in another!
