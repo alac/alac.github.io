@@ -1,0 +1,175 @@
+---
+layout: default_post
+longtitle: "unix: in short"
+title: "part 1: commands"
+
+categories:
+- Unix
+---
+
+WIP
+
+More keyboard, less mouse = Faster engineer.
+More unix?
+
+<!---
+<!–end_preview–>
+-->
+
+Folders
+---------------
+
+Make folders
+`mkdir FOLDER`
+
+Delete a folder
+`rmdir FOLDER`
+
+Delete a folder and everything in it
+`rm -rf FOLDER`
+`-r` recursive
+`-f` remove all files without asking permission
+`-i` ask before deleting each file
+
+List contents of a folder
+`ls [optional FOLDER]`
+`-a` show hidden files
+`-1` one entry per line
+
+Move a folder
+`mv FOLDER DESTINATION`
+
+Go to a folder
+`cd DIRECTORY_NAME`
+
+Special folder names
+`..`   = up a directory
+`...`  = up 2 directories
+`.`    = here
+`~`    = user home directory
+`/`    = root folder
+
+Show current folder
+`pwd`
+
+Compare folders
+`diff -q FOLDER_A FOLDER_B | sort`
+`-q`    If this isn't there, it'll compare each file too
+
+
+Files
+---------------
+
+Rename or move a file
+`mv SOURCE_FILE DESTINATION_FILE_OR_FOLDER`
+
+Copy a file
+`cp ORIGINAL_FILE COPY_FILE_NAME`
+
+Find a file anywhere
+`ff FILENAME`
+`-p` lets you use a prefix
+
+Find a file in a particular directory [ref](https://kb.iu.edu/d/admm)
+`find DIRECTORY -name FILENAME_OR_PATTERN`
+Use a filename for an exact search.
+Use 'Potato*.png' to match all .png files starting with 'Potato'
+`-print`     Displays their paths (not needed on OSX)
+`-exec cmd`  Executes a command on each result.
+             Use `{}` as a placeholder for where the filename goes in the command.
+             End the command with `\;`
+             ex. `find . -name '*.mp3' -exec rm {} \;`
+`-ok cmd`    Executes a command, but confirms
+
+ex. Find a file and check if it contains a string (John)
+`find . -name '*.txt' -exec grep "John" {} \; -print`
+
+
+Populate a file with output
+`COMMAND > FILENAME`
+
+Append output to the end of a file
+`COMMAND >> EXISTING_FILE`
+
+Send a file into a command
+`COMMAND < FILENAME`
+
+
+Change permissions (usually, make executable)
+`chmod OPTIONS FILENAME`
+* go look it up
+
+
+
+
+Text files
+---------------
+
+Edit with VIM
+`vi FILENAME`
+
+Edit with EMACS
+`emacs FILENAME`
+
+View a file
+`less FILENAME`
+Arrows		Go up and down
+Space		Go to the next page
+`q`			Quit
+`/pattern`  Search for a pattern
+
+View the end of a growing file
+`tail -f FILENAME`
+
+Dump a file to the console
+`cat FILENAME`
+
+Comparing files
+`diff A B`
+`-b`     Ignore changes to amount of whitespace
+`-w`     Ignore whitespace
+`-c`     Show context (3 lines default; can provide # as argument)
+`-y`     Show two columns
+[Reference](http://www.computerhope.com/unix/udiff.htm)
+
+Comparing sorted files
+`comm A B`
+`-i`      Case insensitive sorting
+`-123`    Supress the numbered column
+Shows 3 columns: lines only in A, lines only in B, lines in A and B.
+ex: `comm -2 A B` shows the lines in A, and the lines common to A and B.
+
+
+Chaining
+---------------
+
+Chaining commands
+`FIRST_COMMAND | SECOND_COMMAND`
+
+Dumping a file into a command
+`cat FILENAME > COMMAND`
+
+Use a file as input/output
+`COMMAND [OPTIONS & ARGUMENTS] < INPUT_FILE`
+
+[advanced redirection](http://sc.tamu.edu/help/general/unix/redirection.html)
+`>&` includes standard error
+`>!` overwrites if it exists
+Redirecting to `/dev/null` = suppressing it
+
+_____________________________________XARGS?
+
+
+
+Processes
+---------------
+
+show all running processes
+`ps`
+
+show your running processes
+`ps -u USERNAME`
+
+kill a process
+`kill PROCESS_ID`
+*use PID from `ps`
