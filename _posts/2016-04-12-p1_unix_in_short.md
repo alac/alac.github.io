@@ -1,0 +1,247 @@
+---
+layout: default_post
+longtitle: "unix part 1: in short"
+title: "part 1: commands"
+
+categories:
+- Unix
+---
+
+
+WIP
+
+The more you use a keyboard over a mouse, the faster you'll be.
+
+
+This is one piece of wisdom from UNIX wizards.  
+_Today, we'll find the rest._
+
+
+<!---
+<!–end_preview–>
+-->
+
+
+
+Folders
+===============
+
+Make folders  
+---------------
+`mkdir FOLDER`
+
+Delete a folder  
+---------------
+`rmdir FOLDER`
+
+Delete a folder and everything in it  
+---------------
+`rm -rf FOLDER`  
+
+|----------|:-------------:| 
+| `-r` &emsp; | recursive | 
+| `-f` | remove all files without asking permission | 
+| `-i` | ask before deleting each file  | 
+
+List contents of a folder  
+---------------
+`ls [optional FOLDER]`  
+
+|----------|:-------------:| 
+| `-a` &emsp; | show hidden files | 
+| `-1` | one entry per line | 
+
+Move a folder  
+---------------
+`mv FOLDER DESTINATION`  
+
+Go to a folder  
+---------------
+`cd DIRECTORY_NAME`  
+
+Special folder names  
+---------------
+`..`   = up a directory  
+`...`  = up 2 directories  
+`.`    = here  
+`~`    = user home directory  
+`/`    = root folder  
+
+Show current folder  
+---------------
+`pwd`  
+
+Compare folders  
+---------------
+`diff -q FOLDER_A FOLDER_B | sort`  
+
+|----------|:-------------:| 
+| `q` &emsp; | If this isn't there, it'll compare each file too | 
+
+
+
+
+Files
+===============
+
+Rename or move a file  
+---------------
+`mv SOURCE_FILE DESTINATION_FILE_OR_FOLDER`  
+
+Copy a file  
+---------------
+`cp ORIGINAL_FILE COPY_FILE_NAME`  
+
+Find a file anywhere  
+---------------
+`ff FILENAME`  
+
+|----------|:-------------:| 
+| `-p` &emsp; | search with a prefix instead of a full name | 
+
+Find a file in a particular directory [ref](https://kb.iu.edu/d/admm)  
+---------------
+`find DIRECTORY -name FILENAME_OR_PATTERN`  
+
+Use a filename for an exact search.  
+Use 'Potato*.png' to match all .png files starting with 'Potato'  
+
+`-print`
+
+> Displays their paths (not needed on OSX)
+
+`-exec cmd`
+
+> Executes a command on each result.  
+> Use `{}` as a placeholder for where the filename goes in the command.  
+> End the command with `\;`
+
+`-ok cmd`
+
+> Executes a command, but confirms 
+
+ex. Delete all .mp3 files  
+
+> `find . -name '*.mp3' -exec rm {} \;` |
+
+ex. Find a file and check if it contains a string (John)  
+
+>`find . -name '*.txt' -exec grep "John" {} \; -print`  
+
+
+Populate a file with output  
+---------------
+`COMMAND > FILENAME`  
+
+Append output to the end of a file  
+---------------
+`COMMAND >> EXISTING_FILE`  
+
+Send a file into a command  
+---------------
+`COMMAND < FILENAME`  
+
+Change permissions (usually, make executable)  
+---------------
+`chmod OPTIONS FILENAME`  
+* go look it up  
+
+
+
+Text files
+===============
+
+Edit with VIM  
+---------------
+`vi FILENAME`  
+
+Edit with EMACS  
+---------------
+`emacs FILENAME`  
+
+View a file  
+---------------
+`less FILENAME`
+
+|----------|:-------------:| 
+| arrows | Go up and down | 
+| space | Go to the next page | 
+| `q` | Quit  | 
+| `/pattern`&emsp; | Search for a pattern | 
+
+View the end of a growing file  
+---------------
+`tail -f FILENAME`  
+
+Dump a file to the console  
+---------------
+`cat FILENAME`  
+
+Comparing files [reference](http://www.computerhope.com/unix/udiff.htm) 
+--------------- 
+`diff A B`
+
+|----------|:-------------:| 
+| `-b`&emsp;&emsp; | Ignore changes to amount of whitespace | 
+| `-w` | Ignore whitespace | 
+| `-c` | Show context (3 lines default; can provide # as argument) | 
+| `-y` | Show two columns | 
+
+Comparing sorted files  
+---------------
+`comm A B`  
+Shows 3 columns: lines only in A, lines only in B, lines in A and B.  
+
+|----------|:-------------:| 
+| `-i`&emsp;&emsp; | Case insensitive sorting | 
+| `-1` | Supress column 1. | 
+| `-2` | Supress column 2. | 
+| `-3` | Supress column 3. | 
+
+ex: Show the lines only in B.
+
+> `comm -13 A B` 
+
+Chaining
+===============
+
+Chaining commands  
+---------------
+`FIRST_COMMAND | SECOND_COMMAND`  
+
+Dumping a file into a command  
+---------------
+`cat FILENAME > COMMAND`  
+
+Use a file as input/output  
+---------------
+`COMMAND [OPTIONS & ARGUMENTS] < INPUT_FILE`  
+
+Variations [more here](http://sc.tamu.edu/help/general/unix/redirection.html)  
+---------------
+
+|----------|:-------------:| 
+| `>&`&emsp;&emsp; | Includes standard error  | 
+| `>!` | Overwrites if it exists   | 
+
+Redirect to `/dev/null` = suppress it  
+
+_____________________________________XARGS?
+
+
+
+Processes
+================
+
+show all running processes  
+---------------
+`ps`  
+
+show your running processes  
+---------------
+`ps -u USERNAME`  
+
+kill a process  
+---------------
+`kill PROCESS_ID`  
+*use PID from `ps`  
