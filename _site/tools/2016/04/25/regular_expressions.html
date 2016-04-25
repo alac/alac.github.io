@@ -1,0 +1,279 @@
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+ 	<title>  regexes |  aimless bitshift</title>
+ 		<link rel='stylesheet' type='text/css' href='/assets/wvs.css'>
+ 		<link rel='stylesheet' type='text/css' href='/assets/normalize.css' />
+	</head>
+	<body>
+		<div class='container'>
+			<div class='headerbar'>
+				<a href="/" style="text-decoration:none">
+					<span style="color:#366B8F">
+						aimless 
+						<span style="color:white">bit</span>shift 
+					</span>
+				</a>
+				<span class='headerbarMenu'>
+					notes | code | ego
+				</span>
+			</div>
+			<div class='subcontainer'>
+				<div class='headerbarSpacer'></div>
+				<div class='header depthOneContent'>
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* unix part 1: in short</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
+						</div>
+					
+					</div>
+				</div>
+				<div class='sidebar depthOneContent'>
+<!-- 					display recent posts by categories                           -->
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* unix part 1: in short</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
+						</div>
+					
+					</div>
+					<br>
+<!-- 					display all posts by categories                           -->
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="tools">tools</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2016/04/25/regular_expressions.html">* regexes</a>
+									</div>
+						  								  		
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* git / source control</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="objective-c">objective-c</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* interaction patterns</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="unix">unix</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: commands</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+				</div>
+				<div class='content'>
+				  <div class='post depthOneContent'>
+	<div class='postHeader'>
+	<h1>
+		tools: regexes
+	</h1>
+	</div>
+	<div class='postBody'>
+	25 Apr 2016 | tools
+	<p>There’s a saying:<br />
+“Trying to solve a problem with regexes? Now, you have two problems.”</p>
+
+<p>Complex expressions that are nearly impossible to validate.</p>
+
+<p><em>Regular Expressions</em> are a great tool for searching and manipulating text.<br />
+The standard from unix tools like <code>grep</code>, <code>find</code>, and <code>sed</code> to Excel.</p>
+
+<p>So, let’s get finding.</p>
+
+<!---
+<!–end_preview–>
+-->
+
+<h2 id="what-is-a-regex">What Is A Regex</h2>
+<p>Regular expressions are a pretty natural concept.</p>
+
+<p>Suppose you’re the king of nerds, and you wanted to find the word ‘color’ in a story. You’d write a thing to handle that.</p>
+
+<p>Now, suppose you were slipping in and out of British English and had to search for ‘color’ or ‘colour’.</p>
+
+<p>How would you generalize that to make that type of search easier in the future?</p>
+
+<p>You’d probably allow for specifying 0 or 1 <code>u</code>’s like this:<br />
+<code>"colou?r"</code></p>
+
+<h2 id="metacharacters">Metacharacters</h2>
+<p>With regexes, we give special meaning to certain characters. In the above example, the <code>?</code> character didn’t search for a question mark, but made the ‘u’ optional.</p>
+
+<p>Note that metacharacters aren’t completely standardized between regex implementations.</p>
+
+<h2 id="grep--egrep">GREP &amp; EGREP</h2>
+<p>grep is the <em>commonest</em> use case for regexes, so take note:<br />
+<strong>without the <code>-E</code> flag, some metacharacters need to be prefixed with <code>\</code>.</strong></p>
+
+<p>e.g. <code>"colou?r" becomes "colou\?r"</code> and would be used as<br />
+  <code>grep "colou\?r" FILENAME</code></p>
+
+<p>By default, grep uses <strong>BRE</strong> (Basic Regular Expressions).<br />
+The <strong>-E</strong> flag switches to <strong>ERE</strong> (Extended Regular Expressions).</p>
+
+<p>In <strong>ERE</strong>, <code>\</code> will match a literal \ character.<br />
+e.g. <code>"colou\?r"</code> would match ‘colour\?r’ (i.e. it would be wrong).</p>
+
+<p>Using <code>egrep</code> is equivalent to including the <strong>-E</strong>, so the following are equivalent:<br />
+  <code>grep "colou\?r" FILENAME</code><br />
+  <code>grep -E "colou?r" FILENAME</code><br />
+  <code>egrep "colou?r" FILENAME</code></p>
+
+<h2 id="positional-metacharacters">Positional Metacharacters</h2>
+<p><code>^</code> = beginning of the line/string<br />
+<code>$</code> = end of the line/string<br />
+<code>\b</code> = start or end of a word<br />
+<code>\B</code> = middle of a word<br />
+<code>\&lt;</code> = start of a word<br />
+<code>\&gt;</code> = end of a word</p>
+
+<p>Example: Matching against “<code>I'm the real shady.</code>”  
+<img src="/assets/posts/regex/regex_positional.png" alt="Example" /></p>
+
+<h2 id="amount-metacharacters">Amount Metacharacters</h2>
+<p>Amount specifiers match modify the preceding character <em>or parenthesized unit</em>.</p>
+
+<p><code>?</code> = 0 or 1 times<br />
+<code>+</code> = 1 or more times 
+<code>*</code> = any number of times (including 0)<br />
+<code>{AMOUNT}</code> = exactly AMOUNT times<br />
+<code>{MIN, MAX}</code> = any time of times from MIN to MAX (inclusive)<br />
+<code>{MIN, }</code> = at least MIN times</p>
+
+<p>Example:<br />
+<img src="/assets/posts/regex/regex_amount.png" alt="Example" /></p>
+
+<p>Subtle notes…<br />
+1. The <code>"p*"</code> example matches everything because there’s <em>at least 0 p’s in everything</em>.<br />
+2. The <code>e{1}</code> example matches both e’s in the second line <em>independently</em>.</p>
+
+<h2 id="character-classes">Character Classes</h2>
+<p>Now, what if we have a “or” situation. Say, you know you often mispell <code>catagory</code> as <code>category</code>.<br />
+We would use this <code>"cat[ae]gory"</code>.</p>
+
+<p>Example:<br />
+<img src="/assets/posts/regex/regex_characterClass1.png" alt="Example" /></p>
+
+<p>A <em>character class</em> lets us denote a group of characters and match against one of them.</p>
+
+<h2 id="ranges">Ranges</h2>
+<p>Character classes allow us to use a <strong><code>-</code></strong> to denote a range.<br />
+<code>[a-c]</code> = <code>[abc]</code><br />
+<code>[A-D]</code> = <code>[ABCD]</code><br />
+<code>[0-4]</code> = <code>[01234]</code></p>
+
+<p>Character classes can mix ranges and individual characters:<br />
+<code>[0-4A-D!]</code> = <code>[01234ABCD!]</code></p>
+
+<h2 id="negation">Negation</h2>
+<p>They also allow us to negate with <strong><code>^</code></strong>.<br />
+<code>[^abc]</code> = match all characters that are not a, b, c.</p>
+
+<p>This only applies if it’s the first character after the bracket!</p>
+
+<h2 id="shorthand">Shorthand</h2>
+<p>Common character classes have special shorthand:<br />
+<code>.</code> = Any character<br />
+<code>\d</code> = <code>[0-9]</code> # digits<br />
+<code>\w</code> = <code>[a-zA-Z0-9_]</code> # alphanumeric &amp; underscore<br />
+<code>\s</code> = <code>[ \r\t\n\f]</code> # whitespace<br />
+<code>\n</code> = <code>[\n]</code> # newline</p>
+
+<p>And their negations<br />
+<code>\D</code> = <code>[^0-9]</code> # not digits<br />
+<code>\W</code> = <code>[^a-zA-Z0-9_]</code> # not whitespace or underscore<br />
+<code>\S</code> = <code>[^ \r\t\n\f]</code> # not whitespace</p>
+
+<p>LOGICAL
+    | matches either it’s argument on the left or the right
+      ex. (art)|(jazz) will match either ‘art’ or ‘jazz’</p>
+
+<p>EGREP</p>
+
+<p>COMMAND LINE ARGUMENTS
+    “-i” the regex searched will be case insensitive.</p>
+
+	</div>
+</div>
+				</div>
+			</div>
+		</div>
+	</body>
+<html>

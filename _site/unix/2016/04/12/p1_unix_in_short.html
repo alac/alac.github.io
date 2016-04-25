@@ -27,7 +27,11 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
-					    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* unix: in short</a>
+					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* unix part 1: in short</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
@@ -48,7 +52,11 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
-					    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* unix: in short</a>
+					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* unix part 1: in short</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
@@ -73,6 +81,12 @@
 						  								  		
 						  	
 						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2016/04/25/regular_expressions.html">* regexes</a>
+									</div>
+						  								  		
 						  	
 						  		
 						  			<div class="menuCategoryPost">
@@ -128,177 +142,305 @@
 				  <div class='post depthOneContent'>
 	<div class='postHeader'>
 	<h1>
-		unix: in short
+		unix part 1: in short
 	</h1>
 	</div>
 	<div class='postBody'>
 	12 Apr 2016 | unix
-	WIP
+	<p>WIP</p>
 
-More keyboard, less mouse = Faster engineer.
-More unix?
+<p>The more you use a keyboard over a mouse, the faster you’ll be.</p>
+
+<p>This is one piece of wisdom from UNIX wizards.<br />
+<em>Today, we’ll find the rest.</em></p>
 
 <!---
 <!–end_preview–>
 -->
 
-Folders
----------------
+<h1 id="folders">Folders</h1>
 
-Make folders
-`mkdir FOLDER`
+<h2 id="make-folders">Make folders</h2>
+<p><code>mkdir FOLDER</code></p>
 
-Delete a folder
-`rmdir FOLDER`
+<h2 id="delete-a-folder">Delete a folder</h2>
+<p><code>rmdir FOLDER</code></p>
 
-Delete a folder and everything in it
-`rm -rf FOLDER`
-`-r` recursive
-`-f` remove all files without asking permission
-`-i` ask before deleting each file
+<h2 id="delete-a-folder-and-everything-in-it">Delete a folder and everything in it</h2>
+<p><code>rm -rf FOLDER</code></p>
 
-List contents of a folder
-`ls [optional FOLDER]`
-`-a` show hidden files
-`-1` one entry per line
+<table>
+  <tbody>
+    <tr>
+      <td><code>-r</code>  </td>
+      <td>recursive</td>
+    </tr>
+    <tr>
+      <td><code>-f</code></td>
+      <td>remove all files without asking permission</td>
+    </tr>
+    <tr>
+      <td><code>-i</code></td>
+      <td>ask before deleting each file</td>
+    </tr>
+  </tbody>
+</table>
 
-Move a folder
-`mv FOLDER DESTINATION`
+<h2 id="list-contents-of-a-folder">List contents of a folder</h2>
+<p><code>ls [optional FOLDER]</code></p>
 
-Go to a folder
-`cd DIRECTORY_NAME`
+<table>
+  <tbody>
+    <tr>
+      <td><code>-a</code>  </td>
+      <td>show hidden files</td>
+    </tr>
+    <tr>
+      <td><code>-1</code></td>
+      <td>one entry per line</td>
+    </tr>
+  </tbody>
+</table>
 
-Special folder names
-`..`   = up a directory
-`...`  = up 2 directories
-`.`    = here
-`~`    = user home directory
-`/`    = root folder
+<h2 id="move-a-folder">Move a folder</h2>
+<p><code>mv FOLDER DESTINATION</code></p>
 
-Show current folder
-`pwd`
+<h2 id="go-to-a-folder">Go to a folder</h2>
+<p><code>cd DIRECTORY_NAME</code></p>
 
-Compare folders
-`diff -q FOLDER_A FOLDER_B | sort`
-`-q`    If this isn't there, it'll compare each file too
+<h2 id="special-folder-names">Special folder names</h2>
+<p><code>..</code>   = up a directory<br />
+<code>...</code>  = up 2 directories<br />
+<code>.</code>    = here<br />
+<code>~</code>    = user home directory<br />
+<code>/</code>    = root folder</p>
 
+<h2 id="show-current-folder">Show current folder</h2>
+<p><code>pwd</code></p>
 
-Files
----------------
+<h2 id="compare-folders">Compare folders</h2>
+<p><code>diff -q FOLDER_A FOLDER_B | sort</code></p>
 
-Rename or move a file
-`mv SOURCE_FILE DESTINATION_FILE_OR_FOLDER`
+<table>
+  <tbody>
+    <tr>
+      <td><code>q</code>  </td>
+      <td>If this isn’t there, it’ll compare each file too</td>
+    </tr>
+  </tbody>
+</table>
 
-Copy a file
-`cp ORIGINAL_FILE COPY_FILE_NAME`
+<h1 id="files">Files</h1>
 
-Find a file anywhere
-`ff FILENAME`
-`-p` lets you use a prefix
+<h2 id="rename-or-move-a-file">Rename or move a file</h2>
+<p><code>mv SOURCE_FILE DESTINATION_FILE_OR_FOLDER</code></p>
 
-Find a file in a particular directory [ref](https://kb.iu.edu/d/admm)
-`find DIRECTORY -name FILENAME_OR_PATTERN`
-Use a filename for an exact search.
-Use 'Potato*.png' to match all .png files starting with 'Potato'
-`-print`     Displays their paths (not needed on OSX)
-`-exec cmd`  Executes a command on each result.
-             Use `{}` as a placeholder for where the filename goes in the command.
-             End the command with `\;`
-             ex. `find . -name '*.mp3' -exec rm {} \;`
-`-ok cmd`    Executes a command, but confirms
+<h2 id="copy-a-file">Copy a file</h2>
+<p><code>cp ORIGINAL_FILE COPY_FILE_NAME</code></p>
 
-ex. Find a file and check if it contains a string (John)
-`find . -name '*.txt' -exec grep "John" {} \; -print`
+<h2 id="find-a-file-anywhere">Find a file anywhere</h2>
+<p><code>ff FILENAME</code></p>
 
+<table>
+  <tbody>
+    <tr>
+      <td><code>-p</code>  </td>
+      <td>search with a prefix instead of a full name</td>
+    </tr>
+  </tbody>
+</table>
 
-Populate a file with output
-`COMMAND > FILENAME`
+<h2 id="find-a-file-in-a-particular-directory-refhttpskbiuedudadmm">Find a file in a particular directory <a href="https://kb.iu.edu/d/admm">ref</a></h2>
+<p><code>find DIRECTORY -name FILENAME_OR_PATTERN</code></p>
 
-Append output to the end of a file
-`COMMAND >> EXISTING_FILE`
+<p>Use a filename for an exact search.<br />
+Use ‘Potato*.png’ to match all .png files starting with ‘Potato’</p>
 
-Send a file into a command
-`COMMAND < FILENAME`
+<p><code>-print</code></p>
 
+<blockquote>
+  <p>Displays their paths (not needed on OSX)</p>
+</blockquote>
 
-Change permissions (usually, make executable)
-`chmod OPTIONS FILENAME`
-* go look it up
+<p><code>-exec cmd</code></p>
 
+<blockquote>
+  <p>Executes a command on each result.<br />
+Use <code>{}</code> as a placeholder for where the filename goes in the command.<br />
+End the command with <code>\;</code></p>
+</blockquote>
 
+<p><code>-ok cmd</code></p>
 
+<blockquote>
+  <p>Executes a command, but confirms</p>
+</blockquote>
 
-Text files
----------------
+<p>ex. Delete all .mp3 files</p>
 
-Edit with VIM
-`vi FILENAME`
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td><code>find . -name '*.mp3' -exec rm {} \;</code></td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
 
-Edit with EMACS
-`emacs FILENAME`
+<p>ex. Find a file and check if it contains a string (John)</p>
 
-View a file
-`less FILENAME`
-Arrows		Go up and down
-Space		Go to the next page
-`q`			Quit
-`/pattern`  Search for a pattern
+<blockquote>
+  <p><code>find . -name '*.txt' -exec grep "John" {} \; -print</code></p>
+</blockquote>
 
-View the end of a growing file
-`tail -f FILENAME`
+<h2 id="populate-a-file-with-output">Populate a file with output</h2>
+<p><code>COMMAND &gt; FILENAME</code></p>
 
-Dump a file to the console
-`cat FILENAME`
+<h2 id="append-output-to-the-end-of-a-file">Append output to the end of a file</h2>
+<p><code>COMMAND &gt;&gt; EXISTING_FILE</code></p>
 
-Comparing files
-`diff A B`
-`-b`     Ignore changes to amount of whitespace
-`-w`     Ignore whitespace
-`-c`     Show context (3 lines default; can provide # as argument)
-`-y`     Show two columns
-[Reference](http://www.computerhope.com/unix/udiff.htm)
+<h2 id="send-a-file-into-a-command">Send a file into a command</h2>
+<p><code>COMMAND &lt; FILENAME</code></p>
 
-Comparing sorted files
-`comm A B`
-`-i`      Case insensitive sorting
-`-123`    Supress the numbered column
-Shows 3 columns: lines only in A, lines only in B, lines in A and B.
-ex: `comm -2 A B` shows the lines in A, and the lines common to A and B.
+<h2 id="change-permissions-usually-make-executable">Change permissions (usually, make executable)</h2>
+<p><code>chmod OPTIONS FILENAME</code><br />
+* go look it up</p>
 
+<h1 id="text-files">Text files</h1>
 
-Chaining
----------------
+<h2 id="edit-with-vim">Edit with VIM</h2>
+<p><code>vi FILENAME</code></p>
 
-Chaining commands
-`FIRST_COMMAND | SECOND_COMMAND`
+<h2 id="edit-with-emacs">Edit with EMACS</h2>
+<p><code>emacs FILENAME</code></p>
 
-Dumping a file into a command
-`cat FILENAME > COMMAND`
+<h2 id="view-a-file">View a file</h2>
+<p><code>less FILENAME</code></p>
 
-Use a file as input/output
-`COMMAND [OPTIONS & ARGUMENTS] < INPUT_FILE`
+<table>
+  <tbody>
+    <tr>
+      <td>arrows</td>
+      <td>Go up and down</td>
+    </tr>
+    <tr>
+      <td>space</td>
+      <td>Go to the next page</td>
+    </tr>
+    <tr>
+      <td><code>q</code></td>
+      <td>Quit</td>
+    </tr>
+    <tr>
+      <td><code>/pattern</code> </td>
+      <td>Search for a pattern</td>
+    </tr>
+  </tbody>
+</table>
 
-[advanced redirection](http://sc.tamu.edu/help/general/unix/redirection.html)
-`>&` includes standard error
-`>!` overwrites if it exists
-Redirecting to `/dev/null` = suppressing it
+<h2 id="view-the-end-of-a-growing-file">View the end of a growing file</h2>
+<p><code>tail -f FILENAME</code></p>
 
-_____________________________________XARGS?
+<h2 id="dump-a-file-to-the-console">Dump a file to the console</h2>
+<p><code>cat FILENAME</code></p>
 
+<h2 id="comparing-files-referencehttpwwwcomputerhopecomunixudiffhtm">Comparing files <a href="http://www.computerhope.com/unix/udiff.htm">reference</a></h2>
+<p><code>diff A B</code></p>
 
+<table>
+  <tbody>
+    <tr>
+      <td><code>-b</code>  </td>
+      <td>Ignore changes to amount of whitespace</td>
+    </tr>
+    <tr>
+      <td><code>-w</code></td>
+      <td>Ignore whitespace</td>
+    </tr>
+    <tr>
+      <td><code>-c</code></td>
+      <td>Show context (3 lines default; can provide # as argument)</td>
+    </tr>
+    <tr>
+      <td><code>-y</code></td>
+      <td>Show two columns</td>
+    </tr>
+  </tbody>
+</table>
 
-Processes
----------------
+<h2 id="comparing-sorted-files">Comparing sorted files</h2>
+<p><code>comm A B</code><br />
+Shows 3 columns: lines only in A, lines only in B, lines in A and B.</p>
 
-show all running processes
-`ps`
+<table>
+  <tbody>
+    <tr>
+      <td><code>-i</code>  </td>
+      <td>Case insensitive sorting</td>
+    </tr>
+    <tr>
+      <td><code>-1</code></td>
+      <td>Supress column 1.</td>
+    </tr>
+    <tr>
+      <td><code>-2</code></td>
+      <td>Supress column 2.</td>
+    </tr>
+    <tr>
+      <td><code>-3</code></td>
+      <td>Supress column 3.</td>
+    </tr>
+  </tbody>
+</table>
 
-show your running processes
-`ps -u USERNAME`
+<p>ex: Show the lines only in B.</p>
 
-kill a process
-`kill PROCESS_ID`
-*use PID from `ps`
+<blockquote>
+  <p><code>comm -13 A B</code></p>
+</blockquote>
+
+<h1 id="chaining">Chaining</h1>
+
+<h2 id="chaining-commands">Chaining commands</h2>
+<p><code>FIRST_COMMAND | SECOND_COMMAND</code></p>
+
+<h2 id="dumping-a-file-into-a-command">Dumping a file into a command</h2>
+<p><code>cat FILENAME &gt; COMMAND</code></p>
+
+<h2 id="use-a-file-as-inputoutput">Use a file as input/output</h2>
+<p><code>COMMAND [OPTIONS &amp; ARGUMENTS] &lt; INPUT_FILE</code></p>
+
+<h2 id="variations-more-herehttpsctamueduhelpgeneralunixredirectionhtml">Variations <a href="http://sc.tamu.edu/help/general/unix/redirection.html">more here</a></h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code>&gt;&amp;</code>  </td>
+      <td>Includes standard error</td>
+    </tr>
+    <tr>
+      <td><code>&gt;!</code></td>
+      <td>Overwrites if it exists</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Redirect to <code>/dev/null</code> = suppress it</p>
+
+<p><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong>_XARGS?</p>
+
+<h1 id="processes">Processes</h1>
+
+<h2 id="show-all-running-processes">show all running processes</h2>
+<p><code>ps</code></p>
+
+<h2 id="show-your-running-processes">show your running processes</h2>
+<p><code>ps -u USERNAME</code></p>
+
+<h2 id="kill-a-process">kill a process</h2>
+<p><code>kill PROCESS_ID</code><br />
+*use PID from <code>ps</code></p>
 
 	</div>
 </div>
