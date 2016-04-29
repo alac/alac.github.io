@@ -189,7 +189,7 @@ The standard from unix tools like <code>grep</code>, <code>find</code>, and <cod
 The <strong>-E</strong> flag switches to <strong>ERE</strong> (Extended Regular Expressions).</p>
 
 <p>In <strong>ERE</strong>, <code>\</code> will match a literal \ character.<br />
-e.g. <code>"colou\?r"</code> would match ‘colour\?r’ (i.e. it would be wrong).</p>
+e.g. <code>"colou\?r"</code> would match ‘colou\r’ (i.e. it would be wrong).</p>
 
 <p>Using <code>egrep</code> is equivalent to including the <strong>-E</strong>, so the following are equivalent:<br />
   <code>grep "colou\?r" FILENAME</code><br />
@@ -231,7 +231,7 @@ We would use this <code>"cat[ae]gory"</code>.</p>
 <p>Example:<br />
 <img src="/assets/posts/regex/regex_characterClass1.png" alt="Example" /></p>
 
-<p>A <em>character class</em> lets us denote a group of characters and match against one of them.</p>
+<p>A <em>character class</em> lets us a single character match against many.</p>
 
 <h2 id="ranges">Ranges</h2>
 <p>Character classes allow us to use a <strong><code>-</code></strong> to denote a range.<br />
@@ -241,6 +241,10 @@ We would use this <code>"cat[ae]gory"</code>.</p>
 
 <p>Character classes can mix ranges and individual characters:<br />
 <code>[0-4A-D!]</code> = <code>[01234ABCD!]</code></p>
+
+<p>Some implementations support…<br />
+1. exclusion (e.g. <code>[A-Z-[AEIOU]]</code> non-vowel captial letters)
+2. character class intersection</p>
 
 <h2 id="negation">Negation</h2>
 <p>They also allow us to negate with <strong><code>^</code></strong>.<br />
@@ -261,9 +265,39 @@ We would use this <code>"cat[ae]gory"</code>.</p>
 <code>\W</code> = <code>[^a-zA-Z0-9_]</code> # not whitespace or underscore<br />
 <code>\S</code> = <code>[^ \r\t\n\f]</code> # not whitespace</p>
 
-<p>LOGICAL
-    | matches either it’s argument on the left or the right
-      ex. (art)|(jazz) will match either ‘art’ or ‘jazz’</p>
+<h2 id="alternation">Alternation</h2>
+<p>A fancy word for ‘or’, alternation allows you to match between two <em>alternatives</em> with a |.</p>
+
+<p>Ex. The following match against weekdays:<br />
+(Monday|Tuesday|Wednesday|Thursday|Friday)<br />
+(Mon|Tues|Wednes|Thurs|Fri)day</p>
+
+<h2 id="escaping">Escaping</h2>
+<p>Characters that need to be escaped to be used not as metacharacters are:<br />
+<code>\</code>, <code>^</code>, <code>$</code>, <code>.</code>, <code>*</code>, <code>[</code>, <code>]</code></p>
+
+<p>Ex.<br />
+The pattern <code>folder\\file</code> would match <code>folder\file</code><br />
+The pattern <code>taytay\.mp3</code> would match <code>taytay.mp3</code></p>
+
+<p>the faq
+http://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean/22944075#22944075</p>
+
+<p>GROUPS AND RECALL</p>
+
+<p>Non-capturing groups
+http://stackoverflow.com/questions/3512471/what-is-a-non-capturing-group</p>
+
+<p>LAZY VS GREEDY?
+https://msdn.microsoft.com/en-us/library/3206d374(v=vs.110).aspx</p>
+
+<p>WHAT IS EGREP ONLY
+http://www.wellho.net/regex/grep.html</p>
+
+<p>PRECENDENCE
+http://stackoverflow.com/questions/22542834/how-to-use-regular-expressions-regex-in-microsoft-excel-both-in-cell-and-loops</p>
+
+<p>unicode character classes</p>
 
 <p>EGREP</p>
 

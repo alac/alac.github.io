@@ -57,7 +57,7 @@ By default, grep uses **BRE** (Basic Regular Expressions).
 The **-E** flag switches to **ERE** (Extended Regular Expressions).
 
 In **ERE**, `\` will match a literal \\ character.  
-e.g. `"colou\?r"` would match 'colour\\?r' (i.e. it would be wrong).
+e.g. `"colou\?r"` would match 'colou\\r' (i.e. it would be wrong).
 
 Using `egrep` is equivalent to including the **-E**, so the following are equivalent:  
 &emsp;&emsp;`grep "colou\?r" FILENAME`  
@@ -105,7 +105,8 @@ We would use this `"cat[ae]gory"`.
 Example:  
 ![Example](/assets/posts/regex/regex_characterClass1.png)
 
-A _character class_ lets us denote a group of characters and match against one of them.
+A _character class_ lets us a single character match against many.
+
 
 Ranges
 ------------
@@ -117,6 +118,10 @@ Character classes allow us to use a **`-`** to denote a range.
 Character classes can mix ranges and individual characters:  
 `[0-4A-D!]` = `[01234ABCD!]`  
 
+Some implementations support...  
+1. exclusion (e.g. `[A-Z-[AEIOU]]` non-vowel captial letters)
+2. character class intersection
+
 
 Negation
 ------------
@@ -124,6 +129,7 @@ They also allow us to negate with **`^`**.
 `[^abc]` = match all characters that are not a, b, c.  
 
 This only applies if it's the first character after the bracket!
+
 
 Shorthand
 ------------
@@ -140,10 +146,43 @@ And their negations
 `\S` = `[^ \r\t\n\f]` # not whitespace  
 
 
-  LOGICAL
-    | matches either it's argument on the left or the right
-      ex. (art)|(jazz) will match either 'art' or 'jazz'
+Alternation
+------------
+A fancy word for 'or', alternation allows you to match between two _alternatives_ with a |.
 
+Ex. The following match against weekdays:  
+(Monday|Tuesday|Wednesday|Thursday|Friday)  
+(Mon|Tues|Wednes|Thurs|Fri)day  
+
+
+Escaping
+------------
+Characters that need to be escaped to be used not as metacharacters are:  
+`\`, `^`, `$`, `.`, `*`, `[`, `]`
+
+Ex.  
+The pattern `folder\\file` would match `folder\file`  
+The pattern `taytay\.mp3` would match `taytay.mp3`  
+
+
+the faq
+http://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean/22944075#22944075
+
+GROUPS AND RECALL
+
+Non-capturing groups
+http://stackoverflow.com/questions/3512471/what-is-a-non-capturing-group
+
+LAZY VS GREEDY?
+https://msdn.microsoft.com/en-us/library/3206d374(v=vs.110).aspx
+
+WHAT IS EGREP ONLY
+http://www.wellho.net/regex/grep.html
+
+PRECENDENCE
+http://stackoverflow.com/questions/22542834/how-to-use-regular-expressions-regex-in-microsoft-excel-both-in-cell-and-loops
+
+unicode character classes
 
 EGREP
 

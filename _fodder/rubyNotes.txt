@@ -1,0 +1,210 @@
+strings
+- print
+	-> puts "hello"
+	-> printf "Number: %5.2f, String: %s", 1.23, "hello"
+- read
+	-> line = gets
+	-> gets
+	   print $_
+	* i.e. gets stores line into $_ as side effect
+- '' = literal
+- "" = processes \n, etc. and does expression interpolation
+	def sayGoodnight(name)
+	  result = "Goodnight, #{name}"
+	  return result
+	end
+	NOTE: As a shortcut, you don't need to supply the braces when the expression is simply a global, instance, or class variable. 
+
+the default variable, $_
+- The gets routine has a side effect: as well as returning the line just read, it also stores it into the global variable $_. This variable is special, in that it is used as the default argument in many circumstances. If you call print with no argument, it prints the contents of $_. If you write an if or while statement with just a regular expression as the condition, that expression is matched against $_. While viewed by some purists as a rebarbative barbarism, these abbreviations can help you write some concise programs.
+
+object syntax
+- everything in ruby is an object
+- instance methods denoted "instance#method"
+- class methods denoted "reciever.method" (. can also be ::)
+- class constands denoted "class::variable"
+- every instance gets an "object id"
+- objects can be defined by multiple declarations of the object
+- ex:
+	class Song
+	  # CONSTANTS are capitalized
+	  MaxLength = 300
+	  
+	  # PRIVATE VARIABLES do not need to be declared outside their use
+
+	  # CLASS VARIABLES are declared outside their use
+	  # usable by class and instance, requires accessors for outside use
+	  @@allPlays = 0
+
+	  # PUBLICLY READABLE INSTANCE VARIABLES
+	  attr_reader :name, :artist, :duration
+
+	  # PUBLICLY WRITEABLE INSTANCE VARIABLES
+	  attr_writer :duration
+	
+	  # method
+	  def to_s
+	    super + " [#{@lyrics}]"
+	  end
+	end
+- virtual attributes shield the outside from implementation
+  ex:
+	class Song
+	  # accessor
+	  def durationInMinutes
+	    @duration/60.0   # force floating point
+	  end
+
+	  # setter
+	  def durationInMinutes=(value)
+	    @duration = (value*60).to_i
+	  end
+	end
+- class methods are defined by placing the class name and a period in front of the method name.
+  ex:
+	class Example
+	  #class method
+	  def Example.classMeth
+	  end
+	end
+
+object methods
+- "initialize": constructor called when object.new is used
+- "inspect": dumps out object id, and instance variables
+- "to_s": renders object as string (default prints object id)
+- "freeze": prevents modification
+- "kind_of?(TYPE)": returns True if is of that type
+
+method access
+- defaults to public; protected and private different from other languages
+- protected: can be invoked only by objects of the defining class and its subclasses. Access is kept within the family.
+--> callable by any instance of class/subclass
+- private: cannot be called with an explicit receiver. Because you cannot specify an object when using them, "private methods can be called only in the defining class and by direct descendents within that same object".
+--> callable only by that particular instance
+- declare by having access modifier on one line to affect all methods thereafter
+- or by "listing them as arguments to the access control functions"
+  ex:	class blah
+	  #methods
+	  ...
+	
+	  public    :method1, :method4
+	  protected :method2
+	  private   :method3
+	end
+
+object inheiritance
+- single parent and many "MIXIN"s
+  define by: class Child < Parent
+- OVERRIDE: simply by redefining the method
+- SINGLETONS: implement via MIXIN for thread safety
+
+syntax
+-  You don't need semicolons at the ends of statements as long as you put each statement on a separate line. Ruby comments start with a # character and run to the end of the line. Code layout is pretty much up to you; indentation is not significant.
+- parenthesis are optional:
+	puts sayGoodnight "John-Boy"
+	puts sayGoodnight("John-Boy")
+	puts(sayGoodnight "John-Boy")
+	puts(sayGoodnight("John-Boy"))
+are equivalent
+- parallel assignement allowed
+  ex:	i1, i2 = 1, 1 
+
+functions
+- ex:
+	def sayGoodnight(name)
+	  result = "Goodnight, " + name
+	  return result
+	end
+- every method by default returns the last value
+
+naming convention
+- variables
+-- local: starts with underscore or lower case
+-- global: starts with $
+-- instance: starts with @
+-- class: starts with @@
+-- constant/classname/module: starts with upper case
+
+arrays and hashes
+- arrays indexed by number, hashes indexed by object
+- can hold differing types
+- ARRAYS allow for indexing -> sub arrays
+  a[start, #elements]
+  a[start .. end]	#including end
+  a[start ... end]	#excluding end
+  a[-#totalNumElements .. -1]  #reverses
+- ARRAYS allow for setting subarrays
+  a[start, #elementsToReplace] = replacement array/element
+- ARRAYS allow avoiding manual iteration
+  #key defined elsewhere
+  result = @songs.find { |aSong| key == aSong.name }
+- MAP -> COLLECT in Ruby
+- ARRAYS init:
+	[]
+	[1, "two", var3]
+	Array.new
+  if words:
+	a = %w{ ant bee cat dog elk }
+- HASH init:
+	Hash.new(0)
+	instSection = {
+	  'cello'     => 'string',
+	  'clarinet'  => 'woodwind',
+	}
+
+control structures
+- if and while do not use braces, but "end"
+  ex: 	if count > 10
+	  puts "Try again"
+	elsif tries == 3
+	  puts "You lose"
+	else
+	  puts "Enter a number"
+	end
+  ex: 	while weight < 100 and numPallets <= 30
+	  pallet = nextPallet()
+	  weight += pallet.weight
+	  numPallets += 1
+	end
+  ex	for i in 0...@songs.length
+          return @songs[i] if key == @songs[i].name
+	end
+- STATEMENT MODIFIERS 1-line IF and WHILE
+  ex: 	puts "Danger, Will Robinson" if radiation > 3000
+	square = square*square  while square < 1000
+
+regularexpressions
+- 'Perl' or 'Python':
+	/Perl|Python/
+	/P(erl|ython)/
+- + = one or more:
+	/ab+c/ (one or more b's)
+- * = zero or more:
+	/ab*c/ (zero or more b's)
+- character classes:
+	\s (whitespace)
+	\d (digits)
+	\w (characters in words)
+	. (anything)
+- matching
+  ex:	if line =~ /Perl|Python/
+- replacing
+  ex: 
+	line.sub(/Perl/, 'Ruby') 	#replace first 'Perl' with 'Ruby'
+	line.gsub(/Python/, 'Ruby')	#replace every 'Python' with 'Ruby'
+
+blocks and iterators
+- a block is a chunk of code surrounded by braces or "do ... end"
+- a block can be passed to a method, which can call it via yield
+ex: 
+	def each
+	  for each element
+	    yield(element)
+	  end
+	end
+ex:
+	5.times {  print "*" }
+	3.upto(6) {|i|  print i }
+	('a'..'e').each {|char| print char }
+	produces:
+	*****3456abcde

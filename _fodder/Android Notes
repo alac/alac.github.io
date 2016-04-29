@@ -1,0 +1,20 @@
+Android Studio
+- auto import header: goto affected line, alt+enter
+
+- UI
+	- Get view from an xml layout
+TextView guessTextView = (TextView) findViewById(R.id.guessTextView);
+
+- Data
+	- Get string from the strings.xml
+String string = getString(R.string.hello);
+where the strings.xml contains
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello!</string>
+</resources>
+
+- Java Iteration styles: http://stackoverflow.com/questions/18410035/ways-to-iterate-over-a-list-in-java
+
+- Adding 'assets' (e.g. csvs)
+--- drop into '/src/main/assets' (ASSETS_FOLDER_RELATIVE_PATH in .iml)
