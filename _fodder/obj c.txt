@@ -17,5 +17,7 @@ the latter has no implied autorelease = 30% faster
 grand central dispatch
 http://www.raywenderlich.com/4295/multithreading-and-grand-central-dispatch-on-ios-for-beginners-tutorial
 
+http://roadfiresoftware.com/2013/12/replacing-regular-expressions-in-an-xcode-project/
+note that '\0' -> '$0'; $0 is entire match, $1 is first group
 
 http://nshipster.com/instancetype/

@@ -18,3 +18,8 @@ https://www.hackerrank.com/
 
 ++++++PriorityQueue's O(n) construction
 http://stackoverflow.com/questions/9755721/build-heap-complexity
+
+
+
+======= what happens when you go to google.com
+https://github.com/alex/what-happens-when/blob/master/README.rst
