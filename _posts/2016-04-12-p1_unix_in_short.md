@@ -245,3 +245,17 @@ kill a process
 ---------------
 `kill PROCESS_ID`  
 *use PID from `ps`  
+
+
+Commands
+================
+
+run in background thread
+----------------
+Follow the command with a `%`, e.g.
+`rm -rf . %`
+
+measure execution time
+----------------
+Prefix the command with `time`, e.g.
+`time grep "asdf" les_mis.txt`
