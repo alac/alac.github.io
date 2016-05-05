@@ -64,6 +64,7 @@ Using `egrep` is equivalent to including the **-E**, so the following are equiva
 &emsp;&emsp;`grep -E "colou?r" FILENAME`  
 &emsp;&emsp;`egrep "colou?r" FILENAME`
 
+Topics that only apply to `egrep` will have a *.
 
 Positional Metacharacters
 ------------
@@ -82,7 +83,7 @@ Amount Metacharacters
 ------------
 Amount specifiers match modify the preceding character _or parenthesized unit_.
 
-`?` = 0 or 1 times  
+`?` = 0 or 1 times (egrep only)  
 `+` = 1 or more times 
 `*` = any number of times (including 0)  
 `{AMOUNT}` = exactly AMOUNT times  
@@ -146,7 +147,7 @@ And their negations
 `\S` = `[^ \r\t\n\f]` # not whitespace  
 
 
-Alternation
+Alternation*
 ------------
 A fancy word for 'or', alternation allows you to match between two _alternatives_ with a |.
 
@@ -165,26 +166,33 @@ The pattern `folder\\file` would match `folder\file`
 The pattern `taytay\.mp3` would match `taytay.mp3`  
 
 
-the faq
-http://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean/22944075#22944075
+'Capturing' Groups*
+-------------
+Suppose you had a list of filenames and wanted to separate out the name from the extension.
 
-GROUPS AND RECALL
+You could write a hand-parser or just do something like:  
+`(.*)\.(.{1,})`
 
-Non-capturing groups
-http://stackoverflow.com/questions/3512471/what-is-a-non-capturing-group
+And dump them like:  
+`file: \1, ext: \2`
 
-LAZY VS GREEDY?
-https://msdn.microsoft.com/en-us/library/3206d374(v=vs.110).aspx
+_Capturing groups_ allow saving off parts of a regular expression.
 
-WHAT IS EGREP ONLY
-http://www.wellho.net/regex/grep.html
+Group `\0` usually refers to the entire expression, while `\1` through `\9` are for any parenthesized parts.
 
-PRECENDENCE
-http://stackoverflow.com/questions/22542834/how-to-use-regular-expressions-regex-in-microsoft-excel-both-in-cell-and-loops
+If you're using a parenthesis for _alternation_, you can opt out of that being a capturing group by turning the `(` into `(?:` [reference](http://stackoverflow.com/questions/3512471/what-is-a-non-capturing-group).
 
-unicode character classes
+You can nest capturing groups. The indexes are always based on left to right ordering.
 
-EGREP
 
-  COMMAND LINE ARGUMENTS
-    "-i" the regex searched will be case insensitive.
+Further Reference
+-------------
+For the most concise cheatsheet ever, [a Stack Overflow answer on Regex in Excel](http://stackoverflow.com/questions/22542834/how-to-use-regular-expressions-regex-in-microsoft-excel-both-in-cell-and-loops)
+
+For more on _any of these topics, [The Stack Overflow Regex FAQ](http://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean/22944075#22944075).
+
+For interactive exercises, [RegexOne](http://regexone.com/). Try not to cheese them with `.*`.
+
+For an explanation of greedy vs lazy that I couldn't simplify, [MSDN Regex Quantifiers](https://msdn.microsoft.com/en-us/library/3206d374(v=vs.110).aspx)
+
+Unicode is also too hard to cover, but [character classes for code point ranges are a thing](http://www.regular-expressions.info/unicode.html)
