@@ -7,14 +7,7 @@ categories:
 - Unix
 ---
 
-
-WIP
-
-The more you use a keyboard over a mouse, the faster you'll be.
-
-
-This is one piece of wisdom from UNIX wizards.  
-_Today, we'll find the rest._
+Many spend a lot of time at a Unix terminal.  May as well get good at it.
 
 
 <!---
@@ -202,6 +195,20 @@ ex: Show the lines only in B.
 
 > `comm -13 A B` 
 
+
+Symlinks
+===============
+
+Create a symlink
+---------------
+`ln -s /path/to/original /path/of/link`
+
+
+See where a symlink goes
+---------------
+`readlink -f /path/of/link`
+
+
 Chaining
 ===============
 
@@ -226,9 +233,6 @@ Variations [more here](http://sc.tamu.edu/help/general/unix/redirection.html)
 
 Redirect to `/dev/null` = suppress it  
 
-_____________________________________XARGS?
-
-
 
 Processes
 ================
@@ -252,10 +256,30 @@ Commands
 
 run in background thread
 ----------------
-Follow the command with a `%`, e.g.
-`rm -rf . %`
+Follow the command with a `&`, e.g.
+`rm -rf . &`
+* note that the process id is returned
+
+run in background, mute STDOUT/STDERR
+`rm -rf &>/dev/null &`
+
+run independent of logout
+----------------
+Prefix the command with `nohup`.  
+`nohup rm -rf . &`  
+HUP means 'hangup signal', which is how dependent processes are killed on logout.  
+Automatically redirects output to a `nohup.out` file.
+
 
 measure execution time
 ----------------
 Prefix the command with `time`, e.g.
 `time grep "asdf" les_mis.txt`
+
+
+Terminal / OSX
+===============
+`ctrl-r` searches backwards in the terminal  
+`!` is history expansion in terminal. Escape it with single quotes (you can do `"a"'!'"b"`)  
+EMACS keystrokes work in terminal. E.g. `ESC-Delete` deletes by word.  
+

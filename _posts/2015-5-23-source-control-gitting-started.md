@@ -124,7 +124,9 @@ Here's some things you can change with your git configuration:
 
    By turning rerere on with `git config --global rerere.enabled true`, git can remember every resolution to a merge conflict and recycle it. Useful for long rebases.
 
-   If you end up screwing up a resolution, forget it with `git rerere forget FILE` and checkout the conflicted version again `git checkout -m FILE`.   
+   If you end up screwing up a resolution, forget it with `git rerere forget FILE` and checkout the conflicted version again `git checkout -m FILE`.
+
+   If you screw up _many_ files, you can nuke all resolutions with `rm -rf .git/rr-cache`.
 
 * Always rebase when pulling.
 
@@ -195,6 +197,29 @@ If you're using git right, you're necessarily using git _a lot_. It would be wis
 * Nuking everything!
 
     `alias nuke="git clean -fd; git reset --hard head; git submodule foreach --recursive git reset --hard"`
+
+
+Patches
+---------
+Suppose that you need to store off some commits outside of your repo. For example, debug changes.
+
+You can do this by generating a _patch_ file.
+
+For a patch for each commit since a hash:  
+`git format-patch HASH`
+
+You can specify a number of commits from that patch. E.g.  
+`git format-patch -1 HASH`
+Gives you patch for the exact hash.
+
+For a patch that spans many commits...
+`git format-patch -2 HASH --stdout > hash_and_previous_commit.patch`
+
+To apply a patch  
+`git apply PATCH_PATH`
+
+For merge conflict instead of straight rejection  
+`git apply -3 PATCH_PATH`
 
 
 Appendix
