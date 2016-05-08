@@ -1,6 +1,0 @@
-Dealing with Same Origin Policy
-http://www.sitepoint.com/working-around-origin-policy/
-
-
-Javascript Function Declaration vs Expressions
-https://javascriptweblog.wordpress.com/2010/07/06/function-declarations-vs-function-expressions/
