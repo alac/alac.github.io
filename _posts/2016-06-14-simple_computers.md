@@ -4,7 +4,7 @@ longtitle: "A Metaphor: Simple Computers"
 title: "simple computers"
 
 categories:
-- Explanations
+- Metaphors
 ---
 
 
