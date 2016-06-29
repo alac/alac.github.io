@@ -1,6 +1,6 @@
 ---
 layout: default_post
-longtitle: "Explaination: Simple Computers"
+longtitle: "A Metaphor: Simple Computers"
 title: "simple computers"
 
 categories:
@@ -39,4 +39,4 @@ HARD DISK (insanely big, insanely slow)
 
 The last thing is: where does the food go? Well, anywhere. But in a computer, it can go to any `output device`: screen, speaker, back to the hard disk, the internet, etc.
 
-And now you know how a computer works.
+And now you know (a metaphor for) how a computer works.
