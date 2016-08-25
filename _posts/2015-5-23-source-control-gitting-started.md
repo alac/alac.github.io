@@ -208,7 +208,7 @@ If you're using git right, you're necessarily using git _a lot_. It would be wis
 
 * Switching to popular branches, tags.
 
-    `alias glatest='git checkout master; git pull --rebase origin master'`
+    `alias glatest='git checkout master; git pull --rebase origin master; git submodule update --recursive --init'`
 
 * Nuking everything!
 
