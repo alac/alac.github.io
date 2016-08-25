@@ -97,7 +97,7 @@ Many of these you may want to ALIAS into a macro in your bash_profile / zshrc. I
 
    The above, but recursive. useful for reverting overly agressive changes (e.g. find and replace).
 
-* `git rebase -i refA`. Rebase on top of a branch interactively. Use this to combine, throw out or rename commits.
+* `git rebase -i refA`. Rebase on top of a branch interactively. Use this to combine, throw out or rename commits. For each commit, your options are r (rename), e (edit; pause the rebase after applying that commit, so that you can edit it there), p (pick), and s (squash; combine with the previous commit). [Better description](https://github.com/chadburrus/gitbook/blob/06ec1a6450ae86d5cb0d2392f43ed42a2d9914de/text/14_Interactive_Rebasing/0_%20Interactive_Rebasing.markdown).
 
 * `git reflog`.
 
@@ -105,7 +105,15 @@ Many of these you may want to ALIAS into a macro in your bash_profile / zshrc. I
 
 * `git log refA...refB`.
 
-   Show the log of differences between two branches.
+   Show the log of differences commits in refB but not refA.
+
+* `git log refA...refB`.
+
+   Show the log of differences between two branches (symmetric distance).
+
+* `git rev-list refA..refB | xargs -n 1 git show --quiet --format=oneline -n 1 > changes.txt `
+
+   Dump the commits and commit messages that are in refB but not refA.
 
 * `git log --pretty=format:"%h - %an : %s"`.
 
@@ -114,6 +122,14 @@ Many of these you may want to ALIAS into a macro in your bash_profile / zshrc. I
 * `git grep STRING`.
 
    Search all indexed files for STRING. Lifesaver if regular `grep` gives you unwanted results from gitignored filed.
+
+* `git mergebase A B`.  
+
+   Get the common ancestor of commits A and B.  
+
+* `git --no-pager diff --name-only A $(git merge-base A B)`.
+
+   Get the names of files that changed between commits A and B.
 
 
 Configuration
@@ -159,9 +175,9 @@ Examples of other options (and automated testing) [here](https://git-scm.com/doc
 
 Handling Multiple Github Accounts
 ----------
-An advanced topic and probably not an issue for most people.
+Having multiple githubs accounts is actually just something you shouldn't do, but if you're already there...
 
-Basically, you shouldn't authenticate to multiple github accounts with the same ssh key. So, you'll need to switch between ssh keys whenever you switch accounts. You'll run three commands:
+You can't authenticate to multiple github accounts with the same ssh key. So, you'll need to switch between ssh keys whenever you switch accounts. You'll run three commands:
 
     ssh-agent # start the ssh agent
     ssh-add -d # remove the current identity
@@ -197,6 +213,12 @@ If you're using git right, you're necessarily using git _a lot_. It would be wis
 * Nuking everything!
 
     `alias nuke="git clean -fd; git reset --hard head; git submodule foreach --recursive git reset --hard"`
+
+* Get commits from all submodule
+
+    `alias commits="git rev-parse HEAD; git submodule foreach --recursive git rev-parse HEAD"` 
+
+* Bulk submodule interactions...
 
 
 Patches

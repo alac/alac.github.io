@@ -275,11 +275,14 @@ measure execution time
 ----------------
 Prefix the command with `time`, e.g.
 `time grep "asdf" les_mis.txt`
+* dumps the total time, user time and system time taken after the command completes.
+
+To get the run time of an ongoing command, you can press CTRL-T during.
 
 
 Terminal / OSX
 ===============
-`ctrl-r` searches backwards in the terminal  
-`!` is history expansion in terminal. Escape it with single quotes (you can do `"a"'!'"b"`)  
+`history N` dumps the last N commands typed into the terminal.  
+`ctrl-r` searches backwards in the terminal. Press again to get the next match; arrows to dump the current match into the commandline.  
+`!` is history expansion in terminal. Escape it with single quotes when you just want a `!` character (you can do `"a"'!'"b"`).  
 EMACS keystrokes work in terminal. E.g. `ESC-Delete` deletes by word.  
-

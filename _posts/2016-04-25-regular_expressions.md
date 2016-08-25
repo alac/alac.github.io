@@ -185,6 +185,23 @@ If you're using a parenthesis for _alternation_, you can opt out of that being a
 You can nest capturing groups. The indexes are always based on left to right ordering.
 
 
+Greping Harder
+-------------
+Basic grepping...
+`grep PATTERN FILE`
+* show matches to the regex PATTERN in FILE
+
+Specifying context
+`grep -C 3 PATTERN FILE`
+* show 3 lines before and after each match
+
+`grep -B 3 PATTERN FILE`
+* show 3 lines before each match
+
+`grep -A 3 PATTERN FILE`
+* show 3 lines after each match
+
+
 Further Reference
 -------------
 For the most concise cheatsheet ever, [a Stack Overflow answer on Regex in Excel](http://stackoverflow.com/questions/22542834/how-to-use-regular-expressions-regex-in-microsoft-excel-both-in-cell-and-loops)
