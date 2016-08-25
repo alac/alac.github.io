@@ -7,7 +7,7 @@ categories:
 - Unix
 ---
 
-Many spend a lot of time at a Unix terminal.  May as well get good at it.
+Unix is a cool guy. You should be friends with him. Here are things he can help you with.  
 
 
 <!---
@@ -207,6 +207,10 @@ Create a symlink
 See where a symlink goes
 ---------------
 `readlink -f /path/of/link`
+
+See which files are actually symlinks in a folder
+----------------
+`ls -ln`
 
 
 Chaining
