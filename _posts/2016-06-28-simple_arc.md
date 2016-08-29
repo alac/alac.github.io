@@ -1,18 +1,23 @@
 ---
 layout: default_post
-longtitle: "A Metaphor: Simple Automatic Reference Counting"
+longtitle: "metaphor #2 simple automatic reference counting"
 title: "simple automatic reference counting"
 
 categories:
-- ObjectiveC
+- Objective-C
 ---
 
+Memory management is an interesting topic because there's two major ways of thinking about it: garbage collection and malloc/free.  
+  
+Garbage collection is a really intuitive concept, and yet malloc/free is what is "natural". It's what mirrors the literal behavior of the compiler closest.  
+  
+Objective C's ARC starts from a malloc/free type system (retain counts) and attempts to emulate garbage collection.  
+  
+And it gets weird because it isn't garbage collection.  
+  
+Here's what it is instead.
 
-I was asked about memory management by a co-worker who had never written code without a garbage collector. I gave terrible explanation then, but now I have a metaphor.
-
-<!---
-<!–end_preview–>
--->
+<!--more-->
 
 The preferred way of thinking about it is the concept of 'ownership'. An object is alive for as long as at least one other living object is 'owning it'.
 

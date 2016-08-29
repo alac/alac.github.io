@@ -18,11 +18,7 @@ The standard from unix tools like `grep`, `find`, and `sed` to Excel.
 
 So, let's get finding.
 
-
-<!---
-<!–end_preview–>
--->
-
+<!--more-->
 
 What Is A Regex
 --------------

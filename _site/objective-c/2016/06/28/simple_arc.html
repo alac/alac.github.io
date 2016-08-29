@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
- 	<title>  aimless bitshift</title>
+ 	<title>  simple automatic reference counting |  aimless bitshift</title>
  		<link rel='stylesheet' type='text/css' href='/assets/wvs.css'>
  		<link rel='stylesheet' type='text/css' href='/assets/normalize.css' />
 	</head>
@@ -173,15 +173,15 @@
 	
 				</div>
 				<div class='content'>
-				  <!-- This loops through the paginated posts -->
-
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/objective-c/2016/06/28/simple_arc.html">metaphor #2 simple automatic reference counting</a></h1>
-    </div>
-    <div class='postBody'>
-      28 Jun 2016 | Objective-C
-      <p>Memory management is an interesting topic because there’s two major ways of thinking about it: garbage collection and malloc/free.</p>
+				  <div class='post depthOneContent'>
+	<div class='postHeader'>
+	<h1>
+		metaphor #2 simple automatic reference counting
+	</h1>
+	</div>
+	<div class='postBody'>
+	28 Jun 2016 | Objective-C
+	<p>Memory management is an interesting topic because there’s two major ways of thinking about it: garbage collection and malloc/free.</p>
 
 <p>Garbage collection is a really intuitive concept, and yet malloc/free is what is “natural”. It’s what mirrors the literal behavior of the compiler closest.</p>
 
@@ -191,104 +191,39 @@
 
 <p>Here’s what it is instead.</p>
 
+<!--more-->
 
-      <p><a href="/objective-c/2016/06/28/simple_arc.html" role="button">More...</a></p>
-	  </div>
-  </div>
+<p>The preferred way of thinking about it is the concept of ‘ownership’. An object is alive for as long as at least one other living object is ‘owning it’.</p>
 
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/metaphors/2016/06/14/simple_computers.html">metaphor #1 simple computers</a></h1>
-    </div>
-    <div class='postBody'>
-      14 Jun 2016 | Metaphors
-      <p>Someone once asked me to explain how a computer works as non-technically as possible.</p>
+<p>While it’s a useful pattern, ownership isn’t how things really work. Just a useful way of thinking of it.</p>
 
-<p>So, let’s say that the CPU is a chef…</p>
+<p>Instead, let’s think about tickets. You are an object - in the programming sense - and you’re alive as long as you hold one or more tickets.</p>
 
+<p>Whenever ‘retain’ is called, you get a ticket.</p>
 
-      <p><a href="/metaphors/2016/06/14/simple_computers.html" role="button">More...</a></p>
-	  </div>
-  </div>
+<p>Whenever ‘release’ is called, you lose a ticket.</p>
 
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/tools/2016/04/25/regular_expressions.html">tools: regexes</a></h1>
-    </div>
-    <div class='postBody'>
-      25 Apr 2016 | Tools
-      <p>There’s a saying:<br />
-“Trying to solve a problem with regexes? Now, you have two problems.”</p>
+<p>Whenever ‘autorelease’ is called, you get a <em>self-destructing</em> ticket that goes away when the current autorelease pool flushes. (Usually, the flush happens at the end of a run loop.)</p>
 
-<p>Complex expressions that are nearly impossible to validate.</p>
+<p>You get an implicit ‘retain’ when you’re initialized; this is why <em>before arc</em> it was common to call autorelease on an object when it was initialized. That way, you don’t have to remember to release it when you’re actually done.</p>
 
-<p><em>Regular Expressions</em> are a great tool for searching and manipulating text.<br />
-The standard from unix tools like <code class="highlighter-rouge">grep</code>, <code class="highlighter-rouge">find</code>, and <code class="highlighter-rouge">sed</code> to Excel.</p>
+<p>ARC does this <em>for you</em>, and - in release mode - cancels out the implicit retain and the autorelease, as a performance optimization in <code class="highlighter-rouge">[[OBJECT alloc] init]</code>.</p>
 
-<p>So, let’s get finding.</p>
+<p>This is why, in DEBUG mode, assigning a new object to a weak variable before assigning it to something else will work. But it doesn’t in RELEASE mode.</p>
 
+<p>When else do retains and releases happen?</p>
 
-      <p><a href="/tools/2016/04/25/regular_expressions.html" role="button">More...</a></p>
-	  </div>
-  </div>
+<p>Assigning to a strong property or a non-__weak local variable triggers a retain.</p>
 
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/unix/2016/04/12/p1_unix_in_short.html">unix part 1: in short</a></h1>
-    </div>
-    <div class='postBody'>
-      12 Apr 2016 | Unix
-      <p>Unix is a cool guy. You should be friends with him. Here are things he can help you with.</p>
+<p>Assigning something else to the property, or the object being deallocated triggers a release.</p>
 
+<p>Assigning something else to the local variable triggers a release. But, the release also occurs when the variable stops being used. Like immediately. At least in RELEASE mode.</p>
 
-      <p><a href="/unix/2016/04/12/p1_unix_in_short.html" role="button">More...</a></p>
-	  </div>
-  </div>
+<p>That’s actually about it.</p>
 
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/objective-c/2016/04/04/objective_c_patterns.html">objective-c: interaction patterns</a></h1>
-    </div>
-    <div class='postBody'>
-      04 Apr 2016 | Objective-C
-      <div class="highlighter-rouge"><pre class="highlight"><code>         ^
-         | D
-Verbose  |
-         |       N
-         |       
-         |                  B
-         |                              K
-         -------------------------------------&gt;
-                   Subtle
+<p>The only thing beyond that worth saying is… calling method on an object <em>doesn’t</em> trigger a retain. This means that if an object calls code (say, a block) that triggers it’s own release… you can get a segmentation fault. GG.</p>
 
-D = Delegate patterns
-B = Block patterns
-N = Notifications
-K = Key Value Observation
-</code></pre>
-</div>
-
-<p>There are 4 common communciation patterns in Objective-C.</p>
-
-<p>Ever wonder how they can be <em>misused</em>?</p>
-
-<p>You can find real explanations of what they are in <a href="http://nshipster.com/key-value-observing/">short here</a> and in <a href="https://www.objc.io/issues/7-foundation/communication-patterns/#delegation">long here</a>.</p>
-
-
-      <p><a href="/objective-c/2016/04/04/objective_c_patterns.html" role="button">More...</a></p>
-	  </div>
-  </div>
-
-
-<!-- Pagination links -->
-<div class="pagination">
-  
-    <span class="previous">Previous</span>
-  
-  <span class="page_number ">Page: 1 of 2</span>
-  
-    <a href="/index/page2" class="next">Next</a>
-  
+	</div>
 </div>
 				</div>
 			</div>

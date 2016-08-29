@@ -28,11 +28,7 @@ Ever wonder how they can be _misused_?
 
 You can find real explanations of what they are in [short here](http://nshipster.com/key-value-observing/) and in [long here](https://www.objc.io/issues/7-foundation/communication-patterns/#delegation).
 
-
-<!---
-<!–end_preview–>
--->
-
+<!--more-->
 
 Trade-Offs
 ---------------

@@ -1,7 +1,7 @@
 ---
 layout: default_post
 longtitle: "unix part 1: in short"
-title: "part 1: commands"
+title: "part 1: getting around"
 
 categories:
 - Unix
@@ -9,12 +9,7 @@ categories:
 
 Unix is a cool guy. You should be friends with him. Here are things he can help you with.  
 
-
-<!---
-<!–end_preview–>
--->
-
-
+<!--more-->
 
 Folders
 ===============
@@ -271,13 +266,15 @@ run independent of logout
 ----------------
 Prefix the command with `nohup`.  
 `nohup rm -rf . &`  
-HUP means 'hangup signal', which is how dependent processes are killed on logout.  
+  
+HUP means 'hangup signal'.  
+This is how dependent processes are killed on logout.  
 Automatically redirects output to a `nohup.out` file.
 
 
 measure execution time
 ----------------
-Prefix the command with `time`, e.g.
+Prefix the command with `time`, e.g.  
 `time grep "asdf" les_mis.txt`
 * dumps the total time, user time and system time taken after the command completes.
 
@@ -286,7 +283,20 @@ To get the run time of an ongoing command, you can press CTRL-T during.
 
 Terminal / OSX
 ===============
-`history N` dumps the last N commands typed into the terminal.  
-`ctrl-r` searches backwards in the terminal. Press again to get the next match; arrows to dump the current match into the commandline.  
-`!` is history expansion in terminal. Escape it with single quotes when you just want a `!` character (you can do `"a"'!'"b"`).  
+
+input history
+------------
+`history N`  
+dump the last N commands typed into the terminal.  
+
+`ctrl-r`
+search backwards in the terminal.  
+press again to get the next match.  
+arrows to dump the current match into the commandline.  
+
+`!` is history expansion in terminal.  
+Escape it with single quotes when you just want a `!` character (you can do `"a"'!'"b"`).  
+  
+misc
+-----------
 EMACS keystrokes work in terminal. E.g. `ESC-Delete` deletes by word.  

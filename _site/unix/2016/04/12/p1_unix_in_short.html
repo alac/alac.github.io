@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
- 	<title>  part 1: commands |  aimless bitshift</title>
+ 	<title>  part 1: getting around |  aimless bitshift</title>
  		<link rel='stylesheet' type='text/css' href='/assets/wvs.css'>
  		<link rel='stylesheet' type='text/css' href='/assets/normalize.css' />
 	</head>
@@ -15,7 +15,7 @@
 					</span>
 				</a>
 				<span class='headerbarMenu'>
-					notes | code | ego
+					notes/realizations re:code
 				</span>
 			</div>
 			<div class='subcontainer'>
@@ -24,6 +24,14 @@
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
 							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
@@ -36,10 +44,6 @@
 					
 			  			<div class="menuCategoryPost">
 					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
 						</div>
 					
 					</div>
@@ -52,6 +56,14 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
 					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
 						</div>
 					
@@ -63,17 +75,13 @@
 					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
 						</div>
 					
-			  			<div class="menuCategoryPost">
-					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
-						</div>
-					
 					</div>
 					<br>
 <!-- 					display all posts by categories                           -->
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="tools">tools</a>
+							<a name="Tools">Tools</a>
 						</div>
 
 						
@@ -99,7 +107,7 @@
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="objective-c">objective-c</a>
+							<a name="Objective-C">Objective-C</a>
 						</div>
 
 						
@@ -107,6 +115,12 @@
 						  								  		
 						  	
 						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/objective-c/2016/06/28/simple_arc.html">* simple automatic reference counting</a>
+									</div>
+						  								  		
 						  	
 						  		
 						  			<div class="menuCategoryPost">
@@ -119,7 +133,7 @@
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="unix">unix</a>
+							<a name="Unix">Unix</a>
 						</div>
 
 						
@@ -130,7 +144,27 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
-							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: commands</a>
+							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: getting around</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Metaphors">Metaphors</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/metaphors/2016/06/14/simple_computers.html">* simple computers</a>
 									</div>
 						  								  		
 						  	
@@ -146,85 +180,78 @@
 	</h1>
 	</div>
 	<div class='postBody'>
-	12 Apr 2016 | unix
-	<p>WIP</p>
+	12 Apr 2016 | Unix
+	<p>Unix is a cool guy. You should be friends with him. Here are things he can help you with.</p>
 
-<p>The more you use a keyboard over a mouse, the faster you’ll be.</p>
-
-<p>This is one piece of wisdom from UNIX wizards.<br />
-<em>Today, we’ll find the rest.</em></p>
-
-<!---
-<!–end_preview–>
--->
+<!--more-->
 
 <h1 id="folders">Folders</h1>
 
 <h2 id="make-folders">Make folders</h2>
-<p><code>mkdir FOLDER</code></p>
+<p><code class="highlighter-rouge">mkdir FOLDER</code></p>
 
 <h2 id="delete-a-folder">Delete a folder</h2>
-<p><code>rmdir FOLDER</code></p>
+<p><code class="highlighter-rouge">rmdir FOLDER</code></p>
 
 <h2 id="delete-a-folder-and-everything-in-it">Delete a folder and everything in it</h2>
-<p><code>rm -rf FOLDER</code></p>
+<p><code class="highlighter-rouge">rm -rf FOLDER</code></p>
 
 <table>
   <tbody>
     <tr>
-      <td><code>-r</code>  </td>
+      <td><code class="highlighter-rouge">-r</code>  </td>
       <td>recursive</td>
     </tr>
     <tr>
-      <td><code>-f</code></td>
+      <td><code class="highlighter-rouge">-f</code></td>
       <td>remove all files without asking permission</td>
     </tr>
     <tr>
-      <td><code>-i</code></td>
+      <td><code class="highlighter-rouge">-i</code></td>
       <td>ask before deleting each file</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="list-contents-of-a-folder">List contents of a folder</h2>
-<p><code>ls [optional FOLDER]</code></p>
+<p><code class="highlighter-rouge">ls [optional FOLDER]</code></p>
 
 <table>
   <tbody>
     <tr>
-      <td><code>-a</code>  </td>
+      <td><code class="highlighter-rouge">-a</code>  </td>
       <td>show hidden files</td>
     </tr>
     <tr>
-      <td><code>-1</code></td>
+      <td><code class="highlighter-rouge">-1</code></td>
       <td>one entry per line</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="move-a-folder">Move a folder</h2>
-<p><code>mv FOLDER DESTINATION</code></p>
+<p><code class="highlighter-rouge">mv FOLDER DESTINATION</code></p>
 
 <h2 id="go-to-a-folder">Go to a folder</h2>
-<p><code>cd DIRECTORY_NAME</code></p>
+<p><code class="highlighter-rouge">cd DIRECTORY_NAME</code></p>
 
 <h2 id="special-folder-names">Special folder names</h2>
-<p><code>..</code>   = up a directory<br />
-<code>...</code>  = up 2 directories<br />
-<code>.</code>    = here<br />
-<code>~</code>    = user home directory<br />
-<code>/</code>    = root folder</p>
+<p><code class="highlighter-rouge">..</code>   = up a directory<br />
+<code class="highlighter-rouge">...</code>  = up 2 directories<br />
+<code class="highlighter-rouge">.</code>    = here<br />
+<code class="highlighter-rouge">~</code>    = user home directory<br />
+<code class="highlighter-rouge">/</code>    = root folder</p>
 
 <h2 id="show-current-folder">Show current folder</h2>
-<p><code>pwd</code></p>
+<p><code class="highlighter-rouge">pwd</code></p>
 
 <h2 id="compare-folders">Compare folders</h2>
-<p><code>diff -q FOLDER_A FOLDER_B | sort</code></p>
+<p><code class="highlighter-rouge"><span class="gh">diff -q FOLDER_A FOLDER_B | sort</span></code></p>
 
 <table>
   <tbody>
     <tr>
-      <td><code>q</code>  </td>
+      <td><code class="highlighter-rouge">q</code>  </td>
       <td>If this isn’t there, it’ll compare each file too</td>
     </tr>
   </tbody>
@@ -233,44 +260,44 @@
 <h1 id="files">Files</h1>
 
 <h2 id="rename-or-move-a-file">Rename or move a file</h2>
-<p><code>mv SOURCE_FILE DESTINATION_FILE_OR_FOLDER</code></p>
+<p><code class="highlighter-rouge">mv SOURCE_FILE DESTINATION_FILE_OR_FOLDER</code></p>
 
 <h2 id="copy-a-file">Copy a file</h2>
-<p><code>cp ORIGINAL_FILE COPY_FILE_NAME</code></p>
+<p><code class="highlighter-rouge">cp ORIGINAL_FILE COPY_FILE_NAME</code></p>
 
 <h2 id="find-a-file-anywhere">Find a file anywhere</h2>
-<p><code>ff FILENAME</code></p>
+<p><code class="highlighter-rouge">ff FILENAME</code></p>
 
 <table>
   <tbody>
     <tr>
-      <td><code>-p</code>  </td>
+      <td><code class="highlighter-rouge">-p</code>  </td>
       <td>search with a prefix instead of a full name</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="find-a-file-in-a-particular-directory-refhttpskbiuedudadmm">Find a file in a particular directory <a href="https://kb.iu.edu/d/admm">ref</a></h2>
-<p><code>find DIRECTORY -name FILENAME_OR_PATTERN</code></p>
+<p><code class="highlighter-rouge">find DIRECTORY -name FILENAME_OR_PATTERN</code></p>
 
 <p>Use a filename for an exact search.<br />
 Use ‘Potato*.png’ to match all .png files starting with ‘Potato’</p>
 
-<p><code>-print</code></p>
+<p><code class="highlighter-rouge">-print</code></p>
 
 <blockquote>
   <p>Displays their paths (not needed on OSX)</p>
 </blockquote>
 
-<p><code>-exec cmd</code></p>
+<p><code class="highlighter-rouge">-exec cmd</code></p>
 
 <blockquote>
   <p>Executes a command on each result.<br />
-Use <code>{}</code> as a placeholder for where the filename goes in the command.<br />
-End the command with <code>\;</code></p>
+Use <code class="highlighter-rouge"><span class="p">{}</span></code> as a placeholder for where the filename goes in the command.<br />
+End the command with <code class="highlighter-rouge">\;</code></p>
 </blockquote>
 
-<p><code>-ok cmd</code></p>
+<p><code class="highlighter-rouge">-ok cmd</code></p>
 
 <blockquote>
   <p>Executes a command, but confirms</p>
@@ -282,7 +309,7 @@ End the command with <code>\;</code></p>
   <table>
     <tbody>
       <tr>
-        <td><code>find . -name '*.mp3' -exec rm {} \;</code></td>
+        <td><code class="highlighter-rouge">find . -name '*.mp3' -exec rm {} \;</code></td>
       </tr>
     </tbody>
   </table>
@@ -291,32 +318,32 @@ End the command with <code>\;</code></p>
 <p>ex. Find a file and check if it contains a string (John)</p>
 
 <blockquote>
-  <p><code>find . -name '*.txt' -exec grep "John" {} \; -print</code></p>
+  <p><code class="highlighter-rouge">find . -name '*.txt' -exec grep "John" {} \; -print</code></p>
 </blockquote>
 
 <h2 id="populate-a-file-with-output">Populate a file with output</h2>
-<p><code>COMMAND &gt; FILENAME</code></p>
+<p><code class="highlighter-rouge">COMMAND &gt; FILENAME</code></p>
 
 <h2 id="append-output-to-the-end-of-a-file">Append output to the end of a file</h2>
-<p><code>COMMAND &gt;&gt; EXISTING_FILE</code></p>
+<p><code class="highlighter-rouge">COMMAND &gt;&gt; EXISTING_FILE</code></p>
 
 <h2 id="send-a-file-into-a-command">Send a file into a command</h2>
-<p><code>COMMAND &lt; FILENAME</code></p>
+<p><code class="highlighter-rouge">COMMAND &lt; FILENAME</code></p>
 
 <h2 id="change-permissions-usually-make-executable">Change permissions (usually, make executable)</h2>
-<p><code>chmod OPTIONS FILENAME</code><br />
+<p><code class="highlighter-rouge">chmod OPTIONS FILENAME</code><br />
 * go look it up</p>
 
 <h1 id="text-files">Text files</h1>
 
 <h2 id="edit-with-vim">Edit with VIM</h2>
-<p><code>vi FILENAME</code></p>
+<p><code class="highlighter-rouge">vi FILENAME</code></p>
 
 <h2 id="edit-with-emacs">Edit with EMACS</h2>
-<p><code>emacs FILENAME</code></p>
+<p><code class="highlighter-rouge">emacs FILENAME</code></p>
 
 <h2 id="view-a-file">View a file</h2>
-<p><code>less FILENAME</code></p>
+<p><code class="highlighter-rouge">less FILENAME</code></p>
 
 <table>
   <tbody>
@@ -329,66 +356,66 @@ End the command with <code>\;</code></p>
       <td>Go to the next page</td>
     </tr>
     <tr>
-      <td><code>q</code></td>
+      <td><code class="highlighter-rouge">q</code></td>
       <td>Quit</td>
     </tr>
     <tr>
-      <td><code>/pattern</code> </td>
+      <td><code class="highlighter-rouge">/pattern</code> </td>
       <td>Search for a pattern</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="view-the-end-of-a-growing-file">View the end of a growing file</h2>
-<p><code>tail -f FILENAME</code></p>
+<p><code class="highlighter-rouge">tail -f FILENAME</code></p>
 
 <h2 id="dump-a-file-to-the-console">Dump a file to the console</h2>
-<p><code>cat FILENAME</code></p>
+<p><code class="highlighter-rouge">cat FILENAME</code></p>
 
 <h2 id="comparing-files-referencehttpwwwcomputerhopecomunixudiffhtm">Comparing files <a href="http://www.computerhope.com/unix/udiff.htm">reference</a></h2>
-<p><code>diff A B</code></p>
+<p><code class="highlighter-rouge"><span class="gh">diff A B</span></code></p>
 
 <table>
   <tbody>
     <tr>
-      <td><code>-b</code>  </td>
+      <td><code class="highlighter-rouge">-b</code>  </td>
       <td>Ignore changes to amount of whitespace</td>
     </tr>
     <tr>
-      <td><code>-w</code></td>
+      <td><code class="highlighter-rouge">-w</code></td>
       <td>Ignore whitespace</td>
     </tr>
     <tr>
-      <td><code>-c</code></td>
+      <td><code class="highlighter-rouge">-c</code></td>
       <td>Show context (3 lines default; can provide # as argument)</td>
     </tr>
     <tr>
-      <td><code>-y</code></td>
+      <td><code class="highlighter-rouge">-y</code></td>
       <td>Show two columns</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="comparing-sorted-files">Comparing sorted files</h2>
-<p><code>comm A B</code><br />
+<p><code class="highlighter-rouge">comm A B</code><br />
 Shows 3 columns: lines only in A, lines only in B, lines in A and B.</p>
 
 <table>
   <tbody>
     <tr>
-      <td><code>-i</code>  </td>
+      <td><code class="highlighter-rouge">-i</code>  </td>
       <td>Case insensitive sorting</td>
     </tr>
     <tr>
-      <td><code>-1</code></td>
+      <td><code class="highlighter-rouge">-1</code></td>
       <td>Supress column 1.</td>
     </tr>
     <tr>
-      <td><code>-2</code></td>
+      <td><code class="highlighter-rouge">-2</code></td>
       <td>Supress column 2.</td>
     </tr>
     <tr>
-      <td><code>-3</code></td>
+      <td><code class="highlighter-rouge">-3</code></td>
       <td>Supress column 3.</td>
     </tr>
   </tbody>
@@ -397,50 +424,101 @@ Shows 3 columns: lines only in A, lines only in B, lines in A and B.</p>
 <p>ex: Show the lines only in B.</p>
 
 <blockquote>
-  <p><code>comm -13 A B</code></p>
+  <p><code class="highlighter-rouge">comm -13 A B</code></p>
 </blockquote>
+
+<h1 id="symlinks">Symlinks</h1>
+
+<h2 id="create-a-symlink">Create a symlink</h2>
+<p><code class="highlighter-rouge">ln -s /path/to/original /path/of/link</code></p>
+
+<h2 id="see-where-a-symlink-goes">See where a symlink goes</h2>
+<p><code class="highlighter-rouge">readlink -f /path/of/link</code></p>
+
+<h2 id="see-which-files-are-actually-symlinks-in-a-folder">See which files are actually symlinks in a folder</h2>
+<p><code class="highlighter-rouge">ls -ln</code></p>
 
 <h1 id="chaining">Chaining</h1>
 
 <h2 id="chaining-commands">Chaining commands</h2>
-<p><code>FIRST_COMMAND | SECOND_COMMAND</code></p>
+<p><code class="highlighter-rouge">FIRST_COMMAND | SECOND_COMMAND</code></p>
 
 <h2 id="dumping-a-file-into-a-command">Dumping a file into a command</h2>
-<p><code>cat FILENAME &gt; COMMAND</code></p>
+<p><code class="highlighter-rouge">cat FILENAME &gt; COMMAND</code></p>
 
 <h2 id="use-a-file-as-inputoutput">Use a file as input/output</h2>
-<p><code>COMMAND [OPTIONS &amp; ARGUMENTS] &lt; INPUT_FILE</code></p>
+<p><code class="highlighter-rouge">COMMAND [OPTIONS &amp; ARGUMENTS] &lt; INPUT_FILE</code></p>
 
 <h2 id="variations-more-herehttpsctamueduhelpgeneralunixredirectionhtml">Variations <a href="http://sc.tamu.edu/help/general/unix/redirection.html">more here</a></h2>
 
 <table>
   <tbody>
     <tr>
-      <td><code>&gt;&amp;</code>  </td>
+      <td><code class="highlighter-rouge">&gt;&amp;</code>  </td>
       <td>Includes standard error</td>
     </tr>
     <tr>
-      <td><code>&gt;!</code></td>
+      <td><code class="highlighter-rouge">&gt;!</code></td>
       <td>Overwrites if it exists</td>
     </tr>
   </tbody>
 </table>
 
-<p>Redirect to <code>/dev/null</code> = suppress it</p>
-
-<p><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong><strong>__</strong>_XARGS?</p>
+<p>Redirect to <code class="highlighter-rouge">/dev/null</code> = suppress it</p>
 
 <h1 id="processes">Processes</h1>
 
 <h2 id="show-all-running-processes">show all running processes</h2>
-<p><code>ps</code></p>
+<p><code class="highlighter-rouge">ps</code></p>
 
 <h2 id="show-your-running-processes">show your running processes</h2>
-<p><code>ps -u USERNAME</code></p>
+<p><code class="highlighter-rouge">ps -u USERNAME</code></p>
 
 <h2 id="kill-a-process">kill a process</h2>
-<p><code>kill PROCESS_ID</code><br />
-*use PID from <code>ps</code></p>
+<p><code class="highlighter-rouge">kill PROCESS_ID</code><br />
+*use PID from <code class="highlighter-rouge">ps</code></p>
+
+<h1 id="commands">Commands</h1>
+
+<h2 id="run-in-background-thread">run in background thread</h2>
+<p>Follow the command with a <code class="highlighter-rouge">&amp;</code>, e.g.
+<code class="highlighter-rouge">rm -rf . &amp;</code>
+* note that the process id is returned</p>
+
+<p>run in background, mute STDOUT/STDERR
+<code class="highlighter-rouge">rm -rf &amp;&gt;/dev/null &amp;</code></p>
+
+<h2 id="run-independent-of-logout">run independent of logout</h2>
+<p>Prefix the command with <code class="highlighter-rouge">nohup</code>.<br />
+<code class="highlighter-rouge">nohup rm -rf . &amp;</code></p>
+
+<p>HUP means ‘hangup signal’.<br />
+This is how dependent processes are killed on logout.<br />
+Automatically redirects output to a <code class="highlighter-rouge">nohup.out</code> file.</p>
+
+<h2 id="measure-execution-time">measure execution time</h2>
+<p>Prefix the command with <code class="highlighter-rouge">time</code>, e.g.<br />
+<code class="highlighter-rouge">time grep "asdf" les_mis.txt</code>
+* dumps the total time, user time and system time taken after the command completes.</p>
+
+<p>To get the run time of an ongoing command, you can press CTRL-T during.</p>
+
+<h1 id="terminal--osx">Terminal / OSX</h1>
+
+<h2 id="input-history">input history</h2>
+<p><code class="highlighter-rouge">history N</code><br />
+dump the last N commands typed into the terminal.</p>
+
+<p><code class="highlighter-rouge">ctrl-r</code>
+search backwards in the terminal.<br />
+press again to get the next match.<br />
+arrows to dump the current match into the commandline.</p>
+
+<p><code class="highlighter-rouge">!</code> is history expansion in terminal.<br />
+Escape it with single quotes when you just want a <code class="highlighter-rouge">!</code> character (you can do <code class="highlighter-rouge">"a"'!'"b"</code>).</p>
+
+<h2 id="misc">misc</h2>
+<p>EMACS keystrokes work in terminal. E.g. <code class="highlighter-rouge">ESC-Delete</code> deletes by word.</p>
 
 	</div>
 </div>

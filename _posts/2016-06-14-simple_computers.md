@@ -1,6 +1,6 @@
 ---
 layout: default_post
-longtitle: "A Metaphor: Simple Computers"
+longtitle: "metaphor #1 simple computers"
 title: "simple computers"
 
 categories:
@@ -9,12 +9,10 @@ categories:
 
 
 Someone once asked me to explain how a computer works as non-technically as possible.  
+  
 So, let's say that the CPU is a chef... 
 
-
-<!---
-<!–end_preview–>
--->
+<!--more-->
 
 In the same way that a CPU can run a program, a chef follows a recipe.  
 

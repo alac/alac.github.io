@@ -15,7 +15,7 @@
 					</span>
 				</a>
 				<span class='headerbarMenu'>
-					notes | code | ego
+					notes/realizations re:code
 				</span>
 			</div>
 			<div class='subcontainer'>
@@ -24,6 +24,14 @@
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
 							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
@@ -36,10 +44,6 @@
 					
 			  			<div class="menuCategoryPost">
 					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
 						</div>
 					
 					</div>
@@ -52,6 +56,14 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
 					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
 						</div>
 					
@@ -63,17 +75,13 @@
 					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
 						</div>
 					
-			  			<div class="menuCategoryPost">
-					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
-						</div>
-					
 					</div>
 					<br>
 <!-- 					display all posts by categories                           -->
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="tools">tools</a>
+							<a name="Tools">Tools</a>
 						</div>
 
 						
@@ -99,7 +107,7 @@
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="objective-c">objective-c</a>
+							<a name="Objective-C">Objective-C</a>
 						</div>
 
 						
@@ -107,6 +115,12 @@
 						  								  		
 						  	
 						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/objective-c/2016/06/28/simple_arc.html">* simple automatic reference counting</a>
+									</div>
+						  								  		
 						  	
 						  		
 						  			<div class="menuCategoryPost">
@@ -119,7 +133,7 @@
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="unix">unix</a>
+							<a name="Unix">Unix</a>
 						</div>
 
 						
@@ -130,7 +144,27 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
-							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: commands</a>
+							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: getting around</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Metaphors">Metaphors</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/metaphors/2016/06/14/simple_computers.html">* simple computers</a>
 									</div>
 						  								  		
 						  	
@@ -146,7 +180,7 @@
 	</h1>
 	</div>
 	<div class='postBody'>
-	23 May 2015 | tools
+	23 May 2015 | Tools
 	<p><img src="/assets/posts/git/git-meme.jpg" alt="Git Meme" title="Force pushing is for jedi" class="center-image" /></p>
 
 <p>In this post:</p>
@@ -157,9 +191,7 @@
   <li>Super Useful Command-Line Commands!</li>
 </ul>
 
-<!---
-<!–end_preview–>
--->
+<!--more-->
 
 <h2 id="what-is-source-control">What is source control?</h2>
 <p>Think back to high school. Your essay is 10.5 pages instead of 11, so you thesaurous <em>real hard</em>. In the sobering morning light, you realize it was a mistake and hold down CTRL-Z.</p>
@@ -218,57 +250,77 @@
 
 <ul>
   <li>
-    <p><code>git checkout -- filename</code>.</p>
+    <p><code class="highlighter-rouge">git checkout -- filename</code>.</p>
 
     <p>Undo changes for a particular file.</p>
   </li>
   <li>
-    <p><code>git reset HEAD filename</code>.</p>
+    <p><code class="highlighter-rouge">git reset HEAD filename</code>.</p>
 
     <p>Unstage changes for a particular file.</p>
   </li>
   <li>
-    <p><code>git add -A</code>.</p>
+    <p><code class="highlighter-rouge">git add -A</code>.</p>
 
     <p>Stage all changes to the current repo. Suppose you ran a script that modified or deleted hundreds of files in the repo.</p>
   </li>
   <li>
-    <p><code>git clean -fd</code>.</p>
+    <p><code class="highlighter-rouge">git clean -fd</code>.</p>
 
     <p>Delete all files in your repo that are not already a part of your repo or staged.</p>
   </li>
   <li>
-    <p><code>git reset --hard head</code>.</p>
+    <p><code class="highlighter-rouge">git reset --hard head</code>.</p>
 
     <p>Undo all unstaged changes to files that are a part of your repo.</p>
   </li>
   <li>
-    <p><code>git submodule foreach --recursive git reset --hard</code>.</p>
+    <p><code class="highlighter-rouge">git submodule foreach --recursive git reset --hard</code>.</p>
 
     <p>The above, but recursive. useful for reverting overly agressive changes (e.g. find and replace).</p>
   </li>
   <li>
-    <p><code>git rebase -i refA</code>. Rebase on top of a branch interactively. Use this to combine, throw out or rename commits.</p>
+    <p><code class="highlighter-rouge">git rebase -i refA</code>. Rebase on top of a branch interactively. Use this to combine, throw out or rename commits. For each commit, your options are r (rename), e (edit; pause the rebase after applying that commit, so that you can edit it there), p (pick), and s (squash; combine with the previous commit). <a href="https://github.com/chadburrus/gitbook/blob/06ec1a6450ae86d5cb0d2392f43ed42a2d9914de/text/14_Interactive_Rebasing/0_%20Interactive_Rebasing.markdown">Better description</a>.</p>
   </li>
   <li>
-    <p><code>git reflog</code>.</p>
+    <p><code class="highlighter-rouge">git reflog</code>.</p>
 
     <p>Shows the history of changes. Useful when, say, you accidentally delete a branch.</p>
   </li>
   <li>
-    <p><code>git log refA...refB</code>.</p>
+    <p><code class="highlighter-rouge">git log refA...refB</code>.</p>
 
-    <p>Show the log of differences between two branches.</p>
+    <p>Show the log of differences commits in refB but not refA.</p>
   </li>
   <li>
-    <p><code>git log --pretty=format:"%h - %an : %s"</code>.</p>
+    <p><code class="highlighter-rouge">git log refA...refB</code>.</p>
+
+    <p>Show the log of differences between two branches (symmetric distance).</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">git rev-list refA..refB | xargs -n 1 git show --quiet --format=oneline -n 1 &gt; changes.txt </code></p>
+
+    <p>Dump the commits and commit messages that are in refB but not refA.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">git log --pretty=format:"%h - %an : %s"</code>.</p>
 
     <p>Show an abbreviated log. More options <a href="http://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History">here</a>.</p>
   </li>
   <li>
-    <p><code>git grep STRING</code>.</p>
+    <p><code class="highlighter-rouge">git grep STRING</code>.</p>
 
-    <p>Search all indexed files for STRING. Lifesaver if regular <code>grep</code> gives you unwanted results from gitignored filed.</p>
+    <p>Search all indexed files for STRING. Lifesaver if regular <code class="highlighter-rouge">grep</code> gives you unwanted results from gitignored files.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">git mergebase A B</code>.</p>
+
+    <p>Get the common ancestor of commits A and B.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">git --no-pager diff --name-only A $(git merge-base A B)</code>.</p>
+
+    <p>Get the names of files that changed between commits A and B.</p>
   </li>
 </ul>
 
@@ -279,16 +331,18 @@
   <li>
     <p><a href="https://git-scm.com/blog/2010/03/08/rerere.html">Rerere: “reuse recorded resolution”</a>. That is, automatic handling of repeated conflicts.</p>
 
-    <p>By turning rerere on with <code>git config --global rerere.enabled true</code>, git can remember every resolution to a merge conflict and recycle it. Useful for long rebases.</p>
+    <p>By turning rerere on with <code class="highlighter-rouge">git config --global rerere.enabled true</code>, git can remember every resolution to a merge conflict and recycle it. Useful for long rebases.</p>
 
-    <p>If you end up screwing up a resolution, forget it with <code>git rerere forget FILE</code> and checkout the conflicted version again <code>git checkout -m FILE</code>.</p>
+    <p>If you end up screwing up a resolution, forget it with <code class="highlighter-rouge">git rerere forget FILE</code> and checkout the conflicted version again <code class="highlighter-rouge">git checkout -m FILE</code>.</p>
+
+    <p>If you screw up <em>many</em> files, you can nuke all resolutions with <code class="highlighter-rouge">rm -rf .git/rr-cache</code>.</p>
   </li>
   <li>
     <p>Always rebase when pulling.</p>
 
-    <p>Use <code>git config branch.autosetuprebase always</code> to rebase when pulling. Useful if you work… with others. Although, you may as well make a bash profile shortcut for pulling that includes the <code>--rebase</code> flag.</p>
+    <p>Use <code class="highlighter-rouge">git config branch.autosetuprebase always</code> to rebase when pulling. Useful if you work… with others. Although, you may as well make a bash profile shortcut for pulling that includes the <code class="highlighter-rouge">--rebase</code> flag.</p>
 
-    <p>You can add <code>--global</code> to apply to all repos.</p>
+    <p>You can add <code class="highlighter-rouge">--global</code> to apply to all repos.</p>
   </li>
 </ul>
 
@@ -297,39 +351,44 @@
 <h2 id="bisect-to-find-breaking-changes">Bisect To Find Breaking Changes</h2>
 <p>Suppose you have a bug and can’t determine the cause by inspecting the current codebase. Use a bisect to bruteforce your way to the code change that caused it.</p>
 
-<pre><code>git bisect start
+<div class="highlighter-rouge"><pre class="highlight"><code>git bisect start
 git bisect bad KNOWN_BAD_COMMIT
 git bisect good KNOWN_GOOD_COMMIT
 </code></pre>
+</div>
 
 <p>Git check out commits for you. You’ll test each one, then tell git if the code was broken or not:</p>
 
-<pre><code>git bisect good # that commit wasn't broken
+<div class="highlighter-rouge"><pre class="highlight"><code>git bisect good # that commit wasn't broken
 git bisect bad # that commit was broken
 </code></pre>
+</div>
 
 <p>Then at the end (or when you’ve decided to give up), run reset:</p>
 
-<pre><code>git bisect reset
+<div class="highlighter-rouge"><pre class="highlight"><code>git bisect reset
 </code></pre>
+</div>
 
 <p>Examples of other options (and automated testing) <a href="https://git-scm.com/docs/git-bisect">here</a></p>
 
 <h2 id="handling-multiple-github-accounts">Handling Multiple Github Accounts</h2>
-<p>An advanced topic and probably not an issue for most people.</p>
+<p>Having multiple githubs accounts is actually just something you shouldn’t do, but if you’re already there…</p>
 
-<p>Basically, you shouldn’t authenticate to multiple github accounts with the same ssh key. So, you’ll need to switch between ssh keys whenever you switch accounts. You’ll run three commands:</p>
+<p>You can’t authenticate to multiple github accounts with the same ssh key. So, you’ll need to switch between ssh keys whenever you switch accounts. You’ll run three commands:</p>
 
-<pre><code>ssh-agent # start the ssh agent
+<div class="highlighter-rouge"><pre class="highlight"><code>ssh-agent # start the ssh agent
 ssh-add -d # remove the current identity
 ssh-add ~.ssh/id_rsa_XYZ # add the new identity
 </code></pre>
+</div>
 
 <p>I recommend adding a macro for this. I use this</p>
 
-<pre><code>alias sshwork="ssh-agent; ssh-add -d; 
+<div class="highlighter-rouge"><pre class="highlight"><code>alias sshwork="ssh-agent; ssh-add -d; 
 ssh-add ~.ssh/id_rsawork"
 </code></pre>
+</div>
 
 <p>A gist on the topic <a href="https://gist.github.com/jexchan/2351996">here</a>.</p>
 
@@ -340,26 +399,55 @@ ssh-add ~.ssh/id_rsawork"
   <li>
     <p>Jumping to the root directories of you repos / submodules.</p>
 
-    <p>E.g. adding <code>alias blog="cd ~/repos/blog"</code></p>
+    <p>E.g. adding <code class="highlighter-rouge">alias blog="cd ~/repos/blog"</code></p>
   </li>
   <li>
     <p>Common general operations like pull, rebase, commit.</p>
 
-    <p><code>alias gst="git status"</code>
- <code>alias gpr="git pull --rebase"</code>
- <code>alias gac="git add -A; git commit"</code></p>
+    <p><code class="highlighter-rouge">alias gst="git status"</code>
+ <code class="highlighter-rouge">alias gpr="git pull --rebase"</code>
+ <code class="highlighter-rouge">alias gac="git add -A; git commit"</code></p>
   </li>
   <li>
     <p>Switching to popular branches, tags.</p>
 
-    <p><code>alias glatest='git checkout master; git pull --rebase origin master'</code></p>
+    <p><code class="highlighter-rouge">alias glatest='git checkout master; git pull --rebase origin master; git submodule update --recursive --init'</code></p>
   </li>
   <li>
     <p>Nuking everything!</p>
 
-    <p><code>alias nuke="git clean -fd; git reset --hard head; git submodule foreach --recursive git reset --hard"</code></p>
+    <p><code class="highlighter-rouge">alias nuke="git clean -fd; git reset --hard head; git submodule foreach --recursive git reset --hard"</code></p>
+  </li>
+  <li>
+    <p>Get commits from all submodule</p>
+
+    <p><code class="highlighter-rouge">alias commits="git rev-parse HEAD; git submodule foreach --recursive git rev-parse HEAD"</code></p>
+  </li>
+  <li>
+    <p>Similarly, it’s not unreasonable to have <code class="highlighter-rouge">bulk commands</code> defined as functions: deepCommit, deepBranch,</p>
   </li>
 </ul>
+
+<h2 id="patches">Patches</h2>
+<p>Suppose that you need to store off some commits outside of your repo. For example, debug changes.</p>
+
+<p>You can do this by generating a <em>patch</em> file.</p>
+
+<p>For a patch for each commit since a hash:<br />
+<code class="highlighter-rouge">git format-patch HASH</code></p>
+
+<p>You can specify a number of commits from that patch. E.g.<br />
+<code class="highlighter-rouge">git format-patch -1 HASH</code>
+Gives you patch for the exact hash.</p>
+
+<p>For a patch that spans many commits…
+<code class="highlighter-rouge">git format-patch -2 HASH --stdout &gt; hash_and_previous_commit.patch</code></p>
+
+<p>To apply a patch<br />
+<code class="highlighter-rouge">git apply PATCH_PATH</code></p>
+
+<p>For merge conflict instead of straight rejection<br />
+<code class="highlighter-rouge">git apply -3 PATCH_PATH</code></p>
 
 <h2 id="appendix">Appendix</h2>
 <p>Some other stuff that may be useful:</p>

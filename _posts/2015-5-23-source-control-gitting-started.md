@@ -15,10 +15,7 @@ In this post:
 * Tools for Git
 * Super Useful Command-Line Commands!
 
-<!---
-<!–end_preview–>
--->
-
+<!--more-->
 
 What is source control?
 -----------
@@ -121,7 +118,7 @@ Many of these you may want to ALIAS into a macro in your bash_profile / zshrc. I
 
 * `git grep STRING`.
 
-   Search all indexed files for STRING. Lifesaver if regular `grep` gives you unwanted results from gitignored filed.
+   Search all indexed files for STRING. Lifesaver if regular `grep` gives you unwanted results from gitignored files.
 
 * `git mergebase A B`.  
 
@@ -218,7 +215,7 @@ If you're using git right, you're necessarily using git _a lot_. It would be wis
 
     `alias commits="git rev-parse HEAD; git submodule foreach --recursive git rev-parse HEAD"` 
 
-* Bulk submodule interactions...
+* Similarly, it's not unreasonable to have `bulk commands` defined as functions: deepCommit, deepBranch,
 
 
 Patches

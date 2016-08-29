@@ -15,7 +15,7 @@
 					</span>
 				</a>
 				<span class='headerbarMenu'>
-					notes | code | ego
+					notes/realizations re:code
 				</span>
 			</div>
 			<div class='subcontainer'>
@@ -24,6 +24,14 @@
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
 							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
@@ -36,10 +44,6 @@
 					
 			  			<div class="menuCategoryPost">
 					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
 						</div>
 					
 					</div>
@@ -52,6 +56,14 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
 					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
 						</div>
 					
@@ -63,17 +75,13 @@
 					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
 						</div>
 					
-			  			<div class="menuCategoryPost">
-					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
-						</div>
-					
 					</div>
 					<br>
 <!-- 					display all posts by categories                           -->
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="tools">tools</a>
+							<a name="Tools">Tools</a>
 						</div>
 
 						
@@ -99,7 +107,7 @@
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="objective-c">objective-c</a>
+							<a name="Objective-C">Objective-C</a>
 						</div>
 
 						
@@ -107,6 +115,12 @@
 						  								  		
 						  	
 						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/objective-c/2016/06/28/simple_arc.html">* simple automatic reference counting</a>
+									</div>
+						  								  		
 						  	
 						  		
 						  			<div class="menuCategoryPost">
@@ -119,7 +133,7 @@
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="unix">unix</a>
+							<a name="Unix">Unix</a>
 						</div>
 
 						
@@ -130,7 +144,27 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
-							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: commands</a>
+							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: getting around</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Metaphors">Metaphors</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/metaphors/2016/06/14/simple_computers.html">* simple computers</a>
 									</div>
 						  								  		
 						  	
@@ -146,20 +180,18 @@
 	</h1>
 	</div>
 	<div class='postBody'>
-	25 Apr 2016 | tools
+	25 Apr 2016 | Tools
 	<p>There’s a saying:<br />
 “Trying to solve a problem with regexes? Now, you have two problems.”</p>
 
 <p>Complex expressions that are nearly impossible to validate.</p>
 
 <p><em>Regular Expressions</em> are a great tool for searching and manipulating text.<br />
-The standard from unix tools like <code>grep</code>, <code>find</code>, and <code>sed</code> to Excel.</p>
+The standard from unix tools like <code class="highlighter-rouge">grep</code>, <code class="highlighter-rouge">find</code>, and <code class="highlighter-rouge">sed</code> to Excel.</p>
 
 <p>So, let’s get finding.</p>
 
-<!---
-<!–end_preview–>
--->
+<!--more-->
 
 <h2 id="what-is-a-regex">What Is A Regex</h2>
 <p>Regular expressions are a pretty natural concept.</p>
@@ -170,63 +202,65 @@ The standard from unix tools like <code>grep</code>, <code>find</code>, and <cod
 
 <p>How would you generalize that to make that type of search easier in the future?</p>
 
-<p>You’d probably allow for specifying 0 or 1 <code>u</code>’s like this:<br />
-<code>"colou?r"</code></p>
+<p>You’d probably allow for specifying 0 or 1 <code class="highlighter-rouge">u</code>’s like this:<br />
+<code class="highlighter-rouge">"colou?r"</code></p>
 
 <h2 id="metacharacters">Metacharacters</h2>
-<p>With regexes, we give special meaning to certain characters. In the above example, the <code>?</code> character didn’t search for a question mark, but made the ‘u’ optional.</p>
+<p>With regexes, we give special meaning to certain characters. In the above example, the <code class="highlighter-rouge">?</code> character didn’t search for a question mark, but made the ‘u’ optional.</p>
 
 <p>Note that metacharacters aren’t completely standardized between regex implementations.</p>
 
 <h2 id="grep--egrep">GREP &amp; EGREP</h2>
 <p>grep is the <em>commonest</em> use case for regexes, so take note:<br />
-<strong>without the <code>-E</code> flag, some metacharacters need to be prefixed with <code>\</code>.</strong></p>
+<strong>without the <code class="highlighter-rouge">-E</code> flag, some metacharacters need to be prefixed with <code class="highlighter-rouge">\</code>.</strong></p>
 
-<p>e.g. <code>"colou?r" becomes "colou\?r"</code> and would be used as<br />
-  <code>grep "colou\?r" FILENAME</code></p>
+<p>e.g. <code class="highlighter-rouge">"colou?r" becomes "colou\?r"</code> and would be used as<br />
+  <code class="highlighter-rouge">grep "colou\?r" FILENAME</code></p>
 
 <p>By default, grep uses <strong>BRE</strong> (Basic Regular Expressions).<br />
 The <strong>-E</strong> flag switches to <strong>ERE</strong> (Extended Regular Expressions).</p>
 
-<p>In <strong>ERE</strong>, <code>\</code> will match a literal \ character.<br />
-e.g. <code>"colou\?r"</code> would match ‘colou\r’ (i.e. it would be wrong).</p>
+<p>In <strong>ERE</strong>, <code class="highlighter-rouge">\</code> will match a literal \ character.<br />
+e.g. <code class="highlighter-rouge">"colou\?r"</code> would match ‘colou\r’ (i.e. it would be wrong).</p>
 
-<p>Using <code>egrep</code> is equivalent to including the <strong>-E</strong>, so the following are equivalent:<br />
-  <code>grep "colou\?r" FILENAME</code><br />
-  <code>grep -E "colou?r" FILENAME</code><br />
-  <code>egrep "colou?r" FILENAME</code></p>
+<p>Using <code class="highlighter-rouge">egrep</code> is equivalent to including the <strong>-E</strong>, so the following are equivalent:<br />
+  <code class="highlighter-rouge">grep "colou\?r" FILENAME</code><br />
+  <code class="highlighter-rouge">grep -E "colou?r" FILENAME</code><br />
+  <code class="highlighter-rouge">egrep "colou?r" FILENAME</code></p>
+
+<p>Topics that only apply to <code class="highlighter-rouge">egrep</code> will have a *.</p>
 
 <h2 id="positional-metacharacters">Positional Metacharacters</h2>
-<p><code>^</code> = beginning of the line/string<br />
-<code>$</code> = end of the line/string<br />
-<code>\b</code> = start or end of a word<br />
-<code>\B</code> = middle of a word<br />
-<code>\&lt;</code> = start of a word<br />
-<code>\&gt;</code> = end of a word</p>
+<p><code class="highlighter-rouge">^</code> = beginning of the line/string<br />
+<code class="highlighter-rouge">$</code> = end of the line/string<br />
+<code class="highlighter-rouge">\b</code> = start or end of a word<br />
+<code class="highlighter-rouge">\B</code> = middle of a word<br />
+<code class="highlighter-rouge">\&lt;</code> = start of a word<br />
+<code class="highlighter-rouge">\&gt;</code> = end of a word</p>
 
-<p>Example: Matching against “<code>I'm the real shady.</code>”  
+<p>Example: Matching against “<code class="highlighter-rouge">I'm the real shady.</code>”  
 <img src="/assets/posts/regex/regex_positional.png" alt="Example" /></p>
 
 <h2 id="amount-metacharacters">Amount Metacharacters</h2>
 <p>Amount specifiers match modify the preceding character <em>or parenthesized unit</em>.</p>
 
-<p><code>?</code> = 0 or 1 times<br />
-<code>+</code> = 1 or more times 
-<code>*</code> = any number of times (including 0)<br />
-<code>{AMOUNT}</code> = exactly AMOUNT times<br />
-<code>{MIN, MAX}</code> = any time of times from MIN to MAX (inclusive)<br />
-<code>{MIN, }</code> = at least MIN times</p>
+<p><code class="highlighter-rouge">?</code> = 0 or 1 times (egrep only)<br />
+<code class="highlighter-rouge">+</code> = 1 or more times 
+<code class="highlighter-rouge">*</code> = any number of times (including 0)<br />
+<code class="highlighter-rouge"><span class="p">{</span><span class="err">AMOUNT</span><span class="p">}</span></code> = exactly AMOUNT times<br />
+<code class="highlighter-rouge"><span class="p">{</span><span class="err">MIN,</span><span class="w"> </span><span class="err">MAX</span><span class="p">}</span></code> = any time of times from MIN to MAX (inclusive)<br />
+<code class="highlighter-rouge"><span class="p">{</span><span class="err">MIN,</span><span class="w"> </span><span class="p">}</span></code> = at least MIN times</p>
 
 <p>Example:<br />
 <img src="/assets/posts/regex/regex_amount.png" alt="Example" /></p>
 
 <p>Subtle notes…<br />
-1. The <code>"p*"</code> example matches everything because there’s <em>at least 0 p’s in everything</em>.<br />
-2. The <code>e{1}</code> example matches both e’s in the second line <em>independently</em>.</p>
+1. The <code class="highlighter-rouge">"p*"</code> example matches everything because there’s <em>at least 0 p’s in everything</em>.<br />
+2. The <code class="highlighter-rouge">e{1}</code> example matches both e’s in the second line <em>independently</em>.</p>
 
 <h2 id="character-classes">Character Classes</h2>
-<p>Now, what if we have a “or” situation. Say, you know you often mispell <code>catagory</code> as <code>category</code>.<br />
-We would use this <code>"cat[ae]gory"</code>.</p>
+<p>Now, what if we have a “or” situation. Say, you know you often mispell <code class="highlighter-rouge">catagory</code> as <code class="highlighter-rouge">category</code>.<br />
+We would use this <code class="highlighter-rouge">"cat[ae]gory"</code>.</p>
 
 <p>Example:<br />
 <img src="/assets/posts/regex/regex_characterClass1.png" alt="Example" /></p>
@@ -234,38 +268,38 @@ We would use this <code>"cat[ae]gory"</code>.</p>
 <p>A <em>character class</em> lets us a single character match against many.</p>
 
 <h2 id="ranges">Ranges</h2>
-<p>Character classes allow us to use a <strong><code>-</code></strong> to denote a range.<br />
-<code>[a-c]</code> = <code>[abc]</code><br />
-<code>[A-D]</code> = <code>[ABCD]</code><br />
-<code>[0-4]</code> = <code>[01234]</code></p>
+<p>Character classes allow us to use a <strong><code class="highlighter-rouge">-</code></strong> to denote a range.<br />
+<code class="highlighter-rouge">[a-c]</code> = <code class="highlighter-rouge">[abc]</code><br />
+<code class="highlighter-rouge">[A-D]</code> = <code class="highlighter-rouge">[ABCD]</code><br />
+<code class="highlighter-rouge">[0-4]</code> = <code class="highlighter-rouge">[01234]</code></p>
 
 <p>Character classes can mix ranges and individual characters:<br />
-<code>[0-4A-D!]</code> = <code>[01234ABCD!]</code></p>
+<code class="highlighter-rouge">[0-4A-D!]</code> = <code class="highlighter-rouge">[01234ABCD!]</code></p>
 
 <p>Some implementations support…<br />
-1. exclusion (e.g. <code>[A-Z-[AEIOU]]</code> non-vowel captial letters)
+1. exclusion (e.g. <code class="highlighter-rouge">[A-Z-[AEIOU]]</code> non-vowel captial letters)
 2. character class intersection</p>
 
 <h2 id="negation">Negation</h2>
-<p>They also allow us to negate with <strong><code>^</code></strong>.<br />
-<code>[^abc]</code> = match all characters that are not a, b, c.</p>
+<p>They also allow us to negate with <strong><code class="highlighter-rouge">^</code></strong>.<br />
+<code class="highlighter-rouge">[^abc]</code> = match all characters that are not a, b, c.</p>
 
 <p>This only applies if it’s the first character after the bracket!</p>
 
 <h2 id="shorthand">Shorthand</h2>
 <p>Common character classes have special shorthand:<br />
-<code>.</code> = Any character<br />
-<code>\d</code> = <code>[0-9]</code> # digits<br />
-<code>\w</code> = <code>[a-zA-Z0-9_]</code> # alphanumeric &amp; underscore<br />
-<code>\s</code> = <code>[ \r\t\n\f]</code> # whitespace<br />
-<code>\n</code> = <code>[\n]</code> # newline</p>
+<code class="highlighter-rouge">.</code> = Any character<br />
+<code class="highlighter-rouge">\d</code> = <code class="highlighter-rouge">[0-9]</code> # digits<br />
+<code class="highlighter-rouge">\w</code> = <code class="highlighter-rouge">[a-zA-Z0-9_]</code> # alphanumeric &amp; underscore<br />
+<code class="highlighter-rouge">\s</code> = <code class="highlighter-rouge">[ \r\t\n\f]</code> # whitespace<br />
+<code class="highlighter-rouge">\n</code> = <code class="highlighter-rouge">[\n]</code> # newline</p>
 
 <p>And their negations<br />
-<code>\D</code> = <code>[^0-9]</code> # not digits<br />
-<code>\W</code> = <code>[^a-zA-Z0-9_]</code> # not whitespace or underscore<br />
-<code>\S</code> = <code>[^ \r\t\n\f]</code> # not whitespace</p>
+<code class="highlighter-rouge">\D</code> = <code class="highlighter-rouge">[^0-9]</code> # not digits<br />
+<code class="highlighter-rouge">\W</code> = <code class="highlighter-rouge">[^a-zA-Z0-9_]</code> # not whitespace or underscore<br />
+<code class="highlighter-rouge">\S</code> = <code class="highlighter-rouge">[^ \r\t\n\f]</code> # not whitespace</p>
 
-<h2 id="alternation">Alternation</h2>
+<h2 id="alternation">Alternation*</h2>
 <p>A fancy word for ‘or’, alternation allows you to match between two <em>alternatives</em> with a |.</p>
 
 <p>Ex. The following match against weekdays:<br />
@@ -274,35 +308,54 @@ We would use this <code>"cat[ae]gory"</code>.</p>
 
 <h2 id="escaping">Escaping</h2>
 <p>Characters that need to be escaped to be used not as metacharacters are:<br />
-<code>\</code>, <code>^</code>, <code>$</code>, <code>.</code>, <code>*</code>, <code>[</code>, <code>]</code></p>
+<code class="highlighter-rouge">\</code>, <code class="highlighter-rouge">^</code>, <code class="highlighter-rouge">$</code>, <code class="highlighter-rouge">.</code>, <code class="highlighter-rouge">*</code>, <code class="highlighter-rouge">[</code>, <code class="highlighter-rouge">]</code></p>
 
 <p>Ex.<br />
-The pattern <code>folder\\file</code> would match <code>folder\file</code><br />
-The pattern <code>taytay\.mp3</code> would match <code>taytay.mp3</code></p>
+The pattern <code class="highlighter-rouge">folder\\file</code> would match <code class="highlighter-rouge">folder\file</code><br />
+The pattern <code class="highlighter-rouge">taytay\.mp3</code> would match <code class="highlighter-rouge">taytay.mp3</code></p>
 
-<p>the faq
-http://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean/22944075#22944075</p>
+<h2 id="capturing-groups">‘Capturing’ Groups*</h2>
+<p>Suppose you had a list of filenames and wanted to separate out the name from the extension.</p>
 
-<p>GROUPS AND RECALL</p>
+<p>You could write a hand-parser or just do something like:<br />
+<code class="highlighter-rouge">(.*)\.(.{1,})</code></p>
 
-<p>Non-capturing groups
-http://stackoverflow.com/questions/3512471/what-is-a-non-capturing-group</p>
+<p>And dump them like:<br />
+<code class="highlighter-rouge">file: \1, ext: \2</code></p>
 
-<p>LAZY VS GREEDY?
-https://msdn.microsoft.com/en-us/library/3206d374(v=vs.110).aspx</p>
+<p><em>Capturing groups</em> allow saving off parts of a regular expression.</p>
 
-<p>WHAT IS EGREP ONLY
-http://www.wellho.net/regex/grep.html</p>
+<p>Group <code class="highlighter-rouge">\0</code> usually refers to the entire expression, while <code class="highlighter-rouge">\1</code> through <code class="highlighter-rouge">\9</code> are for any parenthesized parts.</p>
 
-<p>PRECENDENCE
-http://stackoverflow.com/questions/22542834/how-to-use-regular-expressions-regex-in-microsoft-excel-both-in-cell-and-loops</p>
+<p>If you’re using a parenthesis for <em>alternation</em>, you can opt out of that being a capturing group by turning the <code class="highlighter-rouge">(</code> into <code class="highlighter-rouge">(?:</code> <a href="http://stackoverflow.com/questions/3512471/what-is-a-non-capturing-group">reference</a>.</p>
 
-<p>unicode character classes</p>
+<p>You can nest capturing groups. The indexes are always based on left to right ordering.</p>
 
-<p>EGREP</p>
+<h2 id="greping-harder">Greping Harder</h2>
+<p>Basic grepping…
+<code class="highlighter-rouge">grep PATTERN FILE</code>
+* show matches to the regex PATTERN in FILE</p>
 
-<p>COMMAND LINE ARGUMENTS
-    “-i” the regex searched will be case insensitive.</p>
+<p>Specifying context
+<code class="highlighter-rouge">grep -C 3 PATTERN FILE</code>
+* show 3 lines before and after each match</p>
+
+<p><code class="highlighter-rouge">grep -B 3 PATTERN FILE</code>
+* show 3 lines before each match</p>
+
+<p><code class="highlighter-rouge">grep -A 3 PATTERN FILE</code>
+* show 3 lines after each match</p>
+
+<h2 id="further-reference">Further Reference</h2>
+<p>For the most concise cheatsheet ever, <a href="http://stackoverflow.com/questions/22542834/how-to-use-regular-expressions-regex-in-microsoft-excel-both-in-cell-and-loops">a Stack Overflow answer on Regex in Excel</a></p>
+
+<p>For more on _any of these topics, <a href="http://stackoverflow.com/questions/22937618/reference-what-does-this-regex-mean/22944075#22944075">The Stack Overflow Regex FAQ</a>.</p>
+
+<p>For interactive exercises, <a href="http://regexone.com/">RegexOne</a>. Try not to cheese them with <code class="highlighter-rouge">.*</code>.</p>
+
+<p>For an explanation of greedy vs lazy that I couldn’t simplify, <a href="https://msdn.microsoft.com/en-us/library/3206d374(v=vs.110).aspx">MSDN Regex Quantifiers</a></p>
+
+<p>Unicode is also too hard to cover, but <a href="http://www.regular-expressions.info/unicode.html">character classes for code point ranges are a thing</a></p>
 
 	</div>
 </div>

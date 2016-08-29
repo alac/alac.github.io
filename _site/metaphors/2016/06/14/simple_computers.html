@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
- 	<title>  aimless bitshift</title>
+ 	<title>  simple computers |  aimless bitshift</title>
  		<link rel='stylesheet' type='text/css' href='/assets/wvs.css'>
  		<link rel='stylesheet' type='text/css' href='/assets/normalize.css' />
 	</head>
@@ -173,122 +173,46 @@
 	
 				</div>
 				<div class='content'>
-				  <!-- This loops through the paginated posts -->
-
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/objective-c/2016/06/28/simple_arc.html">metaphor #2 simple automatic reference counting</a></h1>
-    </div>
-    <div class='postBody'>
-      28 Jun 2016 | Objective-C
-      <p>Memory management is an interesting topic because there’s two major ways of thinking about it: garbage collection and malloc/free.</p>
-
-<p>Garbage collection is a really intuitive concept, and yet malloc/free is what is “natural”. It’s what mirrors the literal behavior of the compiler closest.</p>
-
-<p>Objective C’s ARC starts from a malloc/free type system (retain counts) and attempts to emulate garbage collection.</p>
-
-<p>And it gets weird because it isn’t garbage collection.</p>
-
-<p>Here’s what it is instead.</p>
-
-
-      <p><a href="/objective-c/2016/06/28/simple_arc.html" role="button">More...</a></p>
-	  </div>
-  </div>
-
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/metaphors/2016/06/14/simple_computers.html">metaphor #1 simple computers</a></h1>
-    </div>
-    <div class='postBody'>
-      14 Jun 2016 | Metaphors
-      <p>Someone once asked me to explain how a computer works as non-technically as possible.</p>
+				  <div class='post depthOneContent'>
+	<div class='postHeader'>
+	<h1>
+		metaphor #1 simple computers
+	</h1>
+	</div>
+	<div class='postBody'>
+	14 Jun 2016 | Metaphors
+	<p>Someone once asked me to explain how a computer works as non-technically as possible.</p>
 
 <p>So, let’s say that the CPU is a chef…</p>
 
+<!--more-->
 
-      <p><a href="/metaphors/2016/06/14/simple_computers.html" role="button">More...</a></p>
-	  </div>
-  </div>
+<p>In the same way that a CPU can run a program, a chef follows a recipe.</p>
 
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/tools/2016/04/25/regular_expressions.html">tools: regexes</a></h1>
-    </div>
-    <div class='postBody'>
-      25 Apr 2016 | Tools
-      <p>There’s a saying:<br />
-“Trying to solve a problem with regexes? Now, you have two problems.”</p>
+<p>A recipe is a list of instructions for how to do something; which is all a program is anyways.</p>
 
-<p>Complex expressions that are nearly impossible to validate.</p>
+<p>And lets suppose that this chef is incapable of remembering things, so he’ll cross off things to keep track of what he’s done. For a Computers, this is called a PC (program counter); it’s basically a bookmark that points to where the program currently is.</p>
 
-<p><em>Regular Expressions</em> are a great tool for searching and manipulating text.<br />
-The standard from unix tools like <code class="highlighter-rouge">grep</code>, <code class="highlighter-rouge">find</code>, and <code class="highlighter-rouge">sed</code> to Excel.</p>
+<p>Now, recipes often have a lot of ingredients and, correspondingly, a lot of bowls. The bowls hold food in all sorts of states - they can be chopped, sauted, whatever - but always with the intention of coming back to it later. CPU’s have bowls as well, except they’re called registers.</p>
 
-<p>So, let’s get finding.</p>
+<p>So, the average instruction might be something like <code class="highlighter-rouge">chop whatever is in bowl 1</code> or <code class="highlighter-rouge">combine bowls 1 and 2, then dump it into bowl 3</code>. For a CPU, the instruction might be more like <code class="highlighter-rouge">copy</code>, <code class="highlighter-rouge">add</code>, etc; but it’s about the same.</p>
 
+<p>We’ve established what a chef does with food and how he knows to do so. Where does he get the ingredients?</p>
 
-      <p><a href="/tools/2016/04/25/regular_expressions.html" role="button">More...</a></p>
-	  </div>
-  </div>
+<p>Here it gets weird. So, he has a fridge that’s nearby. Then a bunch of fridges that are further away. Then finally a supermarket, which is … really far away. That is, there’s a chain of places he can get food from fridge, further fridges, and finally the supermarket. Each one takes more time to get to, but has much more stuff.</p>
 
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/unix/2016/04/12/p1_unix_in_short.html">unix part 1: in short</a></h1>
-    </div>
-    <div class='postBody'>
-      12 Apr 2016 | Unix
-      <p>Unix is a cool guy. You should be friends with him. Here are things he can help you with.</p>
+<p>This is analogous to how memory works in a computer:<br />
+register (tiny, but instant)<br />
+L1 cache (very small, very very fast)<br />
+L2 cache (bigger, but still very small and fast)<br />
+RAM (much bigger, kinda slow)<br />
+HARD DISK (insanely big, insanely slow)</p>
 
+<p>The last thing is: where does the food go? Well, anywhere. But in a computer, it can go to any <code class="highlighter-rouge">output device</code>: screen, speaker, back to the hard disk, the internet, etc.</p>
 
-      <p><a href="/unix/2016/04/12/p1_unix_in_short.html" role="button">More...</a></p>
-	  </div>
-  </div>
+<p>And now you know (a metaphor for) how a computer works.</p>
 
-	<div class='post depthOneContent'>
-    <div class='postHeader'>
-      <h1><a href="/objective-c/2016/04/04/objective_c_patterns.html">objective-c: interaction patterns</a></h1>
-    </div>
-    <div class='postBody'>
-      04 Apr 2016 | Objective-C
-      <div class="highlighter-rouge"><pre class="highlight"><code>         ^
-         | D
-Verbose  |
-         |       N
-         |       
-         |                  B
-         |                              K
-         -------------------------------------&gt;
-                   Subtle
-
-D = Delegate patterns
-B = Block patterns
-N = Notifications
-K = Key Value Observation
-</code></pre>
-</div>
-
-<p>There are 4 common communciation patterns in Objective-C.</p>
-
-<p>Ever wonder how they can be <em>misused</em>?</p>
-
-<p>You can find real explanations of what they are in <a href="http://nshipster.com/key-value-observing/">short here</a> and in <a href="https://www.objc.io/issues/7-foundation/communication-patterns/#delegation">long here</a>.</p>
-
-
-      <p><a href="/objective-c/2016/04/04/objective_c_patterns.html" role="button">More...</a></p>
-	  </div>
-  </div>
-
-
-<!-- Pagination links -->
-<div class="pagination">
-  
-    <span class="previous">Previous</span>
-  
-  <span class="page_number ">Page: 1 of 2</span>
-  
-    <a href="/index/page2" class="next">Next</a>
-  
+	</div>
 </div>
 				</div>
 			</div>

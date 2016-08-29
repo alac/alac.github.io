@@ -15,7 +15,7 @@
 					</span>
 				</a>
 				<span class='headerbarMenu'>
-					notes | code | ego
+					notes/realizations re:code
 				</span>
 			</div>
 			<div class='subcontainer'>
@@ -24,6 +24,14 @@
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
 							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
@@ -36,10 +44,6 @@
 					
 			  			<div class="menuCategoryPost">
 					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
 						</div>
 					
 					</div>
@@ -52,6 +56,14 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
 					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
 						</div>
 					
@@ -63,17 +75,13 @@
 					    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* objective-c: interaction patterns</a>
 						</div>
 					
-			  			<div class="menuCategoryPost">
-					    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* tools: git / source control</a>
-						</div>
-					
 					</div>
 					<br>
 <!-- 					display all posts by categories                           -->
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="tools">tools</a>
+							<a name="Tools">Tools</a>
 						</div>
 
 						
@@ -99,7 +107,7 @@
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="objective-c">objective-c</a>
+							<a name="Objective-C">Objective-C</a>
 						</div>
 
 						
@@ -107,6 +115,12 @@
 						  								  		
 						  	
 						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/objective-c/2016/06/28/simple_arc.html">* simple automatic reference counting</a>
+									</div>
+						  								  		
 						  	
 						  		
 						  			<div class="menuCategoryPost">
@@ -119,7 +133,7 @@
 	
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
-							<a name="unix">unix</a>
+							<a name="Unix">Unix</a>
 						</div>
 
 						
@@ -130,7 +144,27 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
-							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: commands</a>
+							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: getting around</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Metaphors">Metaphors</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/metaphors/2016/06/14/simple_computers.html">* simple computers</a>
 									</div>
 						  								  		
 						  	
@@ -146,8 +180,8 @@
 	</h1>
 	</div>
 	<div class='postBody'>
-	04 Apr 2016 | objective-c
-	<pre><code>         ^
+	04 Apr 2016 | Objective-C
+	<div class="highlighter-rouge"><pre class="highlight"><code>         ^
          | D
 Verbose  |
          |       N
@@ -162,6 +196,7 @@ B = Block patterns
 N = Notifications
 K = Key Value Observation
 </code></pre>
+</div>
 
 <p>There are 4 common communciation patterns in Objective-C.</p>
 
@@ -169,9 +204,7 @@ K = Key Value Observation
 
 <p>You can find real explanations of what they are in <a href="http://nshipster.com/key-value-observing/">short here</a> and in <a href="https://www.objc.io/issues/7-foundation/communication-patterns/#delegation">long here</a>.</p>
 
-<!---
-<!–end_preview–>
--->
+<!--more-->
 
 <h2 id="trade-offs">Trade-Offs</h2>
 <p>For any of these patterns, you can expect that they’ll vary in the following ways:</p>
@@ -208,19 +241,19 @@ K = Key Value Observation
 
     <p>Ex: 1</p>
 
-    <p>Suppose you have an object <code>Thing</code> with a property <code>Stuff</code> and that <code>Stuff</code> has a property <code>Junk</code>.</p>
+    <p>Suppose you have an object <code class="highlighter-rouge">Thing</code> with a property <code class="highlighter-rouge">Stuff</code> and that <code class="highlighter-rouge">Stuff</code> has a property <code class="highlighter-rouge">Junk</code>.</p>
 
-    <p>You know that <code>Stuff</code> is readonly, so it’s safe for a consumer of <code>Thing</code> to KVO <code>Stuff</code>’s <code>Junk</code>.</p>
+    <p>You know that <code class="highlighter-rouge">Stuff</code> is readonly, so it’s safe for a consumer of <code class="highlighter-rouge">Thing</code> to KVO <code class="highlighter-rouge">Stuff</code>’s <code class="highlighter-rouge">Junk</code>.</p>
 
-    <p>You commit, then a co-worker decides to make <code>Stuff</code> readwrite. Now your code has <em>subtly</em> broken.</p>
+    <p>You commit, then a co-worker decides to make <code class="highlighter-rouge">Stuff</code> readwrite. Now your code has <em>subtly</em> broken.</p>
 
     <p>Ex: 2</p>
 
-    <p>You’re inserting a new feature into a pre-existing system. There are two relevant pre-existing components <code>A</code> and <code>B</code>.</p>
+    <p>You’re inserting a new feature into a pre-existing system. There are two relevant pre-existing components <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code>.</p>
 
-    <p>You need a callback to occur at a particular time. This happens to be when <code>A</code> and <code>B</code> are in a specific state. You KVO the relevant properties to check the states of <code>A</code> and <code>B</code>.</p>
+    <p>You need a callback to occur at a particular time. This happens to be when <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code> are in a specific state. You KVO the relevant properties to check the states of <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code>.</p>
 
-    <p>You commit, then a co-worker changes implementation of <code>B</code>. <em>Your co-worker can’t tell that the specific timing of <code>B</code>’s state changes are important to you</em>, and now your code has <em>subtly</em> broken.</p>
+    <p>You commit, then a co-worker changes implementation of <code class="highlighter-rouge">B</code>. <em>Your co-worker can’t tell that the specific timing of <code class="highlighter-rouge">B</code>’s state changes are important to you</em>, and now your code has <em>subtly</em> broken.</p>
   </li>
 </ul>
 
@@ -269,7 +302,7 @@ K = Key Value Observation
   <li>
     <p>Ownership relationships and delegates.</p>
 
-    <p>In general, the delegate should be kept around via a <code>weak</code> (or <code>assign</code>) reference rather than a <code>strong</code> reference to prevent retain cycles.</p>
+    <p>In general, the delegate should be kept around via a <code class="highlighter-rouge">weak</code> (or <code class="highlighter-rouge">assign</code>) reference rather than a <code class="highlighter-rouge">strong</code> reference to prevent retain cycles.</p>
 
     <p>Stick to this since <em>happening to know</em> that delegates aren’t retained elsewhere is a <em>subtle</em> implementation detail.</p>
 
@@ -302,7 +335,7 @@ K = Key Value Observation
 
     <p>If the block needs to return extra data, the API of the reciever of the block doesn’t need to be modified.</p>
 
-    <p>The block can just use a local variable with the type <code>__block</code>.</p>
+    <p>The block can just use a local variable with the type <code class="highlighter-rouge">__block</code>.</p>
 
     <p>Or, if it’s an async block, set a property on a relevant object.</p>
   </li>
@@ -318,7 +351,7 @@ K = Key Value Observation
 
     <p>If an instance variable is used, the block will retain <em>self</em>!</p>
 
-    <p>But it’s easy to avoid: make a <code>__weak</code> variable and referencing that in the block instead.</p>
+    <p>But it’s easy to avoid: make a <code class="highlighter-rouge">__weak</code> variable and referencing that in the block instead.</p>
   </li>
   <li>
     <p>‘nil’ blocks will cause crashes.</p>
@@ -360,12 +393,12 @@ K = Key Value Observation
   <li>
     <p>Ensure that the Notification Name will always be consistent between listener and sender.</p>
 
-    <p>A header containing an <code>const NSString *</code> works well enough.</p>
+    <p>A header containing an <code class="highlighter-rouge">const NSString *</code> works well enough.</p>
 
     <p>If the notification identifier can vary dynamically, expose function or method to construct it.</p>
   </li>
   <li>
-    <p>Unregister for all notifications in <code>dealloc</code>.</p>
+    <p>Unregister for all notifications in <code class="highlighter-rouge">dealloc</code>.</p>
 
     <p>Receiving a message after dealloc will cause crashes.</p>
 
@@ -389,7 +422,7 @@ K = Key Value Observation
   <li>
     <p>Notifications allow for <em>an untyped payload</em>.</p>
 
-    <p>While <code>userinfo</code> is useful for passing data, it doesn’t provide runtime checks for being the expected type.</p>
+    <p>While <code class="highlighter-rouge">userinfo</code> is useful for passing data, it doesn’t provide runtime checks for being the expected type.</p>
 
     <p>If the type changes, you won’t get a compiler warning.</p>
 
