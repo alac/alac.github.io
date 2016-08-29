@@ -90,6 +90,32 @@ color: white;
 text-decoration: none;
 }
 
+.pagination a:link {
+color: white;
+}
+
+.pagination a:visited {
+color: #366B8F;
+}
+
+.pagination a:hover {
+color: white;
+text-decoration: none;
+}
+
+.pagination a:link {
+color: white;
+}
+
+.pagination a:visited {
+color: #366B8F;
+}
+
+.pagination a:hover {
+color: white;
+text-decoration: none;
+}
+
 .sidebar {
 overflow: hidden;
 display: none;
