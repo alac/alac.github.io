@@ -22,9 +22,10 @@ categories:
 	N = Notifications
 	K = Key Value Observation
 
-There are 4 common communciation patterns in Objective-C.
+There's 4 interaction patterns of Objective-C.  
+Quite a lot has been said about when they're useful.  
 
-Ever wonder how they can be _misused_?
+But, when they're misused? That's way more interesting.
 
 You can find real explanations of what they are in [short here](http://nshipster.com/key-value-observing/) and in [long here](https://www.objc.io/issues/7-foundation/communication-patterns/#delegation).
 
@@ -48,7 +49,7 @@ The ideal case for KVO is one of simple systems where each layer only needs to r
 
 Imagine a view KVO-ing the properties of a model for updates. Or, [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel).
 
-But with how lightweight KVO is, it can be appealing to use it within a system as well. There's two problems with this:
+But with how lightweight KVO is, it can be appealing to use it within a system as well. There's three problems with this:
 
 * EZ infinite loops.
 
@@ -66,7 +67,7 @@ But with how lightweight KVO is, it can be appealing to use it within a system a
 
    You know that `Stuff` is readonly, so it's safe for a consumer of `Thing` to KVO `Stuff`'s `Junk`.
 
-   You commit, then a co-worker decides to make `Stuff` readwrite. Now your code has _subtly_ broken.
+   You commit, then a co-worker decides to make `Stuff` readwrite. Now your code has _subtly_ broken (because you're now tracking the wrong object).
 
    Ex: 2
 

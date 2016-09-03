@@ -92,7 +92,7 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
-							    	<a href="/tools/2016/08/24/xcode.html">* xcoding</a>
+							    	<a href="/tools/2016/08/24/xcode.html">* xcode</a>
 									</div>
 						  								  		
 						  	
@@ -204,9 +204,10 @@ K = Key Value Observation
 </code></pre>
 </div>
 
-<p>There are 4 common communciation patterns in Objective-C.</p>
+<p>There’s 4 interaction patterns of Objective-C.<br />
+Quite a lot has been said about when they’re useful.</p>
 
-<p>Ever wonder how they can be <em>misused</em>?</p>
+<p>But, when they’re misused? That’s way more interesting.</p>
 
 <p>You can find real explanations of what they are in <a href="http://nshipster.com/key-value-observing/">short here</a> and in <a href="https://www.objc.io/issues/7-foundation/communication-patterns/#delegation">long here</a>.</p>
 
@@ -229,7 +230,7 @@ K = Key Value Observation
 
 <p>Imagine a view KVO-ing the properties of a model for updates. Or, <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel">MVVM</a>.</p>
 
-<p>But with how lightweight KVO is, it can be appealing to use it within a system as well. There’s two problems with this:</p>
+<p>But with how lightweight KVO is, it can be appealing to use it within a system as well. There’s three problems with this:</p>
 
 <ul>
   <li>
@@ -251,7 +252,7 @@ K = Key Value Observation
 
     <p>You know that <code class="highlighter-rouge">Stuff</code> is readonly, so it’s safe for a consumer of <code class="highlighter-rouge">Thing</code> to KVO <code class="highlighter-rouge">Stuff</code>’s <code class="highlighter-rouge">Junk</code>.</p>
 
-    <p>You commit, then a co-worker decides to make <code class="highlighter-rouge">Stuff</code> readwrite. Now your code has <em>subtly</em> broken.</p>
+    <p>You commit, then a co-worker decides to make <code class="highlighter-rouge">Stuff</code> readwrite. Now your code has <em>subtly</em> broken (because you’re now tracking the wrong object).</p>
 
     <p>Ex: 2</p>
 
