@@ -1,0 +1,103 @@
+---
+layout: default_post
+longtitle: "Testing for Statistical Significance"
+title: "Significance and the T-Test"
+
+categories:
+- Statistics
+---
+
+`Insert Image of Tom Jones`  
+
+It's uh, not unusual to need use data to prove something.  
+
+So, let's do that.  
+
+There are two major parts to this:  
+
+  * What does statistical significance mean? How do we test for it?  
+  * Untangling the options you have for doing so.  
+
+<!--more-->
+
+
+Statistical Significance
+===========================
+
+Your Experiment
+---------------
+
+Suppose you're a runner and you're trying to improve your 100m dash. Because you been well informed by Nike commercials, you know that the best way to prove your time is to buy a pair of Air Jordans. But, you want to be sure of your improvement. That stuff ain't cheap.  
+
+Now, you need to measure. Get some samples of how fast you are with your janky Sketchers and some samples with your new Jordans. There's a lot to be said about _how_ you should take these samples. We don't want to screw up the data by giving an advantage due to you being fatigued or warmed up. Something like, every day for a week, you get one sample of each, alternating which one comes first, with an hour break between.  
+
+The goal is to say that there's definitely a difference between the numbers you get from your Sketcher and your Jordans. Typically, 'definitely' means *95% certainty*.  
+
+But, how do we compute this? We use a bell curve.  
+
+The Bell Curve
+--------------
+
+We can use a bell curve for two reasons:  
+
+  * It's the most common distribution in nature. It's also called the normal distribution for a reason. So, normal until proven guilty.  
+  * "The Central Limit theorem". In short, even if your samples don't follow a bell curve, you can turn them into something that does. How? Instead of using the samples themselves, group them into buckets and the averages of the buckets will be normally distributed. [Ref](http://blog.minitab.com/blog/understanding-statistics/how-the-central-limit-theorem-works)  
+
+We can identify the right bell curve to use quite easily: through the mean/average and standard deviation.  
+
+The mean is easy: sum the values and divide by the number of values.  
+
+The standard deviation is square root of the sum of the squares of the difference between each value and the mean. The formula is gross, but the meaning is quite literal: roughly how much the values deviate from the mean.  
+
+There's some useful properties of the bell curve:  
+
+  * The total area under the curve is 1.  
+  * -1 std devs to 1 std devs contains 68% of the curve.  
+  * -2 std devs to 2 std devs contains 95% of the curve.  
+
+So, what we want is a means of checking whether our samples are in the part of the curve _beyond two standard deviations away_.  
+
+Student's T-Test
+-------------
+
+The result of Student's T-Test is the likelyhood that both sets of samples came from the same distribution. That is, if we want 95% certainty that they're different, then we actually want Student's T-Test to give us a value *under 5%*.  
+
+I'd give an overview of how the computation works, but it's [widely implemented](https://en.wikipedia.org/wiki/Student%27s_t-test#Software_implementations), which takes the fun out of it.  
+
+
+Variations on Student's T-Test
+==============
+
+Tests on different kinds of data
+--------------
+The *'Independent Samples'* T-Test is used when we believe that the samples are unrelated.  
+
+The *'Paired Samples'* T-Test pairs off samples from each set of data. There are two cases where we can use this:
+
+  * Before/After testing. Typically, this is appropriate when you want to judge the effectiveness of some treatment across a group. So, we could use this to test Sketchers vs Jordans for a hundred people. The upside here is that we can look at the *improvement* while ignoring any noise from differences resulting from each person's natural ability.  
+  * In theory, you can form pairs using variables other than the one measured. So, in our sneaker example if you couldn't get a hold of a pair, you might compare your Sketchers samples to the Jordan's samples of someone with a similar height. This is a terrible example for a reason: you don't want to do this unless you need to.
+
+Unlike the other tests, the *'One Sample'* T-Test doesn't test across two sets of data. Instead, it tests for whether one set of data matches a particular mean. So, you'd use it if Nike provided some average 100m dash improvement and you wanted to check if it was correct for you.
+
+
+The Null Hypothesis and One or Two Tails
+--------------
+The aim of this endeavor is to be able to look at our data and answer with confidence: is this any different?
+
+In formal literature, we do this by testing the Null Hypothesis: "The two things we're comparing are the same".
+
+So, someone that's really picky would ask: what does it mean to not be the same? Well, there's:
+
+  * Just better.
+  * Just worse.
+  * Either better or worse, just not the same.
+
+Mathematically, "just better" corresponds to testing the situation where the 5% that we want are allocated at one extreme of the distribution.  That is, it's one *tail* of the distribution.  Because of symmetry, you can say the same about "just worse".
+
+"Either better or worse" allocates 2.5% of the amount we're testing at each *tail*. So, it's two tailed.
+
+Because a two-tailed test checks for values being further from the center (e.g. the tail starts further away), anything that passes a two-tailed test will pass a one-tailed test. But, anything that passes a one-tailed test won't neccessarily pass a two-tailed test.
+
+*TL:DR* Two-tailed tests are a higher bar than a one-tailed test. If you want to avoid false positives, use the two-tailed test.
+
+
