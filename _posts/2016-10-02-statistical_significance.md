@@ -9,9 +9,7 @@ categories:
 
 `Insert Image of Tom Jones`  
 
-It's uh, not unusual to need use data to prove something.  
-
-So, let's do that.  
+It's not unusual? Prove it.  
 
 There are two major parts to this:  
 
@@ -31,12 +29,14 @@ Suppose you're a runner and you're trying to improve your 100m dash. Because you
 
 Now, you need to measure. Get some samples of how fast you are with your janky Sketchers and some samples with your new Jordans. There's a lot to be said about _how_ you should take these samples. We don't want to screw up the data by giving an advantage due to you being fatigued or warmed up. Something like, every day for a week, you get one sample of each, alternating which one comes first, with an hour break between.  
 
-The goal is to say that there's definitely a difference between the numbers you get from your Sketcher and your Jordans. Typically, 'definitely' means *95% certainty*.  
+The goal is to say that there's definitely a difference between the numbers you get from your Sketcher and your Jordans. 'definitely' means *95% certainty*.  
 
-But, how do we compute this? We use a bell curve.  
+What happens to that other 5%? No one knows. It is worth noting that the fine print for statistical significance is that you can only claim it _if your results are reproducable_.  
 
 The Bell Curve
 --------------
+
+We compute the certainty by assuming that our data follows the bell-curve and then applying something called a T-Test.  
 
 We can use a bell curve for two reasons:  
 
@@ -55,7 +55,10 @@ There's some useful properties of the bell curve:
   * -1 std devs to 1 std devs contains 68% of the curve.  
   * -2 std devs to 2 std devs contains 95% of the curve.  
 
-So, what we want is a means of checking whether our samples are in the part of the curve _beyond two standard deviations away_.  
+So, what we want is a means of checking whether our samples are in the part of the curve _beyond two standard deviations away_.*
+
+*Or slightly less with a one-tail test.
+
 
 Student's T-Test
 -------------
@@ -64,13 +67,15 @@ The result of Student's T-Test is the likelyhood that both sets of samples came 
 
 I'd give an overview of how the computation works, but it's [widely implemented](https://en.wikipedia.org/wiki/Student%27s_t-test#Software_implementations), which takes the fun out of it.  
 
+I personally use Google Sheet's TTEST function.
+
 
 Variations on Student's T-Test
 ==============
 
 Tests on different kinds of data
 --------------
-The *'Independent Samples'* T-Test is used when we believe that the samples are unrelated.  
+The *'Independent Samples'* T-Test is used when we believe that the samples are unrelated. This is the most common case.    
 
 The *'Paired Samples'* T-Test pairs off samples from each set of data. There are two cases where we can use this:
 
@@ -101,3 +106,38 @@ Because a two-tailed test checks for values being further from the center (e.g. 
 *TL:DR* Two-tailed tests are a higher bar than a one-tailed test. If you want to avoid false positives, use the two-tailed test.
 
 
+Welch's T-Test
+----------
+A potential problem with Student's T-Test is that it tests for whether both data sets come from the same distribution (e.g. mean and variance).  
+
+Sometimes, you'll know that they don't and instead just want to test whether they have the *same mean*. In this case, you use Welch's T-Test which has adjustments for dealing with different variances.
+
+At the same time, Welch's test performs well for the same variance across data sets and handles a case, which, quite frankly can't be ruled out for most data.  
+
+Summary
+==========
+
+We can test for statisical significance using Student's T-Test.  
+
+There are three Student T-Tests to choose from:  
+
+* _Independent Samples_ for comparing two independent data sets.  
+* _Paired Samples_ for comparing related data sets (e.g. before/after).  
+* _One Sample_ for checking against a known mean.  
+
+The _tails_ of a T-Test refer to where you're allocating significance. A two-tailed test splits significance evenly and therefore has a lower risk of giving you a false positve.  
+
+_Welch's T-Test_ should be used in the _Independent Samples_ case because it doesn't care whether or not the data sets have the same variance.  
+
+
+Sources/Further Reading
+==========
+
+[Wikipedia ANOVA - Alternative to T-Tests](https://en.wikipedia.org/wiki/One-way_analysis_of_variance)  
+[Wikipedia Welch's Test](https://en.wikipedia.org/wiki/Welch%27s_t-test)  
+[Wikipedia Paired Difference Test](https://en.m.wikipedia.org/wiki/Paired_difference_test)  
+[Wikipedia One and Two Tailed Tests](https://en.m.wikipedia.org/wiki/One-_and_two-tailed_tests)
+
+[Student's T-Test vs Welch's T-Test](http://stats.stackexchange.com/questions/305/when-conducting-a-t-test-why-would-one-prefer-to-assume-or-test-for-equal-vari)
+[Bite Size Bio's Time For T](http://bitesizebio.com/8048/time-for-t-how-to-use-the-student%E2%80%99s-t-test/) a lower level look at the T-Test and how we use it.  
+[One vs Two Tailed Tests](http://conversionxl.com/one-tailed-vs-two-tailed-tests/)
