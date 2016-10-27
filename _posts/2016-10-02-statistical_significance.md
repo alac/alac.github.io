@@ -1,7 +1,7 @@
 ---
 layout: default_post
-longtitle: "Testing for Statistical Significance"
-title: "Significance and the T-Test"
+longtitle: "testing for statistical significance"
+title: "significance and the t-test"
 
 categories:
 - Statistics

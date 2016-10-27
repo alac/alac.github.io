@@ -9,7 +9,60 @@ categories:
 
 Unix is a cool guy. You should be friends with him. Here are things he can help you with.  
 
+That said, I've only tested these in OSX.  
+
 <!--more-->
+
+Command line
+===============
+
+Shortcuts
+--------------
+`up/down`  
+Command history.  
+
+`ctrl-w`  
+Delete the part of the current word that is before the cursor.  
+
+`ctrl-a/ctrl-e`  
+Jump to the start/end of the current line.  
+
+`ctrl-k`  
+Delete from cursor to end of line.  
+
+`ctrl-u`  
+Clear line.  
+
+`ctrl-r`  
+Search backwards in history.  
+Press again to get the next match.  
+Arrows to dump the current match into the commandline.  
+
+Filepaths
+-------------
+`*Drag file/folder into command prompt*`  
+Puts the path of the file/folder at the current cursor location.  
+
+
+History
+==============
+
+input history
+------------
+`history N`  
+Dump the last N commands typed into the terminal.  
+Leave out N for all history.  
+
+`!!`  
+Apply the last command.  
+
+
+History Expansion
+------------
+`!`  
+"!git" then TAB results in the most recent statement with 'git' in it.  
+Escape it with single quotes when you just want a `!` character (you can do `"a"'!'"b"`).  
+
 
 Folders
 ===============
@@ -47,6 +100,10 @@ Go to a folder
 ---------------
 `cd DIRECTORY_NAME`  
 
+Go to previous folder
+---------------
+`cd -`
+
 Special folder names  
 ---------------
 `..`   = up a directory  
@@ -66,7 +123,23 @@ Compare folders
 |----------|:-------------:| 
 | `q` &emsp; | If this isn't there, it'll compare each file too | 
 
+Copy a folder
+-------------
+`cp -R SOURCE DESTINATION`  
 
+Synchronize folders
+------------
+`rsync -a SOURCE DESTINATION`  
+Copies any missing files.  
+Apply the diff to altered files.  
+Add `-P` for progress.  
+Add `-v` for verbose.
+
+Synchronize folders EXCEPT
+------------
+`rsync -a --exclude='*.html' SOURCE DESTINATION`  
+You can chain multiple `--exclude`s.  
+Or provide them in a file `--exclude-from exclusions.txt`.  
 
 
 Files
@@ -279,24 +352,3 @@ Prefix the command with `time`, e.g.
 * dumps the total time, user time and system time taken after the command completes.
 
 To get the run time of an ongoing command, you can press CTRL-T during.
-
-
-Terminal / OSX
-===============
-
-input history
-------------
-`history N`  
-dump the last N commands typed into the terminal.  
-
-`ctrl-r`
-search backwards in the terminal.  
-press again to get the next match.  
-arrows to dump the current match into the commandline.  
-
-`!` is history expansion in terminal.  
-Escape it with single quotes when you just want a `!` character (you can do `"a"'!'"b"`).  
-  
-misc
------------
-EMACS keystrokes work in terminal. E.g. `ESC-Delete` deletes by word.  
