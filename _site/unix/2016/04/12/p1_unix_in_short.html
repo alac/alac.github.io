@@ -27,7 +27,7 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
-					    	<a href="/statistics/2016/10/02/statistical_significance.html">* Testing for Statistical Significance</a>
+					    	<a href="/statistics/2016/10/02/statistical_significance.html">* testing for statistical significance</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
@@ -56,7 +56,7 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
-					    	<a href="/statistics/2016/10/02/statistical_significance.html">* Testing for Statistical Significance</a>
+					    	<a href="/statistics/2016/10/02/statistical_significance.html">* testing for statistical significance</a>
 						</div>
 					
 			  			<div class="menuCategoryPost">
@@ -209,7 +209,51 @@
 	12 Apr 2016 | Unix
 	<p>Unix is a cool guy. You should be friends with him. Here are things he can help you with.</p>
 
+<p>That said, I’ve only tested these in OSX.</p>
+
 <!--more-->
+
+<h1 id="command-line">Command line</h1>
+
+<h2 id="shortcuts">Shortcuts</h2>
+<p><code class="highlighter-rouge">up/down</code><br />
+Command history.</p>
+
+<p><code class="highlighter-rouge">ctrl-w</code><br />
+Delete the part of the current word that is before the cursor.</p>
+
+<p><code class="highlighter-rouge">ctrl-a/ctrl-e</code><br />
+Jump to the start/end of the current line.</p>
+
+<p><code class="highlighter-rouge">ctrl-k</code><br />
+Delete from cursor to end of line.</p>
+
+<p><code class="highlighter-rouge">ctrl-u</code><br />
+Clear line.</p>
+
+<p><code class="highlighter-rouge">ctrl-r</code><br />
+Search backwards in history.<br />
+Press again to get the next match.<br />
+Arrows to dump the current match into the commandline.</p>
+
+<h2 id="filepaths">Filepaths</h2>
+<p><code class="highlighter-rouge">*Drag file/folder into command prompt*</code><br />
+Puts the path of the file/folder at the current cursor location.</p>
+
+<h1 id="history">History</h1>
+
+<h2 id="input-history">input history</h2>
+<p><code class="highlighter-rouge">history N</code><br />
+Dump the last N commands typed into the terminal.<br />
+Leave out N for all history.</p>
+
+<p><code class="highlighter-rouge">!!</code><br />
+Apply the last command.</p>
+
+<h2 id="history-expansion">History Expansion</h2>
+<p><code class="highlighter-rouge">!</code><br />
+“!git” then TAB results in the most recent statement with ‘git’ in it.<br />
+Escape it with single quotes when you just want a <code class="highlighter-rouge">!</code> character (you can do <code class="highlighter-rouge">"a"'!'"b"</code>).</p>
 
 <h1 id="folders">Folders</h1>
 
@@ -261,6 +305,9 @@
 <h2 id="go-to-a-folder">Go to a folder</h2>
 <p><code class="highlighter-rouge">cd DIRECTORY_NAME</code></p>
 
+<h2 id="go-to-previous-folder">Go to previous folder</h2>
+<p><code class="highlighter-rouge">cd -</code></p>
+
 <h2 id="special-folder-names">Special folder names</h2>
 <p><code class="highlighter-rouge">..</code>   = up a directory<br />
 <code class="highlighter-rouge">...</code>  = up 2 directories<br />
@@ -282,6 +329,21 @@
     </tr>
   </tbody>
 </table>
+
+<h2 id="copy-a-folder">Copy a folder</h2>
+<p><code class="highlighter-rouge">cp -R SOURCE DESTINATION</code></p>
+
+<h2 id="synchronize-folders">Synchronize folders</h2>
+<p><code class="highlighter-rouge">rsync -a SOURCE DESTINATION</code><br />
+Copies any missing files.<br />
+Apply the diff to altered files.<br />
+Add <code class="highlighter-rouge">-P</code> for progress.<br />
+Add <code class="highlighter-rouge">-v</code> for verbose.</p>
+
+<h2 id="synchronize-folders-except">Synchronize folders EXCEPT</h2>
+<p><code class="highlighter-rouge">rsync -a --exclude='*.html' SOURCE DESTINATION</code><br />
+You can chain multiple <code class="highlighter-rouge">--exclude</code>s.<br />
+Or provide them in a file <code class="highlighter-rouge">--exclude-from exclusions.txt</code>.</p>
 
 <h1 id="files">Files</h1>
 
@@ -528,23 +590,6 @@ Automatically redirects output to a <code class="highlighter-rouge">nohup.out</c
 * dumps the total time, user time and system time taken after the command completes.</p>
 
 <p>To get the run time of an ongoing command, you can press CTRL-T during.</p>
-
-<h1 id="terminal--osx">Terminal / OSX</h1>
-
-<h2 id="input-history">input history</h2>
-<p><code class="highlighter-rouge">history N</code><br />
-dump the last N commands typed into the terminal.</p>
-
-<p><code class="highlighter-rouge">ctrl-r</code>
-search backwards in the terminal.<br />
-press again to get the next match.<br />
-arrows to dump the current match into the commandline.</p>
-
-<p><code class="highlighter-rouge">!</code> is history expansion in terminal.<br />
-Escape it with single quotes when you just want a <code class="highlighter-rouge">!</code> character (you can do <code class="highlighter-rouge">"a"'!'"b"</code>).</p>
-
-<h2 id="misc">misc</h2>
-<p>EMACS keystrokes work in terminal. E.g. <code class="highlighter-rouge">ESC-Delete</code> deletes by word.</p>
 
 	</div>
 </div>
