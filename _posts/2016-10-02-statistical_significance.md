@@ -7,7 +7,7 @@ categories:
 - Statistics
 ---
 
-`Insert Image of Tom Jones`  
+`[Insert Image of Tom Jones]`  
 
 It's not unusual? Prove it.  
 
@@ -101,16 +101,22 @@ Mathematically, "just better" corresponds to testing the situation where the 5% 
 
 "Either better or worse" allocates 2.5% of the amount we're testing at each *tail*. So, it's two tailed.
 
-Because a two-tailed test checks for values being further from the center (e.g. the tail starts further away), anything that passes a two-tailed test will pass a one-tailed test. But, anything that passes a one-tailed test won't neccessarily pass a two-tailed test.
+Because a two-tailed test checks for values being further from the center (e.g. the tail starts further away), anything that passes a two-tailed test will pass a one-tailed test.  
 
-*TL:DR* Two-tailed tests are a higher bar than a one-tailed test. If you want to avoid false positives, use the two-tailed test.
+But, anything that passes a one-tailed test won't neccessarily pass a two-tailed test.  
+
+So, we have a choice between a false positive ("a type I error") or a false negative ("a type II error").  
+
+*TL:DR* Two-tailed tests are a higher bar than a one-tailed test. To avoid false positives, it's safer use the two-tailed test.
 
 
 Welch's T-Test
 ----------
-A potential problem with Student's T-Test is that it tests for whether both data sets come from the same distribution (e.g. mean and variance).  
+Student's T-Test checks both data sets come from the same distribution (e.g. mean and variance).  
 
-Sometimes, you'll know that they don't and instead just want to test whether they have the *same mean*. In this case, you use Welch's T-Test which has adjustments for dealing with different variances.
+You may have good reason to believe they don't have the same variance (or, you're just a cautious person), but still want to check if they have the same mean.  
+
+In this case, you use Welch's T-Test which has adjustments for dealing with different variances.  
 
 At the same time, Welch's test performs well for the same variance across data sets and handles a case, which, quite frankly can't be ruled out for most data.  
 
@@ -133,11 +139,18 @@ _Welch's T-Test_ should be used in the _Independent Samples_ case because it doe
 Sources/Further Reading
 ==========
 
-[Wikipedia ANOVA - Alternative to T-Tests](https://en.wikipedia.org/wiki/One-way_analysis_of_variance)  
-[Wikipedia Welch's Test](https://en.wikipedia.org/wiki/Welch%27s_t-test)  
-[Wikipedia Paired Difference Test](https://en.m.wikipedia.org/wiki/Paired_difference_test)  
-[Wikipedia One and Two Tailed Tests](https://en.m.wikipedia.org/wiki/One-_and_two-tailed_tests)
+[Wikipedia ANOVA - Alternative to T-Tests](https://en.wikipedia.org/wiki/One-way_analysis_of_variance).  
+Notably, it can handle more sample groups.  
 
-[Student's T-Test vs Welch's T-Test](http://stats.stackexchange.com/questions/305/when-conducting-a-t-test-why-would-one-prefer-to-assume-or-test-for-equal-vari)
-[Bite Size Bio's Time For T](http://bitesizebio.com/8048/time-for-t-how-to-use-the-student%E2%80%99s-t-test/) a lower level look at the T-Test and how we use it.  
+[Wikipedia Welch's Test](https://en.wikipedia.org/wiki/Welch%27s_t-test)  
+  
+[Wikipedia Paired Difference Test](https://en.m.wikipedia.org/wiki/Paired_difference_test)  
+  
+[Wikipedia One and Two Tailed Tests](https://en.m.wikipedia.org/wiki/One-_and_two-tailed_tests)
+  
+[Student's T-Test vs Welch's T-Test](http://stats.stackexchange.com/questions/305/when-conducting-a-t-test-why-would-one-prefer-to-assume-or-test-for-equal-vari)  
+  
+[Bite Size Bio - Time For T](http://bitesizebio.com/8048/time-for-t-how-to-use-the-student%E2%80%99s-t-test/).  
+A lower level look at the T-Test and how we use it.  
+  
 [One vs Two Tailed Tests](http://conversionxl.com/one-tailed-vs-two-tailed-tests/)
