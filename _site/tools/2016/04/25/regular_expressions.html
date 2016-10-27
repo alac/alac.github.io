@@ -190,7 +190,7 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
-							    	<a href="/statistics/2016/10/02/statistical_significance.html">* Significance and the T-Test</a>
+							    	<a href="/statistics/2016/10/02/statistical_significance.html">* significance and the t-test</a>
 									</div>
 						  								  		
 						  	
@@ -210,12 +210,10 @@
 	<p>There’s a saying:<br />
 “Trying to solve a problem with regexes? Now, you have two problems.”</p>
 
-<p>Complex expressions that are nearly impossible to validate.</p>
-
-<p><em>Regular Expressions</em> are a great tool for searching and manipulating text.<br />
+<p>Complex expressions are nearly impossible to validate, but short regexes make life infinitely less manual.<br />
 The standard from unix tools like <code class="highlighter-rouge">grep</code>, <code class="highlighter-rouge">find</code>, and <code class="highlighter-rouge">sed</code> to Excel.</p>
 
-<p>So, let’s get finding.</p>
+<p>So…</p>
 
 <!--more-->
 
@@ -371,6 +369,10 @@ The pattern <code class="highlighter-rouge">taytay\.mp3</code> would match <code
 
 <p><code class="highlighter-rouge">grep -A 3 PATTERN FILE</code>
 * show 3 lines after each match</p>
+
+<p>Inversion
+<code class="highlighter-rouge">grep -v PATTERN FILE</code>
+* show lines that don’t match</p>
 
 <h2 id="further-reference">Further Reference</h2>
 <p>For the most concise cheatsheet ever, <a href="http://stackoverflow.com/questions/22542834/how-to-use-regular-expressions-regex-in-microsoft-excel-both-in-cell-and-loops">a Stack Overflow answer on Regex in Excel</a></p>
