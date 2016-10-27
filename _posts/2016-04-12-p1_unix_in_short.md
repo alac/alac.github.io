@@ -126,6 +126,7 @@ Compare folders
 Copy a folder
 -------------
 `cp -R SOURCE DESTINATION`  
+If it's on the order of gb: [alternative](http://serverfault.com/a/43028).
 
 Synchronize folders
 ------------
