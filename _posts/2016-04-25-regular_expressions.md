@@ -9,14 +9,12 @@ categories:
 
 
 There's a saying:  
-"Trying to solve a problem with regexes? Now, you have two problems."
+"Trying to solve a problem with regexes? Now, you have two problems."  
 
-Complex expressions that are nearly impossible to validate.
+Complex expressions are nearly impossible to validate, but short regexes make life infinitely less manual.  
+The standard from unix tools like `grep`, `find`, and `sed` to Excel.  
 
-*Regular Expressions* are a great tool for searching and manipulating text.  
-The standard from unix tools like `grep`, `find`, and `sed` to Excel.
-
-So, let's get finding.
+So...
 
 <!--more-->
 
@@ -196,6 +194,10 @@ Specifying context
 
 `grep -A 3 PATTERN FILE`
 * show 3 lines after each match
+
+Inversion
+`grep -v PATTERN FILE`
+* show lines that don't match
 
 
 Further Reference
