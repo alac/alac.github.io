@@ -1,0 +1,360 @@
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+ 	<title>  Significance and the T-Test |  aimless bitshift</title>
+ 		<link rel='stylesheet' type='text/css' href='/assets/wvs.css'>
+ 		<link rel='stylesheet' type='text/css' href='/assets/normalize.css' />
+	</head>
+	<body>
+		<div class='container'>
+			<div class='headerbar'>
+				<a href="/" style="text-decoration:none">
+					<span style="color:#366B8F">
+						aimless 
+						<span style="color:white">bit</span>shift 
+					</span>
+				</a>
+				<span class='headerbarMenu'>
+					notes/realizations re:code
+				</span>
+			</div>
+			<div class='subcontainer'>
+				<div class='headerbarSpacer'></div>
+				<div class='header depthOneContent'>
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/statistics/2016/10/02/statistical_significance.html">* Testing for Statistical Significance</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2016/08/24/xcode.html">* tools: xcode</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
+						</div>
+					
+					</div>
+				</div>
+				<div class='sidebar depthOneContent'>
+<!-- 					display recent posts by categories                           -->
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/statistics/2016/10/02/statistical_significance.html">* Testing for Statistical Significance</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2016/08/24/xcode.html">* tools: xcode</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2016/04/25/regular_expressions.html">* tools: regexes</a>
+						</div>
+					
+					</div>
+					<br>
+<!-- 					display all posts by categories                           -->
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Tools">Tools</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2016/08/24/xcode.html">* xcode</a>
+									</div>
+						  								  		
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2016/04/25/regular_expressions.html">* regexes</a>
+									</div>
+						  								  		
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* git / source control</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Objective-C">Objective-C</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/objective-c/2016/06/28/simple_arc.html">* simple automatic reference counting</a>
+									</div>
+						  								  		
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* interaction patterns</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Unix">Unix</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: getting around</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Metaphors">Metaphors</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/metaphors/2016/06/14/simple_computers.html">* simple computers</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Statistics">Statistics</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/statistics/2016/10/02/statistical_significance.html">* Significance and the T-Test</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+				</div>
+				<div class='content'>
+				  <div class='post depthOneContent'>
+	<div class='postHeader'>
+	<h1>
+		Testing for Statistical Significance
+	</h1>
+	</div>
+	<div class='postBody'>
+	02 Oct 2016 | Statistics
+	<p><code class="highlighter-rouge">[Insert Image of Tom Jones]</code></p>
+
+<p>It’s not unusual? Prove it.</p>
+
+<p>There are two major parts to this:</p>
+
+<ul>
+  <li>What does statistical significance mean? How do we test for it?</li>
+  <li>Untangling the options you have for doing so.</li>
+</ul>
+
+<!--more-->
+
+<h1 id="statistical-significance">Statistical Significance</h1>
+
+<h2 id="your-experiment">Your Experiment</h2>
+
+<p>Suppose you’re a runner and you’re trying to improve your 100m dash. Because you been well informed by Nike commercials, you know that the best way to prove your time is to buy a pair of Air Jordans. But, you want to be sure of your improvement. That stuff ain’t cheap.</p>
+
+<p>Now, you need to measure. Get some samples of how fast you are with your janky Sketchers and some samples with your new Jordans. There’s a lot to be said about <em>how</em> you should take these samples. We don’t want to screw up the data by giving an advantage due to you being fatigued or warmed up. Something like, every day for a week, you get one sample of each, alternating which one comes first, with an hour break between.</p>
+
+<p>The goal is to say that there’s definitely a difference between the numbers you get from your Sketcher and your Jordans. ‘definitely’ means <em>95% certainty</em>.</p>
+
+<p>What happens to that other 5%? No one knows. It is worth noting that the fine print for statistical significance is that you can only claim it <em>if your results are reproducable</em>.</p>
+
+<h2 id="the-bell-curve">The Bell Curve</h2>
+
+<p>We compute the certainty by assuming that our data follows the bell-curve and then applying something called a T-Test.</p>
+
+<p>We can use a bell curve for two reasons:</p>
+
+<ul>
+  <li>It’s the most common distribution in nature. It’s also called the normal distribution for a reason. So, normal until proven guilty.</li>
+  <li>“The Central Limit theorem”. In short, even if your samples don’t follow a bell curve, you can turn them into something that does. How? Instead of using the samples themselves, group them into buckets and the averages of the buckets will be normally distributed. <a href="http://blog.minitab.com/blog/understanding-statistics/how-the-central-limit-theorem-works">Ref</a></li>
+</ul>
+
+<p>We can identify the right bell curve to use quite easily: through the mean/average and standard deviation.</p>
+
+<p>The mean is easy: sum the values and divide by the number of values.</p>
+
+<p>The standard deviation is square root of the sum of the squares of the difference between each value and the mean. The formula is gross, but the meaning is quite literal: roughly how much the values deviate from the mean.</p>
+
+<p>There’s some useful properties of the bell curve:</p>
+
+<ul>
+  <li>The total area under the curve is 1.</li>
+  <li>-1 std devs to 1 std devs contains 68% of the curve.</li>
+  <li>-2 std devs to 2 std devs contains 95% of the curve.</li>
+</ul>
+
+<p>So, what we want is a means of checking whether our samples are in the part of the curve <em>beyond two standard deviations away</em>.*</p>
+
+<p>*Or slightly less with a one-tail test.</p>
+
+<h2 id="students-t-test">Student’s T-Test</h2>
+
+<p>The result of Student’s T-Test is the likelyhood that both sets of samples came from the same distribution. That is, if we want 95% certainty that they’re different, then we actually want Student’s T-Test to give us a value <em>under 5%</em>.</p>
+
+<p>I’d give an overview of how the computation works, but it’s <a href="https://en.wikipedia.org/wiki/Student%27s_t-test#Software_implementations">widely implemented</a>, which takes the fun out of it.</p>
+
+<p>I personally use Google Sheet’s TTEST function.</p>
+
+<h1 id="variations-on-students-t-test">Variations on Student’s T-Test</h1>
+
+<h2 id="tests-on-different-kinds-of-data">Tests on different kinds of data</h2>
+<p>The <em>‘Independent Samples’</em> T-Test is used when we believe that the samples are unrelated. This is the most common case.</p>
+
+<p>The <em>‘Paired Samples’</em> T-Test pairs off samples from each set of data. There are two cases where we can use this:</p>
+
+<ul>
+  <li>Before/After testing. Typically, this is appropriate when you want to judge the effectiveness of some treatment across a group. So, we could use this to test Sketchers vs Jordans for a hundred people. The upside here is that we can look at the <em>improvement</em> while ignoring any noise from differences resulting from each person’s natural ability.</li>
+  <li>In theory, you can form pairs using variables other than the one measured. So, in our sneaker example if you couldn’t get a hold of a pair, you might compare your Sketchers samples to the Jordan’s samples of someone with a similar height. This is a terrible example for a reason: you don’t want to do this unless you need to.</li>
+</ul>
+
+<p>Unlike the other tests, the <em>‘One Sample’</em> T-Test doesn’t test across two sets of data. Instead, it tests for whether one set of data matches a particular mean. So, you’d use it if Nike provided some average 100m dash improvement and you wanted to check if it was correct for you.</p>
+
+<h2 id="the-null-hypothesis-and-one-or-two-tails">The Null Hypothesis and One or Two Tails</h2>
+<p>The aim of this endeavor is to be able to look at our data and answer with confidence: is this any different?</p>
+
+<p>In formal literature, we do this by testing the Null Hypothesis: “The two things we’re comparing are the same”.</p>
+
+<p>So, someone that’s really picky would ask: what does it mean to not be the same? Well, there’s:</p>
+
+<ul>
+  <li>Just better.</li>
+  <li>Just worse.</li>
+  <li>Either better or worse, just not the same.</li>
+</ul>
+
+<p>Mathematically, “just better” corresponds to testing the situation where the 5% that we want are allocated at one extreme of the distribution.  That is, it’s one <em>tail</em> of the distribution.  Because of symmetry, you can say the same about “just worse”.</p>
+
+<p>“Either better or worse” allocates 2.5% of the amount we’re testing at each <em>tail</em>. So, it’s two tailed.</p>
+
+<p>Because a two-tailed test checks for values being further from the center (e.g. the tail starts further away), anything that passes a two-tailed test will pass a one-tailed test.</p>
+
+<p>But, anything that passes a one-tailed test won’t neccessarily pass a two-tailed test.</p>
+
+<p>So, we have a choice between a false positive (“a type I error”) or a false negative (“a type II error”).</p>
+
+<p><em>TL:DR</em> Two-tailed tests are a higher bar than a one-tailed test. To avoid false positives, it’s safer use the two-tailed test.</p>
+
+<h2 id="welchs-t-test">Welch’s T-Test</h2>
+<p>Student’s T-Test checks both data sets come from the same distribution (e.g. mean and variance).</p>
+
+<p>You may have good reason to believe they don’t have the same variance (or, you’re just a cautious person), but still want to check if they have the same mean.</p>
+
+<p>In this case, you use Welch’s T-Test which has adjustments for dealing with different variances.</p>
+
+<p>At the same time, Welch’s test performs well for the same variance across data sets and handles a case, which, quite frankly can’t be ruled out for most data.</p>
+
+<h1 id="summary">Summary</h1>
+
+<p>We can test for statisical significance using Student’s T-Test.</p>
+
+<p>There are three Student T-Tests to choose from:</p>
+
+<ul>
+  <li><em>Independent Samples</em> for comparing two independent data sets.</li>
+  <li><em>Paired Samples</em> for comparing related data sets (e.g. before/after).</li>
+  <li><em>One Sample</em> for checking against a known mean.</li>
+</ul>
+
+<p>The <em>tails</em> of a T-Test refer to where you’re allocating significance. A two-tailed test splits significance evenly and therefore has a lower risk of giving you a false positve.</p>
+
+<p><em>Welch’s T-Test</em> should be used in the <em>Independent Samples</em> case because it doesn’t care whether or not the data sets have the same variance.</p>
+
+<h1 id="sourcesfurther-reading">Sources/Further Reading</h1>
+
+<p><a href="https://en.wikipedia.org/wiki/One-way_analysis_of_variance">Wikipedia ANOVA - Alternative to T-Tests</a>.<br />
+Notably, it can handle more sample groups.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Welch%27s_t-test">Wikipedia Welch’s Test</a></p>
+
+<p><a href="https://en.m.wikipedia.org/wiki/Paired_difference_test">Wikipedia Paired Difference Test</a></p>
+
+<p><a href="https://en.m.wikipedia.org/wiki/One-_and_two-tailed_tests">Wikipedia One and Two Tailed Tests</a></p>
+
+<p><a href="http://stats.stackexchange.com/questions/305/when-conducting-a-t-test-why-would-one-prefer-to-assume-or-test-for-equal-vari">Student’s T-Test vs Welch’s T-Test</a></p>
+
+<p><a href="http://bitesizebio.com/8048/time-for-t-how-to-use-the-student%E2%80%99s-t-test/">Bite Size Bio - Time For T</a>.<br />
+A lower level look at the T-Test and how we use it.</p>
+
+<p><a href="http://conversionxl.com/one-tailed-vs-two-tailed-tests/">One vs Two Tailed Tests</a></p>
+
+	</div>
+</div>
+				</div>
+			</div>
+		</div>
+	</body>
+<html>
