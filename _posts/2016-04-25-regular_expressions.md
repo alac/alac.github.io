@@ -181,22 +181,22 @@ You can nest capturing groups. The indexes are always based on left to right ord
 
 Greping Harder
 -------------
-Basic grepping...
-`grep PATTERN FILE`
+Basic grepping...  
+`grep PATTERN FILE`  
 * show matches to the regex PATTERN in FILE
 
-Specifying context
-`grep -C 3 PATTERN FILE`
+Specifying context  
+`grep -C 3 PATTERN FILE`  
 * show 3 lines before and after each match
 
-`grep -B 3 PATTERN FILE`
+`grep -B 3 PATTERN FILE`  
 * show 3 lines before each match
 
-`grep -A 3 PATTERN FILE`
+`grep -A 3 PATTERN FILE`  
 * show 3 lines after each match
 
-Inversion
-`grep -v PATTERN FILE`
+Inversion  
+`grep -v PATTERN FILE`  
 * show lines that don't match
 
 
