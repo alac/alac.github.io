@@ -1,0 +1,474 @@
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+ 	<title>  profiling and parallism |  aimless bitshift</title>
+ 		<link rel='stylesheet' type='text/css' href='/assets/wvs.css'>
+ 		<link rel='stylesheet' type='text/css' href='/assets/normalize.css' />
+	</head>
+	<body>
+		<div class='container'>
+			<div class='headerbar'>
+				<a href="/" style="text-decoration:none">
+					<span style="color:#366B8F">
+						aimless 
+						<span style="color:white">bit</span>shift 
+					</span>
+				</a>
+				<span class='headerbarMenu'>
+					notes/realizations re:code
+				</span>
+			</div>
+			<div class='subcontainer'>
+				<div class='headerbarSpacer'></div>
+				<div class='header depthOneContent'>
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/python27/2016/11/12/python_optimization_parallelism.html">* python 2.7: profiling and parallism</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/statistics/2016/10/02/statistical_significance.html">* testing for statistical significance</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2016/08/24/xcode.html">* tools: xcode</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
+						</div>
+					
+					</div>
+				</div>
+				<div class='sidebar depthOneContent'>
+<!-- 					display recent posts by categories                           -->
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a>Recent:</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/python27/2016/11/12/python_optimization_parallelism.html">* python 2.7: profiling and parallism</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/statistics/2016/10/02/statistical_significance.html">* testing for statistical significance</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/tools/2016/08/24/xcode.html">* tools: xcode</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
+						</div>
+					
+					</div>
+					<br>
+<!-- 					display all posts by categories                           -->
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Tools">Tools</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2016/08/24/xcode.html">* xcode</a>
+									</div>
+						  								  		
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2016/04/25/regular_expressions.html">* regexes</a>
+									</div>
+						  								  		
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/tools/2015/05/23/source-control-gitting-started.html">* git / source control</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Objective-C">Objective-C</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/objective-c/2016/06/28/simple_arc.html">* simple automatic reference counting</a>
+									</div>
+						  								  		
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/objective-c/2016/04/04/objective_c_patterns.html">* interaction patterns</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Unix">Unix</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/unix/2016/04/12/p1_unix_in_short.html">* part 1: getting around</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Metaphors">Metaphors</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/metaphors/2016/06/14/simple_computers.html">* simple computers</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Statistics">Statistics</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/statistics/2016/10/02/statistical_significance.html">* significance and the t-test</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Python27">Python27</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/python27/2016/11/12/python_optimization_parallelism.html">* profiling and parallism</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+				</div>
+				<div class='content'>
+				  <div class='post depthOneContent'>
+	<div class='postHeader'>
+	<h1>
+		python 2.7: profiling and parallism
+	</h1>
+	</div>
+	<div class='postBody'>
+	12 Nov 2016 | Python27
+	<p>#scriptLyfe:</p>
+
+<ol>
+  <li>devise a 15 minute process.</li>
+  <li>get annoyed.</li>
+  <li>replace with a 3 minute script.</li>
+  <li>get annoyed.</li>
+  <li>optimize down to 20 seconds.</li>
+</ol>
+
+<p>This post will go over:</p>
+
+<ul>
+  <li>How do we measure performance?</li>
+  <li>When and how to use Threading vs Multiprocessing in Python 2.7?</li>
+</ul>
+
+<!--more-->
+
+<h1 id="measuring-performance">Measuring Performance</h1>
+<p>There are an infinite # of ways to optimize code. But, first we want to profile to:</p>
+
+<ul>
+  <li>Determine where our efforts should go.</li>
+  <li>Get data so that we can verify later that we improved things.</li>
+</ul>
+
+<h2 id="unix-time-command">Unix Time Command</h2>
+<p>To time a script in Unix, instead of<br />
+<code class="highlighter-rouge">python myScript.py -flag arg1 arg2</code><br />
+use<br />
+<code class="highlighter-rouge">time python myScript.py -flag arg1 arg2</code></p>
+
+<p>Running your script with the unix <code class="highlighter-rouge">time</code> command will net you three numbers: user, system and real.</p>
+
+<ul>
+  <li>system = time spent in system calls</li>
+  <li>user = time spent outside of system calls</li>
+  <li>real = wall clock time</li>
+  <li>user + system = total execution time</li>
+</ul>
+
+<p>In a single threaded app, real ~= user + system.<br />
+In a multi-threaded app, (user + system) / real ~= core usage!</p>
+
+<p>This is good for getting an overall baseline measurement, but we need to get more specific to know <em>what</em> to optimize.</p>
+
+<ul>
+  <li>For Windows users, Powershell has <code class="highlighter-rouge">Measure-Command</code> or getting the <a href="http://stackoverflow.com/a/3516252">runtime from command history</a>.</li>
+</ul>
+
+<h2 id="cprofile">cProfile</h2>
+<p>To use cProfile, instead of<br />
+<code class="highlighter-rouge">python myScript.py -flag arg1 arg2</code><br />
+use<br />
+<code class="highlighter-rouge">python -m cProfile -s cumulative myScript.py -flag arg1 arg2</code></p>
+
+<p>This will run your script and at the end, dump each method call sorted by the total time spent inside of them.</p>
+
+<p>There are other options <a href="https://docs.python.org/2/library/profile.html#instant-user-s-manual">described here</a> and <a href="https://julien.danjou.info/blog/2015/guide-to-python-profiling-cprofile-concrete-case-carbonara">even ways to display the output with pretty charts</a>.</p>
+
+<p>You can also import cProfile as a module and <a href="http://stackoverflow.com/a/4492582">profile a single method</a>.</p>
+
+<h1 id="threading-vs-multiprocessing-in-python-27">Threading vs Multiprocessing in Python 2.7</h1>
+<p>At some point, you’ll be bottle-necked by an irreducible piece of code (e.g. tell a shell script to convert this list of audio files).</p>
+
+<p>Since I’m writing this a decade after multiple cores became a thing, you might be inclined to say “if I thread this, then I can get a 200%+ improvement.”</p>
+
+<p>Unfortunately, the most common implementation of Python 2.7 has something called a <code class="highlighter-rouge">Global Interpreter Lock (GIL)</code>. cPython’s interpreter state is not thread-safe, so it can’t run instructions in parallel.</p>
+
+<p>Implications:</p>
+
+<ul>
+  <li>Threading in Python yields <code class="highlighter-rouge">concurrency</code>, but not <code class="highlighter-rouge">parallelism</code>.</li>
+  <li>Threading, therefore, allows you to execute multiple tasks on one core. If those tasks are python-heavy instead of IO-heavy, you probably won’t see much gain - if any.</li>
+  <li>For parallelism, we instead need to use Python’s Multiprocessing module.</li>
+</ul>
+
+<p>Python Multiprocessing side-steps the GIL by creating another process, which has it’s own interpreter.</p>
+
+<p><a href="http://stackoverflow.com/questions/3044580/multiprocessing-vs-threading-python">Pros &amp; Cons @ Stackoverflow</a>. TL;DR is multiprocessing has higher memory/initialization cost, but is easier to get right than threading because multiprocessing makes it hard to share data where threading makes it hard to keep data safe.</p>
+
+<p><a href="https://nathangrigg.com/2015/04/python-threading-vs-processes">Illustrated example @nathangrigg.com</a>.</p>
+
+<h2 id="threading-example">Threading Example</h2>
+<p>Reminder: threading is appropriate for tasks that spends a lot of time outside of python: calling a shell script, numpy, etc.</p>
+
+<p>This is a real example from weekend code I wrote to scan my audio library:</p>
+
+<ul>
+  <li>I use Queues for threadsafe input and output.</li>
+  <li>I create worker threads to run the worker function, which processes the queue.</li>
+  <li>The threads block on <code class="highlighter-rouge">fQ.get()</code>. When processing completes all worker threads will be alive-but-blocked.</li>
+  <li>To prevent the alive-but-blocked threads from preventing the script from returning, I mark them as daemon.</li>
+  <li>Finally, the main thread calls <code class="highlighter-rouge">fQ.join()</code> to wait for queue completion.</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>from Queue import Queue
+from threading import Thread
+
+...
+
+fQ = Queue()
+# Populate the input queue
+for root, dirs, files in os.walk(in_folder):
+    for fn in files:
+        absfn = os.path.join(root, fn)
+        fQ.put(absfn)
+
+resultQ = Queue()
+
+"""
+Worker thread function:
+Infinite loop of polling the input queue
+and dumping results to the output queue
+"""
+def worker(fQ, resultQ):
+    while True:
+        absfn = fQ.get()
+        songData = SongData.from_file(absfn)
+        if songData:
+            resultQ.put((absfn, songData))
+        fQ.task_done()
+
+for i in xrange(8):
+    t = Thread(target=worker, args=(fQ, resultQ))
+    t.daemon = True
+    t.start()
+
+# Block until all tasks in the input queue have completed
+fQ.join()
+
+# Process result queue
+while resultQ.qsize():
+    absfn, songData = resultQ.get()
+    sdi.add_song_data(songData, absfn)
+</code></pre>
+</div>
+
+<p>Subtle things:</p>
+
+<ul>
+  <li>
+    <p>You can use an alternative construction where the worker threads don’t loop forever, but exit when the queue is empty.</p>
+
+    <p><em>This breaks in the case that elements are added to the queue while it is being processed</em>.</p>
+
+    <p>Why? <a href="https://docs.python.org/2/library/queue.html#Queue.Queue.empty">There’s no guarantee that <code class="highlighter-rouge">queue.isEmpty()</code> won’t be followed by <code class="highlighter-rouge">queue.put()</code> on a different thread.</a></p>
+  </li>
+  <li>
+    <p>We pass fQ and resultQ to the thread to avoid race conditions around access.</p>
+  </li>
+</ul>
+
+<p>Further variations:</p>
+
+<ul>
+  <li><a href="http://stackoverflow.com/questions/1408171/thread-local-storage-in-python">Thread local storage</a>: for the case where threads need to aggregate data instead of putting the results in a queue.</li>
+  <li><a href="http://stackoverflow.com/questions/1408171/thread-local-storage-in-python">You can subclass Thread to achieve the same thing</a>. But, apparently there’s no upside.</li>
+</ul>
+
+<h2 id="multiprocessing-example">Multiprocessing Example</h2>
+<p>Reminder: multiprocessing is necessary for tasks that are python heavy, but <em>can</em> handle IO bound applications as well.</p>
+
+<p>We just need to be sure that we aren’t relying on side effects because each process has separate state.</p>
+
+<p>The main difference is we’ll take advantage of Multiprocessing’s support for the map function, which abstracts away almost everything.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>from multiprocessing import Pool
+
+# Populate the input list
+input = []
+for root, dirs, files in os.walk(in_folder):
+    for fn in files:
+        absfn = os.path.join(root, fn)
+        input.append(absfn)
+
+def getSongData(absfn):
+    songData = SongData.from_file(absfn)
+    return (absfn, songData)
+
+pool = Pool(processes=8)
+output = pool.map(getSongData, input)
+
+# Cleanup
+pool.close()
+pool.join()
+
+# Process results
+for absfn, songData in output:
+    if songData:
+        sdi.add_song_data(songData, absfn)
+</code></pre>
+</div>
+
+<p>Notes:</p>
+
+<ul>
+  <li>
+    <p>The method that gets passed into <code class="highlighter-rouge">pool</code> <a href="http://stackoverflow.com/questions/8804830/python-multiprocessing-pickling-error">needs to be pickle-able</a>. That is, it needs to be a top level function and not a method.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code># Top-level workaround
+def process_image_hash(image):
+    return image.pHash()
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>What if the function takes multiple arguments?</p>
+
+    <p>If only one arg varies…<br />
+Use <a href="https://docs.python.org/3/library/functools.html#functools.partial">functools.partial</a> to create a version of the method that has less inputs:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>from functools import partial
+
+def walk_dog(dog, duration):
+  ...
+
+short_walk = partial(walk_dog, duration = 20)
+poop = pool.map(short_walk, dogs)
+</code></pre>
+    </div>
+
+    <p>If many args vary…<br />
+Wrap the sets of args in a tuple and use a wrapper function to unpack them <a href="http://stackoverflow.com/a/21130146">link</a>:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>def wrapped_walk_dog(tup):
+    return walk_dog(*tup)
+
+poop = pool.map(wrapped_walk_dog, [(dog1, 20), ...])
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>What happens if I don’t call pool.close()/.join()? <a href="http://stackoverflow.com/questions/14429703/when-to-call-join-on-a-process">Zombies</a>.</p>
+  </li>
+</ul>
+
+	</div>
+</div>
+				</div>
+			</div>
+		</div>
+	</body>
+<html>
