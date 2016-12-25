@@ -49,9 +49,11 @@ Here's evolution afaik:
 
     It's size eventually grows to exceed it's original 16-bit capacity.  
   
-    Note that Unicode is _not an encoding_. It assigns code points BUT doesn't suggest how the bits are arranged.  
+    Note that Unicode is _not an encoding_. It assigns code points BUT doesn't suggest how the bits are arranged. 
 
-  * There are two major encodings for Unicode: UTF-16 (variable with 16- and 32-bit characters) and UTF-32 (constant with 32-bit characters). Different machines also order bytes differently, so we have LE and BE editions of each: UTF-16BE, UTF-16LE, UTF-32BE and UTF-32LE.  
+  * There are two major encodings for Unicode: UTF-16 (variable with 16- and 32-bit characters) and UTF-32 (constant with 32-bit characters).
+
+    Different machines also order bytes differently, so we have little endian and big endian editions of each: UTF-16BE, UTF-16LE, UTF-32BE and UTF-32LE.  
   * But, we also wanted full backwards compatibility with Ascii: this gave birth to UTF-8.
 
 
@@ -62,8 +64,11 @@ As the last section suggests, Unicode is the universal standard character set an
 Why?
 
   * UTF-8 is _more variable_ than other encodings - using 8, 16, 24, or 32-bit characters.  
+
   * UTF-8 fully supports Ascii. UTF-8 uses the same 8-bit encodings for each original Ascii character. So, a valid Ascii file is a valid UTF-8 file.
-  * UTF-8 is _sort of_ supported by Ascii. As implied by the previous point, UTF-8 file that only uses the 128 Ascii characters can be treated as Ascii. But, when UTF-8 needs to use 16, 24, or 32-bits, it _becomes_ obviously invalid Ascii.  
+  * UTF-8 is _sort of_ supported by Ascii. As implied by the previous point, a UTF-8 file that only uses the 128 Ascii characters can be treated as Ascii.
+
+    But when UTF-8 needs to use 16, 24, or 32-bits, it becomes _obviously invalid_ Ascii.  
 
 For details on each point, see [Wikipedia's description of the actual bit layout](https://en.wikipedia.org/wiki/UTF-8#Description).
 
@@ -90,18 +95,33 @@ You can write quite a lot of code without worrying about encodings at all. But w
 
     16-bit encodings are very common in popular OSes and languages because it was the best option when they were developed (Java, Python, Windows, etc.)
 
-  * Remember that how something appears what it is can be very different:
+  * Remember that how something appears what it is can be very different.
 
     From utf8everywhere:
 
     ```
-    Some abstract characters can be encoded by different code points; U+03A9 greek capital letter omega and U+2126 ohm sign both correspond to the same abstract character ‘Ω’, and must be treated identically.
+    Some abstract characters can be encoded by different
+    code points; U+03A9 greek capital letter omega and
+    U+2126 ohm sign both correspond to the same abstract
+    character ‘Ω’, and must be treated identically.
 
-    Some abstract characters cannot be encoded by a single code point. These are represented by sequences of coded characters. For example, the only way to represent the abstract character ю́ cyrillic small letter yu with acute is by the sequence U+044E cyrillic small letter yu followed by U+0301 combining acute accent.
+    Some abstract characters cannot be encoded by a single
+    code point. These are represented by sequences of
+    coded characters. For example, the only way to
+    represent the abstract character ю́ cyrillic small
+    letter yu with acute is by the sequence U+044E
+    cyrillic small letter yu followed by U+0301 combining
+    acute accent.
 
-    Moreover, for some abstract characters, there exist representations using multiple code points, in addition to the single coded character form. The abstract character ǵ can be coded by the single code point U+01F5 latin small letter g with acute, or by the sequence <U+0067 latin small letter g, U+0301 combining acute accent>.
+    Moreover, for some abstract characters, there exist
+    representations using multiple code points, in addition
+    to the single coded character form. The abstract
+    character ǵ can be coded by the single code point
+    U+01F5 latin small letter g with acute, or by the
+    sequence <U+0067 latin small letter g, U+0301 combining
+    acute accent>.
     ```
 
-    So, tl;dr there are many possible representations for something that is visually the same. You should be aware of this because an end user wants to be able to seach for "ohm sign" using "greek capital letter omega".
+    So, there are many possible representations for something that is visually the same. You should be aware of this because an end user wants to be able to search for "ohm sign" using "greek capital letter omega".
 
     I would hope for your sake that the language you use has support for [Unicode Normalization](http://unicode.org/faq/normalization.html).

@@ -1,7 +1,7 @@
 ---
 layout: default_post
-longtitle: "python 2.7: notes"
-title: "misc notes"
+longtitle: "python 2.7: reminders"
+title: "reminders"
 
 categories:
 - Python27
@@ -40,8 +40,9 @@ Inspecting Objects
 
 Static vs Class Methods
 ==============
+_Do you need the class?_  
 Class methods take the class object implicitly as an argument.  
-Static methods can be called via the class object OR an instance, but take neither as an arg.  
+Static methods can be called via the class object _or_ an instance, but take neither as an arg.  
 [Reference](http://stackoverflow.com/questions/136097/what-is-the-difference-between-staticmethod-and-classmethod-in-python).
 
 ```
@@ -77,8 +78,8 @@ False
 >>> a is b
 True
 
-# String interning
-# In languages where a string is immutable, it's common
+# String interning obfuscates this because in
+# languages where a string is immutable, it's common
 # to only generate one copy at compile time...
 >>> "a" is "a"
 True
@@ -124,7 +125,8 @@ Dictionary Comprehension Syntax
 
 Distant Imports
 ===============
-Suppose you have a project structure like:
+Suppose you have a project structure like
+
 ```
 AllProjects
 |-- projectA
@@ -136,13 +138,17 @@ AllProjects
     |...
 ```
 And you want to `import library` in `myScript.py`.  
+
 Symlinks are not a good idea because Python won't update the symlink `.pyc` files correctly.
-What will work, however is adding `projectB` to your $PATH (your real path OR via programmatically).
+
+What will work, however is adding `projectB` to your `$PATH` (your real path _or_ via programmatically).
+
 ```
 # Adding to the end of your path
 sys.path.append(PATH_TO_IMPORT_FOLDER)
 # Inserting at 2nd spot to preempt a naming conflict.
-# Don't insert at 1st spot since _some_ expect that to be the script folder.
+# Don't insert at 1st spot since _some_ expect that
+# to be the script folder.
 sys.path.insert(1, PATH_TO_IMPORT_FOLDER)
 ```
 
@@ -156,7 +162,8 @@ Then to install them, `sudo pip install -r req.txt`.
 
 Partials
 ================
-This is pretty academic, but you can partially apply functions with functools.partial.  
+This is pretty academic, but you can partially apply functions with functools.partial.
+
 ```
 from functools import partial
 
