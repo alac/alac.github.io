@@ -101,3 +101,7 @@ You can write quite a lot of code without worrying about encodings at all. But w
 
     Moreover, for some abstract characters, there exist representations using multiple code points, in addition to the single coded character form. The abstract character ǵ can be coded by the single code point U+01F5 latin small letter g with acute, or by the sequence <U+0067 latin small letter g, U+0301 combining acute accent>.
     ```
+
+    So, tl;dr there are many possible representations for something that is visually the same. You should be aware of this because an end user wants to be able to seach for "ohm sign" using "greek capital letter omega".
+
+    I would hope for your sake that the language you use has support for [Unicode Normalization](http://unicode.org/faq/normalization.html).
