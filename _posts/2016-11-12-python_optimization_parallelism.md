@@ -230,3 +230,9 @@ Notes:
     ```
 
   * What happens if I don't call pool.close()/.join()? [Zombies](http://stackoverflow.com/questions/14429703/when-to-call-join-on-a-process).
+
+More:  
+
+  * [Print progress when multiprocessing](http://stackoverflow.com/questions/5666576/show-the-progress-of-a-python-multiprocessing-pool-map-call)
+
+  * [Keyboard interrupt multiprocessing](http://bryceboe.com/2010/08/26/python-multiprocessing-and-keyboardinterrupt/)

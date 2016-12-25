@@ -152,8 +152,10 @@ Ex. The following match against weekdays:
 
 Escaping
 ------------
-Characters that need to be escaped to be used not as metacharacters are:  
+The metacharacters are:  
 `\`, `^`, `$`, `.`, `*`, `[`, `]`
+
+To use them _as non-metacharacters_, escape them with `\`.
 
 Ex.  
 The pattern `folder\\file` would match `folder\file`  
@@ -199,6 +201,13 @@ Inversion
 `grep -v PATTERN FILE`  
 * show lines that don't match
 
+Force printing filename  
+`grep PATTERN FILE /dev/null`  
+* show the filename where the match was found
+
+Line number  
+`grep -n PATTERN FILE`  
+* Prefix the match with the line number it was found at  
 
 Further Reference
 -------------

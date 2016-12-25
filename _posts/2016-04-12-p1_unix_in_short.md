@@ -7,9 +7,14 @@ categories:
 - Unix
 ---
 
-Unix is a cool guy. You should be friends with him. Here are things he can help you with.  
+A lot of engineering happens outside of the Windows environment in a place we call Unixland.  
 
-That said, I've only tested these in OSX.  
+Unixland is a magical scary place.  
+
+It's magical because how much you can do in a few lines.  
+It's also scary how hard it is to figure out when you're doing something wrong.  
+
+This is a quick reference of how to do particular things. At the very least this will show you some magical things. Ideally, it would serve as a reference for how to avoid the scary things.  
 
 <!--more-->
 
@@ -42,26 +47,6 @@ Filepaths
 -------------
 `*Drag file/folder into command prompt*`  
 Puts the path of the file/folder at the current cursor location.  
-
-
-History
-==============
-
-input history
-------------
-`history N`  
-Dump the last N commands typed into the terminal.  
-Leave out N for all history.  
-
-`!!`  
-Apply the last command.  
-
-
-History Expansion
-------------
-`!`  
-"!git" then TAB results in the most recent statement with 'git' in it.  
-Escape it with single quotes when you just want a `!` character (you can do `"a"'!'"b"`).  
 
 
 Folders
@@ -206,8 +191,10 @@ Send a file into a command
 Change permissions (usually, make executable)  
 ---------------
 `chmod OPTIONS FILENAME`  
-* go look it up  
+* Not going to copy the man page.  
 
+`chmod a+rx script.sh`  
+* Add (r)ead and e(x)ecution to (a)ll.  
 
 
 Text files
@@ -263,6 +250,26 @@ Shows 3 columns: lines only in A, lines only in B, lines in A and B.
 ex: Show the lines only in B.
 
 > `comm -13 A B` 
+
+
+History
+==============
+
+input history
+------------
+`history N`  
+Dump the last N commands typed into the terminal.  
+Leave out N for all history.  
+
+`!!`  
+Apply the last command.  
+
+
+History Expansion
+------------
+`!`  
+"!git" then TAB results in the most recent statement with 'git' in it.  
+Escape it with single quotes when you just want a `!` character (you can do `"a"'!'"b"`).  
 
 
 Symlinks
@@ -344,7 +351,6 @@ Prefix the command with `nohup`.
 HUP means 'hangup signal'.  
 This is how dependent processes are killed on logout.  
 Automatically redirects output to a `nohup.out` file.
-
 
 measure execution time
 ----------------
