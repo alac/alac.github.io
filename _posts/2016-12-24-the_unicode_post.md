@@ -1,7 +1,7 @@
 ---
 layout: default_post
-longtitle: "The Unicode Post"
-title: "The Unicode Post"
+longtitle: "the unicode post"
+title: "the unicode post"
 
 categories:
 - Text
@@ -95,7 +95,7 @@ You can write quite a lot of code without worrying about encodings at all. But w
 
     16-bit encodings are very common in popular OSes and languages because it was the best option when they were developed (Java, Python, Windows, etc.)
 
-  * Remember that how something appears what it is can be very different.
+  * Remember that how something appears and what it's represented as can be very different (e.g. always check the hex).
 
     From utf8everywhere:
 

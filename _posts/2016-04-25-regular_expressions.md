@@ -114,7 +114,7 @@ Character classes can mix ranges and individual characters:
 `[0-4A-D!]` = `[01234ABCD!]`  
 
 Some implementations support...  
-1. exclusion (e.g. `[A-Z-[AEIOU]]` non-vowel captial letters)
+1. exclusion (e.g. `[A-Z-[AEIOU]]` non-vowel captial letters)  
 2. character class intersection
 
 

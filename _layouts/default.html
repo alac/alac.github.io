@@ -27,7 +27,7 @@
 						</div>
 					{% for post in site.posts limit:5 %}
 			  			<div class="menuCategoryPost">
-					    	<a href="{{ post.url }}">* {{ post.longtitle }}</a>
+					    	<a href="{{ post.url }}">* {{ post.date | date_to_string }} | {{ post.longtitle }}</a>
 						</div>
 					{% endfor %}
 					</div>
@@ -53,15 +53,14 @@
 							<a name="{{ category | first }}">{{ category | first }}</a>
 						</div>
 
-						{% for posts in category %}
-						  	{% for post in posts %}
+							{% assign sorted_posts = category.last | sort %}
+						  	{% for post in sorted_posts %}
 						  		{% if post.url %}
 						  			<div class="menuCategoryPost">
 							    	<a href="{{ post.url }}">* {{ post.title }}</a>
 									</div>
 						  		{% endif %}						  		
 						  	{% endfor %}
-						{% endfor %}
     				</div>
 	{% endfor %}
 				</div>
