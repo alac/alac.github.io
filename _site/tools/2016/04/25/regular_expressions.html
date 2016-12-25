@@ -27,6 +27,14 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
+					    	<a href="/text/2016/12/24/the_unicode_post.html">* The Unicode Post</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/python27/2016/12/07/python_cookbook.html">* python 2.7: reminders</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
 					    	<a href="/python27/2016/11/12/python_optimization_parallelism.html">* python 2.7: profiling and parallism</a>
 						</div>
 					
@@ -36,14 +44,6 @@
 					
 			  			<div class="menuCategoryPost">
 					    	<a href="/tools/2016/08/24/xcode.html">* tools: xcode</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
 						</div>
 					
 					</div>
@@ -56,6 +56,14 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
+					    	<a href="/text/2016/12/24/the_unicode_post.html">* The Unicode Post</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/python27/2016/12/07/python_cookbook.html">* python 2.7: reminders</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
 					    	<a href="/python27/2016/11/12/python_optimization_parallelism.html">* python 2.7: profiling and parallism</a>
 						</div>
 					
@@ -65,14 +73,6 @@
 					
 			  			<div class="menuCategoryPost">
 					    	<a href="/tools/2016/08/24/xcode.html">* tools: xcode</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
 						</div>
 					
 					</div>
@@ -210,7 +210,33 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
+							    	<a href="/python27/2016/12/07/python_cookbook.html">* reminders</a>
+									</div>
+						  								  		
+						  	
+						  		
+						  			<div class="menuCategoryPost">
 							    	<a href="/python27/2016/11/12/python_optimization_parallelism.html">* profiling and parallism</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Text">Text</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/text/2016/12/24/the_unicode_post.html">* The Unicode Post</a>
 									</div>
 						  								  		
 						  	
@@ -351,8 +377,10 @@ We would use this <code class="highlighter-rouge">"cat[ae]gory"</code>.</p>
 (Mon|Tues|Wednes|Thurs|Fri)day</p>
 
 <h2 id="escaping">Escaping</h2>
-<p>Characters that need to be escaped to be used not as metacharacters are:<br />
+<p>The metacharacters are:<br />
 <code class="highlighter-rouge">\</code>, <code class="highlighter-rouge">^</code>, <code class="highlighter-rouge">$</code>, <code class="highlighter-rouge">.</code>, <code class="highlighter-rouge">*</code>, <code class="highlighter-rouge">[</code>, <code class="highlighter-rouge">]</code></p>
+
+<p>To use them <em>as non-metacharacters</em>, escape them with <code class="highlighter-rouge">\</code>.</p>
 
 <p>Ex.<br />
 The pattern <code class="highlighter-rouge">folder\\file</code> would match <code class="highlighter-rouge">folder\file</code><br />
@@ -393,6 +421,14 @@ The pattern <code class="highlighter-rouge">taytay\.mp3</code> would match <code
 <p>Inversion<br />
 <code class="highlighter-rouge">grep -v PATTERN FILE</code><br />
 * show lines that don’t match</p>
+
+<p>Force printing filename<br />
+<code class="highlighter-rouge">grep PATTERN FILE /dev/null</code><br />
+* show the filename where the match was found</p>
+
+<p>Line number<br />
+<code class="highlighter-rouge">grep -n PATTERN FILE</code><br />
+* Prefix the match with the line number it was found at</p>
 
 <h2 id="further-reference">Further Reference</h2>
 <p>For the most concise cheatsheet ever, <a href="http://stackoverflow.com/questions/22542834/how-to-use-regular-expressions-regex-in-microsoft-excel-both-in-cell-and-loops">a Stack Overflow answer on Regex in Excel</a></p>

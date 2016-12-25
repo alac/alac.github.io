@@ -27,6 +27,14 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
+					    	<a href="/text/2016/12/24/the_unicode_post.html">* The Unicode Post</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/python27/2016/12/07/python_cookbook.html">* python 2.7: reminders</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
 					    	<a href="/python27/2016/11/12/python_optimization_parallelism.html">* python 2.7: profiling and parallism</a>
 						</div>
 					
@@ -36,14 +44,6 @@
 					
 			  			<div class="menuCategoryPost">
 					    	<a href="/tools/2016/08/24/xcode.html">* tools: xcode</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
 						</div>
 					
 					</div>
@@ -56,6 +56,14 @@
 						</div>
 					
 			  			<div class="menuCategoryPost">
+					    	<a href="/text/2016/12/24/the_unicode_post.html">* The Unicode Post</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
+					    	<a href="/python27/2016/12/07/python_cookbook.html">* python 2.7: reminders</a>
+						</div>
+					
+			  			<div class="menuCategoryPost">
 					    	<a href="/python27/2016/11/12/python_optimization_parallelism.html">* python 2.7: profiling and parallism</a>
 						</div>
 					
@@ -65,14 +73,6 @@
 					
 			  			<div class="menuCategoryPost">
 					    	<a href="/tools/2016/08/24/xcode.html">* tools: xcode</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/objective-c/2016/06/28/simple_arc.html">* metaphor #2 simple automatic reference counting</a>
-						</div>
-					
-			  			<div class="menuCategoryPost">
-					    	<a href="/metaphors/2016/06/14/simple_computers.html">* metaphor #1 simple computers</a>
 						</div>
 					
 					</div>
@@ -210,7 +210,33 @@
 						  	
 						  		
 						  			<div class="menuCategoryPost">
+							    	<a href="/python27/2016/12/07/python_cookbook.html">* reminders</a>
+									</div>
+						  								  		
+						  	
+						  		
+						  			<div class="menuCategoryPost">
 							    	<a href="/python27/2016/11/12/python_optimization_parallelism.html">* profiling and parallism</a>
+									</div>
+						  								  		
+						  	
+						
+    				</div>
+	
+					<div class="menuCategory">
+						<div class="menuCategoryTitle">
+							<a name="Text">Text</a>
+						</div>
+
+						
+						  	
+						  								  		
+						  	
+						
+						  	
+						  		
+						  			<div class="menuCategoryPost">
+							    	<a href="/text/2016/12/24/the_unicode_post.html">* The Unicode Post</a>
 									</div>
 						  								  		
 						  	
@@ -227,9 +253,14 @@
 	</div>
 	<div class='postBody'>
 	12 Apr 2016 | Unix
-	<p>Unix is a cool guy. You should be friends with him. Here are things he can help you with.</p>
+	<p>A lot of engineering happens outside of the Windows environment in a place we call Unixland.</p>
 
-<p>That said, I’ve only tested these in OSX.</p>
+<p>Unixland is a magical scary place.</p>
+
+<p>It’s magical because how much you can do in a few lines.<br />
+It’s also scary how hard it is to figure out when you’re doing something wrong.</p>
+
+<p>This is a quick reference of how to do particular things. At the very least this will show you some magical things. Ideally, it would serve as a reference for how to avoid the scary things.</p>
 
 <!--more-->
 
@@ -259,21 +290,6 @@ Arrows to dump the current match into the commandline.</p>
 <h2 id="filepaths">Filepaths</h2>
 <p><code class="highlighter-rouge">*Drag file/folder into command prompt*</code><br />
 Puts the path of the file/folder at the current cursor location.</p>
-
-<h1 id="history">History</h1>
-
-<h2 id="input-history">input history</h2>
-<p><code class="highlighter-rouge">history N</code><br />
-Dump the last N commands typed into the terminal.<br />
-Leave out N for all history.</p>
-
-<p><code class="highlighter-rouge">!!</code><br />
-Apply the last command.</p>
-
-<h2 id="history-expansion">History Expansion</h2>
-<p><code class="highlighter-rouge">!</code><br />
-“!git” then TAB results in the most recent statement with ‘git’ in it.<br />
-Escape it with single quotes when you just want a <code class="highlighter-rouge">!</code> character (you can do <code class="highlighter-rouge">"a"'!'"b"</code>).</p>
 
 <h1 id="folders">Folders</h1>
 
@@ -441,7 +457,10 @@ End the command with <code class="highlighter-rouge">\;</code></p>
 
 <h2 id="change-permissions-usually-make-executable">Change permissions (usually, make executable)</h2>
 <p><code class="highlighter-rouge">chmod OPTIONS FILENAME</code><br />
-* go look it up</p>
+* Not going to copy the man page.</p>
+
+<p><code class="highlighter-rouge">chmod a+rx script.sh</code><br />
+* Add (r)ead and e(x)ecution to (a)ll.</p>
 
 <h1 id="text-files">Text files</h1>
 
@@ -535,6 +554,21 @@ Shows 3 columns: lines only in A, lines only in B, lines in A and B.</p>
 <blockquote>
   <p><code class="highlighter-rouge">comm -13 A B</code></p>
 </blockquote>
+
+<h1 id="history">History</h1>
+
+<h2 id="input-history">input history</h2>
+<p><code class="highlighter-rouge">history N</code><br />
+Dump the last N commands typed into the terminal.<br />
+Leave out N for all history.</p>
+
+<p><code class="highlighter-rouge">!!</code><br />
+Apply the last command.</p>
+
+<h2 id="history-expansion">History Expansion</h2>
+<p><code class="highlighter-rouge">!</code><br />
+“!git” then TAB results in the most recent statement with ‘git’ in it.<br />
+Escape it with single quotes when you just want a <code class="highlighter-rouge">!</code> character (you can do <code class="highlighter-rouge">"a"'!'"b"</code>).</p>
 
 <h1 id="symlinks">Symlinks</h1>
 
