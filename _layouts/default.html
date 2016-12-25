@@ -46,7 +46,8 @@
 					</div>
 					<br>
 <!-- 					display all posts by categories                           -->
-	{% for category in site.categories %}
+	{% assign categories = site.categories | sort %}
+	{% for category in categories %}
 					<div class="menuCategory">
 						<div class="menuCategoryTitle">
 							<a name="{{ category | first }}">{{ category | first }}</a>
