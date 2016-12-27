@@ -13,6 +13,7 @@ This post collects the things about Python that I regularly forget:
   * Inspecting object/scope.  
   * Static vs Class Methods.  
   * `is` vs `==`.
+  * `str` vs `unicode`.
   * Empty Containers are Falsy.
   * Distant Imports.
   * Pip and Dependencies.
@@ -107,6 +108,36 @@ False
 False
 ```
 Also, when `___nonzero__()` returns `False` or when `__len__()` returns `0`.
+
+
+Strings vs Bytes and How To Use Them
+==================
+Most will agree that a `String` is a list of "characters".  
+
+What a "character" is can mean a couple of things:
+
+  * A list of bytes.
+  * A list of `char` values.
+  * A list of Unicode code points.
+
+Modern science dictates that the last one is the correct answer, but Python2 is ancient.  
+
+So...
+
+  * Python2's `str` class is an array of bytes. What those bytes mean is ambiguous without knowing the encoding.  
+  * Python2 has a `Unicode` class that is better defined, but because the language itself wasn't designed with it in mind, it's behavior can be awkward.  
+  * APIs that support both will return a type that matches the input received!  
+
+Python3 behaves better, but is still somewhat confusing:  
+
+  * Python2's `str` is now called `bytes`.  
+  * Python2's `Unicode` is now called `str`.  
+  * Many APIs still support both! If you want to, you can still break everything!  
+
+Finally, we can convert from P2 Unicode / P3 str <-> P2 str / P3 bytes:  
+
+  * str.encode() converts the unicode string to a bytes object
+  * bytes.decode() converts the bytes to a unicode string object (seq of code points)
 
 
 Dictionary Comprehension Syntax
