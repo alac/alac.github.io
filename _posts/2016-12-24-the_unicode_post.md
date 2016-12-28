@@ -15,7 +15,7 @@ The guide to hating plaintext:
   * Why are there so many encodings?  
   * What's the right encoding?  
   * What are graphemes, glyphs, characters?  
-  * How do we get by in such a cold an heartless universe?  
+  * How do we get by in such a cold and heartless universe?  
 
 <!--more-->
 
@@ -63,16 +63,16 @@ As the last section suggests, Unicode is the universal standard character set an
 
 Why?
 
-  * UTF-8 is _more variable_ than other encodings - using 8, 16, 24, or 32-bit characters.  
+  * UTF-8 is _more variable_ than other encodings - using 8, 16, 24, or 32-bits per character.  
 
-  * UTF-8 fully supports Ascii. UTF-8 uses the same 8-bit encodings for each original Ascii character. So, a valid Ascii file is a valid UTF-8 file.
+  * UTF-8 fully supports Ascii. UTF-8 uses the same 8-bit representation for each original Ascii character. So, a valid Ascii file is a valid UTF-8 file.
   * UTF-8 is _sort of_ supported by Ascii. As implied by the previous point, a UTF-8 file that only uses the 128 Ascii characters can be treated as Ascii.
 
     But when UTF-8 needs to use 16, 24, or 32-bits, it becomes _obviously invalid_ Ascii.  
 
 For details on each point, see [Wikipedia's description of the actual bit layout](https://en.wikipedia.org/wiki/UTF-8#Description).
 
-A last note, there's UTF-8 and UTF-8 BOM. BOM stands for Byte Order Marker. It doesn't have a function other than denoting that the file is UTF-8. Why? Because UTF-8 doesn't have endian-based variations.
+A last note, there's UTF-8 has a variation: UTF-8 BOM. BOM stands for Byte Order Marker. It doesn't have a function other than denoting that the file is UTF-8. Why? Because UTF-8 doesn't have endian-based variations. It also isn't necessary because UTF-8's encoding rules make it pretty distinct.
 
 
 What are characters, graphemes, glyphs?
@@ -84,7 +84,7 @@ Is it the unit of thing that gets deleted when you press delete? Or is it smalle
 2deep4me, so I'll direct you [here](http://utf8everywhere.org/#characters) for a real definition. Just be aware that, at the end of the day, the existence of all these concepts is somewhat relevant for working with Unicode.
 
 
-How do we get by in such a cold an heartless universe?
+How do we get by in such a cold and heartless universe?
 ====================
 First off, acknowledge how first-world encoding problems are. Then, get good.  
 
