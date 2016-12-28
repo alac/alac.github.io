@@ -116,9 +116,9 @@ Student's T-Test checks both data sets come from the same distribution (e.g. mea
 
 You may have good reason to believe they don't have the same variance (or, you're just a cautious person), but still want to check if they have the same mean.  
 
-In this case, you use Welch's T-Test which has adjustments for dealing with different variances.  
+In this case, you use Welch's T-Test; it does the same thing as the Student's T-Test, but does not care what the variances are.    
 
-At the same time, Welch's test performs well for the same variance across data sets and handles a case, which, quite frankly can't be ruled out for most data.  
+Honestly, there's no reason not to use Welch's test in general since it performs well for the same variance across data sets and handles a case, which, quite frankly can't be ruled out for most data.  
 
 Summary
 ==========
@@ -131,7 +131,7 @@ There are three Student T-Tests to choose from:
 * _Paired Samples_ for comparing related data sets (e.g. before/after).  
 * _One Sample_ for checking against a known mean.  
 
-The _tails_ of a T-Test refer to where you're allocating significance. A two-tailed test splits significance evenly and therefore has a lower risk of giving you a false positve.  
+The _tails_ of a T-Test refer to where you're allocating significance. A two-tailed test splits significance evenly and therefore has a lower risk of giving you a false positive.  
 
 _Welch's T-Test_ should be used in the _Independent Samples_ case because it doesn't care whether or not the data sets have the same variance.  
 
