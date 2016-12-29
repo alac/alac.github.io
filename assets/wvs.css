@@ -1,6 +1,6 @@
 body {
-background-color: #979B8D;
-color: #342A21;
+background-color: #666666;
+color: #000000;
 text-align:center;
 /* tacky! */
 -webkit-animation: bgfade 1s; /* Chrome, Safari, Opera */
@@ -35,7 +35,8 @@ font-weight: bold;
 
 .headerbarEmphasis {
 color: #979B8D;
-padding-left: .2em;
+padding-right: 25px;
+float: right;
 }
 
 .headerbarSpacer {
@@ -52,6 +53,7 @@ min-height: 450px;
 background-color: #FFFFFF;
 padding: 10px;
 font-family: Georgia,"Bitstream Charter",serif;
+border-radius: 15px;
 }
 
 .footer {
