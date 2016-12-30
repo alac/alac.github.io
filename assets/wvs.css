@@ -1,133 +1,143 @@
 body {
-background-color: #666666;
+background-color: #FFFFFF;
 color: #000000;
 text-align:center;
-/* tacky! */
--webkit-animation: bgfade 1s; /* Chrome, Safari, Opera */
-animation: bgfade 1s;
+font-family: "Myriad Pro", "Helvetica Neue",Arial,Helvetica,"Nimbus Sans L",sans-serif;
 }
 
-/* Chrome, Safari, Opera 
-@-webkit-keyframes bgfade {
-    from {background-color: #366B8F;}
-    to {background-color: #1A2738;}
+.center_container {
+margin: 0 auto;
+width: 960px;
+height: 100%;
 }
 
- Standard syntax 
-@keyframes bgfade {
-    from {background-color: #366B8F;}
-    to {background-color: #1A2738;}
-}
-*/
-
-.headerbar {
-position:fixed;
-background-color:#FFFFFF;
-color: #555555;
-width: 100%;
-height: 20px;
-padding: 10px;
-box-shadow: 0 0 0 1px #999999;
-font-family: Helvetica,"Nimbus Sans L",sans-serif;
-font-size: 18px;
-font-weight: bold;
+.title_header {
+margin: 0 auto;
+width: 960px;
+height: 180px;
 }
 
-.headerbarEmphasis {
-color: #979B8D;
-padding-right: 25px;
-float: right;
+.title_name {
+color: #333333;
+font-size: 58pt;
+text-align: right;
+position: absolute;
+top: 95;
+transform-origin:left bottom;
+transform: rotate(-2.5deg);
 }
 
-.headerbarSpacer {
-height: 60px;
+.title_desc {
+color: #333333;
+font-size: 25pt;
+text-align: right;
+position: relative;
+top: 116;
+right: 10;
 }
 
-.content {
-float:center;
-width: auto;
-min-height: 450px;
+.body_container {
+/*background-color:rgba(255,0,0,.1);*/
+color: #002200;
+margin: 0 auto;
+width: 960px;
+height: 1000px;
 }
 
-.contentBody {
-background-color: #FFFFFF;
-padding: 10px;
-font-family: Georgia,"Bitstream Charter",serif;
-border-radius: 15px;
+.body_container::before {
+background-color: #999999;
+color: #002200;
+margin: 0 auto;
+width: 1020px;
+height: 1000px;
+content: "";
+display: block;
+position: absolute;
+z-index: -1;
+transform-origin:left bottom;
+transform: rotate(-2.5deg);
+transition: .25s all ease;
 }
 
-.footer {
-position:fixed;
-bottom:0;
-left:0;
+.wide_content {
+background-color:#fefefe;
+color: #002200;
+margin: 0 auto;
+width: 920px;
+height: 250px;
+position: relative;
+top:30px;
+}
+
+.wide_content::before {
+background-color: #99ff33;
+color: #002200;
+margin: 0 auto;
+width: 920px;
+height: 250px;
+content: "";
+display: block;
+position: absolute;
+z-index: -1;
+transform-origin:left bottom;
+transform: rotate(-2deg);
+transition: .25s all ease;
+}
+
+.photo {
+width: 210px;
+height: 210px;
+position: absolute;
+top: 20px;
+left: 20px;
+}
+
+.photo_text {
+height: 210px;
+position: absolute;
+top: 20px;
+left: 250px;
 text-align: left;
-margin-left: .5em;
-font-size: 12;
 }
 
-.contentBody a:link {
-color: #010A1A;
+.photo_text_important {
+font-size: 21;
 }
 
-.contentBody a:visited {
-color: #010A1A;
+.photo_text_contact {
+font-size: 17;
 }
 
-.contentBody a:hover {
-color: #010A1A;
-text-decoration: none;
+.narrow_content {
+display:inline-block;
+background-color:#fefefe;
+color: #002200;
+margin: 50px 40px 0px 0px;
+width: 420px;
+height: 250px;
+position: relative;
+top:30px;
 }
 
-.subcontainer {
-margin: 0;
-margin-left: auto;
-margin-right: auto;
-margin-bottom: 20px;
-min-height: 450px;
-width: 600px;
+.narrow_content::before {
+background-color: #99ff33;
+color: #002200;
+margin: 0 auto;
+width: 420px;
+height: 250px;
+content: "";
+display: block;
+position: absolute;
+z-index: -1;
+transform-origin:left bottom;
+transform: rotate(-4deg);
+transition: .25s all ease;
 }
 
-/* 600px for content, 20px space, 190px + 2*10 for sidebar, 40 for page margins */
-@media all and (min-width: 870px) {
-  .subcontainer {
-    width: 830px;
-  }
+.narrow_topic {
+
 }
 
-.container {
-text-align: left;
-width: 100%;
-min-height: 100%;
-}
+.narrow_bullet {
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: Helvetica,"Nimbus Sans L",sans-serif;
-  color: #71816D;
 }
-
-h1 {
-font-size: 26px;
-margin: .37em 0em .2em 0em;
-}
-
-h1 a {
-color: #FFFFFF;
-text-decoration: none;
-margin-bottom: 5px;
-}
-
-h2 {
-font-size: 18px;
-margin: .5em 0px 0px 0px;
-}
-
-h3 {
-font-size: 18px;
-font-weight: normal;
-margin: .5em 0px 0px 0px;
-}
-
-.blockquote {
-font-size: 16px;
-}
-
