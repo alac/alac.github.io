@@ -227,6 +227,28 @@ min-height: 30px;
 margin: 20px 15px 17px 13px;
 display: block;
 position: relative;
+z-index: 2;
+}
+
+.narrow_bullet img {
+width: 20px;
+height: 20px;
+margin: 0px 3px 2px 0px;
+vertical-align: middle;
+}
+
+.narrow_bullet img:hover {
+opacity: .2;
+}
+
+.narrow_bullet a, a:visited {
+color: #000000;
+text-decoration: none;
+}
+
+.narrow_bullet a:hover {
+color: #FFFFFF;
+text-decoration: none;
 }
 
 .narrow_bullet::before {
@@ -241,6 +263,7 @@ display: block;
 position: absolute;
 transform-origin:left bottom;
 transform: rotate(-1.7deg);
+z-index: -1;
 }
 
 .credits {
