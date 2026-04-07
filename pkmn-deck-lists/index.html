@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon TCG Web Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="tab-browser">Browser</button>
+            <button class="tab-btn" data-tab="tab-output">Output Scratchpad</button>
+            <button class="tab-btn" data-tab="tab-annotator">Decklist Annotator</button>
+        </div>
+
+        <!-- Tab 1: Browser -->
+        <div id="tab-browser" class="tab-content active flex-row">
+            <div class="pane sets-pane">
+                <h3>Sets</h3>
+                <input type="text" id="search-sets" placeholder="Filter Sets...">
+                <ul id="list-sets" class="scroll-list"></ul>
+            </div>
+            
+            <div class="pane cards-pane">
+                <h3>Cards</h3>
+                <input type="text" id="search-cards" placeholder="Filter Cards...">
+                <ul id="list-cards" class="scroll-list"></ul>
+            </div>
+            
+            <div class="pane details-pane">
+                <div class="controls">
+                    <label>Style:
+                        <select id="combo-text-style">
+                            <option value="Box" selected>Box</option>
+                            <option value="Clean">Clean</option>
+                        </select>
+                    </label>
+                    <button id="btn-add-output">Add to Output</button>
+                    <button id="btn-copy-card">Copy</button>
+                </div>
+                <textarea id="text-card-details" readonly></textarea>
+            </div>
+        </div>
+
+        <!-- Tab 2: Output Scratchpad -->
+        <div id="tab-output" class="tab-content flex-col">
+            <div class="controls">
+                <button id="btn-copy-output">Copy All</button>
+                <button id="btn-clear-output">Clear</button>
+            </div>
+            <textarea id="text-output" placeholder="Cards added from the browser will appear here..."></textarea>
+        </div>
+
+        <!-- Tab 3: Decklist Annotator -->
+        <div id="tab-annotator" class="tab-content flex-col">
+            <div class="controls">
+                <label>Input Format:
+                    <select id="combo-format">
+                        <option value="Standard">Standard (Online)</option>
+                        <option value="Legacy">Legacy Custom</option>
+                    </select>
+                </label>
+                <label>Export Style:
+                    <select id="combo-export-style">
+                        <option value="Box" selected>Box</option>
+                        <option value="Clean">Clean</option>
+                    </select>
+                </label>
+                <button id="btn-preview-html">Preview HTML</button>
+                <button id="btn-export-html">Download HTML</button>
+                <button id="btn-export-txt">Download TXT</button>
+                <button id="btn-clear-decklist">Clear</button>
+            </div>
+            <textarea id="text-decklist"></textarea>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div id="status-bar">Ready</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
