@@ -14,6 +14,7 @@
             <button class="tab-btn active" data-tab="tab-browser">Browser</button>
             <button class="tab-btn" data-tab="tab-output">Output Scratchpad</button>
             <button class="tab-btn" data-tab="tab-annotator">Decklist Annotator</button>
+            <button class="tab-btn" data-tab="tab-examples">Examples</button>
         </div>
 
         <!-- Tab 1: Browser -->
@@ -60,7 +61,7 @@
                 <label>Input Format:
                     <select id="combo-format">
                         <option value="Standard">Standard (Online)</option>
-                        <option value="Legacy">Legacy Custom</option>
+                        <option value="Shorthand">Shorthand</option>
                     </select>
                 </label>
                 <label>Export Style:
@@ -75,6 +76,38 @@
                 <button id="btn-clear-decklist">Clear</button>
             </div>
             <textarea id="text-decklist"></textarea>
+        </div>
+
+        <!-- Tab 4: Examples -->
+        <div id="tab-examples" class="tab-content flex-col" style="overflow-y: auto;">
+            
+            <div class="example-section">
+                <h2 style="margin-top: 0; color: #1e293b;">Standard (Online) Format</h2>
+                <p>Matches exports directly from Pokémon TCG Live.<br>
+                <strong>Format:</strong> <code>[Quantity] [Card Name] [Set Code] [Card Number]</code></p>
+                <p><em>Tip: You can seamlessly add <code>##</code> subheadings and <code>- </code> notes into this format!</em></p>
+                
+                <h4>Input:</h4>
+                <pre class="example-code" id="pre-example-standard"></pre>
+                
+                <h4>Rendered HTML Output:</h4>
+                <div class="example-output" id="out-example-standard"></div>
+            </div>
+
+            <hr style="border: 0; border-top: 2px solid #e2e8f0; margin: 20px 0; width: 100%;">
+            
+            <div class="example-section">
+                <h2 style="margin-top: 0; color: #1e293b;">Shorthand Format</h2>
+                <p>You can set a "default" set with "#set:" syntax. Both the default syntax and the "Set Name" have smart matching, so "Destined Rivals", "DRI" and "SV10" all work.<br>
+                <strong>Format:</strong> <code>[Qty]x [Card Name] ([Set Name])</code> - The set name is optional.</p>
+                
+                <h4>Input:</h4>
+                <pre class="example-code" id="pre-example-annotated"></pre>
+                
+                <h4>Rendered HTML Output:</h4>
+                <div class="example-output" id="out-example-annotated"></div>
+            </div>
+
         </div>
     </div>
 

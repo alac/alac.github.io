@@ -60,3 +60,44 @@ textarea {
     background: #e4e4e7; padding: 5px 15px; font-size: 12px; color: #555;
     border-top: 1px solid #ccc;
 }
+
+/* Examples Tab Styling */
+.example-section { margin-bottom: 30px; }
+.example-code {
+    background-color: #f1f5f9; color: #334155;
+    padding: 15px; border-radius: 6px; border: 1px solid #cbd5e1;
+    font-family: "Courier New", Courier, monospace; font-size: 14px;
+    white-space: pre-wrap; margin: 15px 0;
+}
+.example-output {
+    background-color: #ffffff; padding: 20px;
+    border-radius: 6px; border: 1px dashed #94a3b8;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Shared Card Rendering CSS (Used in UI and Export) */
+.deck-entry { margin-bottom: 25px; page-break-inside: avoid; }
+.deck-line { font-weight: bold; font-size: 1.1em; background: #f8f9fa; padding: 8px 12px; border-radius: 4px; color: #333; }
+.card-note { font-weight: normal; font-style: italic; color: #556677; font-size: 0.9em; margin: 6px 0 10px 20px; }
+.card-body { margin-left: 15px; padding-left: 15px; border-left: 3px solid #e2e8f0; margin-top: 10px; color: #333; }
+.card-header { font-size: 1.1em; margin-bottom: 8px; }
+.set-name { font-size: 0.8em; color: #666; font-weight: normal; float: right; margin-top: 2px; }
+.card-sub { color: #555; margin-bottom: 8px; font-style: italic; }
+.card-rule { background: #fff8e6; padding: 6px 10px; border-left: 4px solid #f6e05e; margin: 8px 0; color: #744210; font-size: 0.9em; }
+.attack { margin-bottom: 10px; }
+.atk-text { display: block; margin-top: 3px; color: #4a5568; font-size: 0.9em; }
+.card-footer { margin-top: 12px; padding-top: 8px; border-top: 1px dotted #cbd5e0; font-size: 0.85em; color: #4a5568; }
+
+.energy { 
+  display: inline-block; width: 18px; height: 18px; 
+  line-height: 18px; text-align: center; border-radius: 50%; 
+  font-size: 11px; font-weight: bold; font-family: sans-serif;
+  margin-right: 3px; border: 1px solid rgba(0,0,0,0.1);
+}
+.e-Grass { background: #78C850; color: white; } .e-Fire { background: #F08030; color: white; }
+.e-Water { background: #6890F0; color: white; } .e-Psychic { background: #F85888; color: white; }
+.e-Fighting { background: #C03028; color: white; } .e-Darkness { background: #705848; color: white; }
+.e-Dragon { background: #7038F8; color: white; } .e-Lightning { background: #F8D030; color: black; }
+.e-Metal { background: #B8B8D0; color: black; } .e-Fairy { background: #EE99AC; color: black; }
+.e-Colorless { background: #A8A878; color: black; }

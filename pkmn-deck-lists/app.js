@@ -1,9 +1,160 @@
+// ==========================================
+// EDITABLE EXAMPLES (For the Examples Tab)
+// ==========================================
+
+// --- Example 1: Standard ---
+const EXAMPLE_STANDARD = `Example Deck
+- This is nonesense.
+
+Pokémon: 3
+4 Nemona SV10 48
+2 Charizard ex OBF 125
+- Card note. Hypothetical carry?
+1 Lumineon V BRS 40
+
+## Trainer: 2
+- This is a sub-heading note.
+4 Cynthia UPR 119
+2 Boss's Orders PAL 172
+
+Energy: 1
+6 Basic Fire Energy SVE 2`;
+
+// Paste the generated HTML output for Example 1 here:
+const EXAMPLE_STANDARD_HTML = `
+<h2>Decklist</h2>
+<h3>Example Deck</h3><div class="card-note">↳ This is nonsense.</div>
+
+<h3>Pokémon: 3</h3>
+
+<div class="deck-entry">
+    <div class="deck-line">4x <span style="color: #000000;" title="Card Match: 100%">Nemona</span> (<span style="color: #cc0000;" title="Set Match: 0%">SV10</span>)</div>
+    
+    <div class="card-body">
+        <div class="card-header"><strong>Nemona</strong> • Trainer - Supporter <span class="set-name">(Paldean Fates)</span></div><p class="card-rule"><em>Draw 3 cards.</em></p><p class="card-rule"><em>You may play only 1 Supporter card during your turn.</em></p>
+    </div>
+</div>
+
+<div class="deck-entry">
+    <div class="deck-line">2x <span style="color: #000000;" title="Card Match: 100%">Charizard ex</span> (<span style="color: #000000;" title="Set Match: 100%">OBF</span>)</div>
+    <div class="card-note">↳ Card note. Hypothetical carry?</div>
+    <div class="card-body">
+        <div class="card-header"><strong>Charizard ex</strong> • Darkness • 330 HP <span class="set-name">(Obsidian Flames)</span></div><div class="card-sub"><em>Evolves from Charmeleon</em></div><p class="card-rule"><em>Pokémon ex rule: When your Pokémon ex is Knocked Out, your opponent takes 2 Prize cards.</em></p><p class="card-rule"><em>Tera: As long as this Pokémon is on your Bench, prevent all damage done to this Pokémon by attacks (both yours and your opponent's).</em></p><p><strong><span style="color:#b30000;">[Ability]</span> Infernal Reign</strong>: When you play this Pokémon from your hand to evolve 1 of your Pokémon during your turn, you may search your deck for up to 3 Basic Fire Energy cards and attach them to your Pokémon in any way you like. Then, shuffle your deck.</p><p class="attack"><span class="energy e-Fire">F</span><span class="energy e-Fire">F</span> <strong>Burning Darkness</strong> <strong>180+</strong><br><span class="atk-text">This attack does 30 more damage for each Prize card your opponent has taken.</span></p><div class="card-footer"><strong>Weakness:</strong> Grass ×2 | <strong>Resistance:</strong> None | <strong>Retreat:</strong> <span class="energy e-Colorless">C</span><span class="energy e-Colorless">C</span></div>
+    </div>
+</div>
+
+<div class="deck-entry">
+    <div class="deck-line">1x <span style="color: #000000;" title="Card Match: 100%">Lumineon V</span> (<span style="color: #000000;" title="Set Match: 100%">BRS</span>)</div>
+    
+    <div class="card-body">
+        <div class="card-header"><strong>Lumineon V</strong> • Water • 170 HP <span class="set-name">(Brilliant Stars)</span></div><p class="card-rule"><em>V rule: When your Pokémon V is Knocked Out, your opponent takes 2 Prize cards.</em></p><p><strong><span style="color:#b30000;">[Ability]</span> Luminous Sign</strong>: When you play this Pokémon from your hand onto your Bench during your turn, you may search your deck for a Supporter card, reveal it, and put it into your hand. Then, shuffle your deck.</p><p class="attack"><span class="energy e-Water">W</span><span class="energy e-Colorless">C</span><span class="energy e-Colorless">C</span> <strong>Aqua Return</strong> <strong>120</strong><br><span class="atk-text">Shuffle this Pokémon and all attached cards into your deck.</span></p><div class="card-footer"><strong>Weakness:</strong> Lightning ×2 | <strong>Resistance:</strong> None | <strong>Retreat:</strong> <span class="energy e-Colorless">C</span></div>
+    </div>
+</div>
+
+<h4>Trainer: 2</h4><div class="card-note">↳ This is a sub-heading note.</div>
+
+<div class="deck-entry">
+    <div class="deck-line">4x <span style="color: #000000;" title="Card Match: 100%">Cynthia</span> (<span style="color: #000000;" title="Set Match: 100%">UPR</span>)</div>
+    
+    <div class="card-body">
+        <div class="card-header"><strong>Cynthia</strong> • Trainer - Supporter <span class="set-name">(Ultra Prism)</span></div><p class="card-rule"><em>Shuffle your hand into your deck. Then, draw 6 cards.</em></p><p class="card-rule"><em>You may play only 1 Supporter card during your turn (before your attack).</em></p>
+    </div>
+</div>
+
+<div class="deck-entry">
+    <div class="deck-line">2x <span style="color: #000000;" title="Card Match: 98%">Boss's Orders</span> (<span style="color: #000000;" title="Set Match: 100%">PAL</span>)</div>
+    
+    <div class="card-body">
+        <div class="card-header"><strong>Boss's Orders (Ghetsis)</strong> • Trainer - Supporter <span class="set-name">(Paldea Evolved)</span></div><p class="card-rule"><em>Switch in 1 of your opponent's Benched Pokémon to the Active Spot.</em></p><p class="card-rule"><em>You may play only 1 Supporter card during your turn.</em></p>
+    </div>
+</div>
+
+<h3>Energy: 1</h3>
+
+<div class="deck-entry">
+    <div class="deck-line">6x <span style="color: #000000;" title="Card Match: 100%">Basic Fire Energy</span> (<span style="color: #000000;" title="Set Match: 100%">SVE</span>)</div>
+    
+    <div class="card-body">
+        <div class="card-header"><strong>Basic Fire Energy</strong> • Energy - Basic <span class="set-name">(Scarlet &amp; Violet Energies)</span></div>
+    </div>
+</div>
+`;
+
+
+// --- Example 2: Legacy / Custom ---
+const EXAMPLE_ANNOTATED = `#set: OBF, SV10
+- You can define default sets and leave them out of individual cards.
+
+Main Strategy
+- Focus on setting up Charizard ex quickly.
+
+## Core Pokémon
+4x Charmander
+- Try to start with this in the active spot.
+2x Charizard ex (Obsidian Flames)
+- Main attacker. Accelerates energy on evolution.
+
+## Support Staff
+1x Lumineon V (Brilliant Stars)
+- Emergency supporter search.
+
+## Key Trainers
+- Be careful with timing these!
+2x Boss's Orders (Paldea Evolved)`;
+
+// Paste the generated HTML output for Example 2 here:
+const EXAMPLE_ANNOTATED_HTML = `
+<h2>Decklist</h2>
+
+<h3>Main Strategy</h3><div class="card-note">↳ Focus on setting up Charizard ex quickly.</div>
+
+<h4>Core Pokémon</h4>
+
+<div class="deck-entry">
+    <div class="deck-line">4x <span style="color: #000000;" title="Card Match: 100%">Charmander</span></div>
+    <div class="card-note">↳ Try to start with this in the active spot.</div>
+    <div class="card-body">
+        <div class="card-header"><strong>Charmander</strong> • Fire • 60 HP <span class="set-name">(Obsidian Flames)</span></div><p class="attack"><span class="energy e-Fire">F</span> <strong>Heat Tackle</strong> <strong>30</strong><br><span class="atk-text">This Pokémon also does 10 damage to itself.</span></p><div class="card-footer"><strong>Weakness:</strong> Water ×2 | <strong>Resistance:</strong> None | <strong>Retreat:</strong> <span class="energy e-Colorless">C</span></div>
+    </div>
+</div>
+
+<div class="deck-entry">
+    <div class="deck-line">2x <span style="color: #000000;" title="Card Match: 100%">Charizard ex</span> (<span style="color: #000000;" title="Set Match: 100%">Obsidian Flames</span>)</div>
+    <div class="card-note">↳ Main attacker. Accelerates energy on evolution.</div>
+    <div class="card-body">
+        <div class="card-header"><strong>Charizard ex</strong> • Darkness • 330 HP <span class="set-name">(Obsidian Flames)</span></div><div class="card-sub"><em>Evolves from Charmeleon</em></div><p class="card-rule"><em>Pokémon ex rule: When your Pokémon ex is Knocked Out, your opponent takes 2 Prize cards.</em></p><p class="card-rule"><em>Tera: As long as this Pokémon is on your Bench, prevent all damage done to this Pokémon by attacks (both yours and your opponent's).</em></p><p><strong><span style="color:#b30000;">[Ability]</span> Infernal Reign</strong>: When you play this Pokémon from your hand to evolve 1 of your Pokémon during your turn, you may search your deck for up to 3 Basic Fire Energy cards and attach them to your Pokémon in any way you like. Then, shuffle your deck.</p><p class="attack"><span class="energy e-Fire">F</span><span class="energy e-Fire">F</span> <strong>Burning Darkness</strong> <strong>180+</strong><br><span class="atk-text">This attack does 30 more damage for each Prize card your opponent has taken.</span></p><div class="card-footer"><strong>Weakness:</strong> Grass ×2 | <strong>Resistance:</strong> None | <strong>Retreat:</strong> <span class="energy e-Colorless">C</span><span class="energy e-Colorless">C</span></div>
+    </div>
+</div>
+
+<h4>Support Staff</h4>
+
+<div class="deck-entry">
+    <div class="deck-line">1x <span style="color: #000000;" title="Card Match: 100%">Lumineon V</span> (<span style="color: #000000;" title="Set Match: 100%">Brilliant Stars</span>)</div>
+    <div class="card-note">↳ Emergency supporter search.</div>
+    <div class="card-body">
+        <div class="card-header"><strong>Lumineon V</strong> • Water • 170 HP <span class="set-name">(Brilliant Stars)</span></div><p class="card-rule"><em>V rule: When your Pokémon V is Knocked Out, your opponent takes 2 Prize cards.</em></p><p><strong><span style="color:#b30000;">[Ability]</span> Luminous Sign</strong>: When you play this Pokémon from your hand onto your Bench during your turn, you may search your deck for a Supporter card, reveal it, and put it into your hand. Then, shuffle your deck.</p><p class="attack"><span class="energy e-Water">W</span><span class="energy e-Colorless">C</span><span class="energy e-Colorless">C</span> <strong>Aqua Return</strong> <strong>120</strong><br><span class="atk-text">Shuffle this Pokémon and all attached cards into your deck.</span></p><div class="card-footer"><strong>Weakness:</strong> Lightning ×2 | <strong>Resistance:</strong> None | <strong>Retreat:</strong> <span class="energy e-Colorless">C</span></div>
+    </div>
+</div>
+
+<h4>Key Trainers</h4><div class="card-note">↳ Be careful with timing these!</div>
+
+<div class="deck-entry">
+    <div class="deck-line">2x <span style="color: #000000;" title="Card Match: 98%">Boss's Orders</span> (<span style="color: #000000;" title="Set Match: 100%">Paldea Evolved</span>)</div>
+    
+    <div class="card-body">
+        <div class="card-header"><strong>Boss's Orders (Ghetsis)</strong> • Trainer - Supporter <span class="set-name">(Paldea Evolved)</span></div><p class="card-rule"><em>Switch in 1 of your opponent's Benched Pokémon to the Active Spot.</em></p><p class="card-rule"><em>You may play only 1 Supporter card during your turn.</em></p>
+    </div>
+</div>
+`;
+
+// ==========================================
 // --- State & Config ---
+// ==========================================
 const DATA_DIR = 'pokemon-tcg-data';
-let setsMetadata = {};       // id -> set object
-let setsArray = [];          // For Fuse search
-let activeSetIds = new Set();// Track checked sets
-let loadedSets = {};         // Cache: id -> cards array
+let setsMetadata = {};       
+let setsArray = [];          
+let activeSetIds = new Set();
+let loadedSets = {};         
 let selectedCard = null;
 
 let setsFuse = null;
@@ -29,7 +180,14 @@ function setStatus(msg) {
 async function init() {
     setupTabs();
     setupEventListeners();
-    updateDecklistPlaceholder(); // Set initial placeholder
+    updateDecklistPlaceholder(); 
+    
+    // Inject Examples Data into UI
+    document.getElementById('pre-example-standard').textContent = EXAMPLE_STANDARD;
+    document.getElementById('out-example-standard').innerHTML = EXAMPLE_STANDARD_HTML;
+    
+    document.getElementById('pre-example-annotated').textContent = EXAMPLE_ANNOTATED;
+    document.getElementById('out-example-annotated').innerHTML = EXAMPLE_ANNOTATED_HTML;
 
     try {
         const res = await fetch(`${DATA_DIR}/sets/en.json`);
@@ -68,9 +226,9 @@ function updateDecklistPlaceholder() {
     const format = comboFormat.value;
     const examples = {
         Standard: `Pokémon: 1\n4 Nemona SV10 48\n\nTrainer: 1\n4 Cynthia UPR 119`,
-        Legacy: `4x Nemona (Scarlet & Violet)\n4x Cynthia (Ultra Prism)`
+        Shorthand: `4x Nemona (Scarlet & Violet)\n4x Cynthia (Ultra Prism)`
     };
-    const footer = `\n\n#set: SV10 (Filters context to specific sets)\n- Note (Adds a note to the card above)`;
+    const footer = `\n\n#set: SV10 (Filters context to specific sets)\n## Subheading\n- Note (Adds a note to the card or heading above)`;
     textDecklist.placeholder = `${examples[format]}${footer}`;
 }
 
@@ -93,9 +251,10 @@ function setupEventListeners() {
     document.getElementById('btn-clear-output').addEventListener('click', () => textOutput.value = '');
     document.getElementById('btn-clear-decklist').addEventListener('click', () => textDecklist.value = '');
 
-    document.getElementById('btn-preview-html').addEventListener('click', () => handleDecklistExport('html', true));
-    document.getElementById('btn-export-html').addEventListener('click', () => handleDecklistExport('html', false));
-    document.getElementById('btn-export-txt').addEventListener('click', () => handleDecklistExport('txt', false));
+    // Main Annotator Export Buttons
+    document.getElementById('btn-preview-html').addEventListener('click', () => executeExport(textDecklist.value, comboFormat.value, document.getElementById('combo-export-style').value, 'html', true));
+    document.getElementById('btn-export-html').addEventListener('click', () => executeExport(textDecklist.value, comboFormat.value, document.getElementById('combo-export-style').value, 'html', false));
+    document.getElementById('btn-export-txt').addEventListener('click', () => executeExport(textDecklist.value, comboFormat.value, document.getElementById('combo-export-style').value, 'txt', false));
 }
 
 async function copyToClipboard(text) {
@@ -349,7 +508,7 @@ function parseLine(line, format) {
         if (m) {
             qty = m[1]; name = m[2].trim(); setStr = m[3];
         }
-    } else if (format === "Legacy") {
+    } else if (format === "Shorthand") {
         const m = line.match(reLegacy);
         if (m) {
             qty = m[1]; name = m[2].trim(); setStr = m[3] ? m[3].trim() : null;
@@ -452,18 +611,21 @@ async function processDecklist(rawText, formatMode, exportHtml, textStyle) {
         if (cleanLine.startsWith("-")) {
             for (let i = processedItems.length - 1; i >= 0; i--) {
                 const item = processedItems[i];
-                if (item.type === 'card') {
+                if (['card', 'header', 'sub-header'].includes(item.type)) {
                     item.notes.push(cleanLine.substring(1).trim());
                     break;
                 }
-                if (['header', 'text'].includes(item.type) && item.content) break;
             }
             continue;
         }
 
         const parsed = parseLine(cleanLine, formatMode);
         if (!parsed) {
-            processedItems.push({ type: 'header', content: cleanLine });
+            if (cleanLine.startsWith("##")) {
+                processedItems.push({ type: 'sub-header', content: cleanLine.substring(2).trim(), notes: [] });
+            } else {
+                processedItems.push({ type: 'header', content: cleanLine, notes: [] });
+            }
             continue;
         }
 
@@ -505,9 +667,16 @@ async function processDecklist(rawText, formatMode, exportHtml, textStyle) {
     for (let item of processedItems) {
         if (item.type === 'text') {
             output.push(item.content);
-        } else if (item.type === 'header') {
-            if (exportHtml) output.push(`<h3>${item.content}</h3>`);
-            else output.push(item.content);
+        } else if (item.type === 'header' || item.type === 'sub-header') {
+            const tag = item.type === 'header' ? 'h3' : 'h4';
+            const notesHtml = item.notes.length ? `<div class='card-note'>↳ ${item.notes.join('<br>↳ ')}</div>` : "";
+            
+            if (exportHtml) {
+                output.push(`<${tag}>${item.content}</${tag}>${notesHtml}`);
+            } else {
+                output.push((item.type === 'sub-header' ? '## ' : '') + item.content);
+                item.notes.forEach(n => output.push(`  - ${n}`));
+            }
         } else if (item.type === 'card') {
             const { parsed, cardData, notes, cScore, sScore } = item;
             if (exportHtml) {
@@ -520,13 +689,13 @@ async function processDecklist(rawText, formatMode, exportHtml, textStyle) {
                     const notesHtml = notes.length ? `<div class='card-note'>↳ ${notes.join('<br>↳ ')}</div>` : "";
                     
                     output.push(`
-                    <div class="deck-entry">
-                        <div class="deck-line">${summaryLine}</div>
-                        ${notesHtml}
-                        <div class="card-body">
-                            ${cardHtml}
-                        </div>
-                    </div>`);
+<div class="deck-entry">
+    <div class="deck-line">${summaryLine}</div>
+    ${notesHtml}
+    <div class="card-body">
+        ${cardHtml}
+    </div>
+</div>`);
                 } else {
                     output.push(`<div class='deck-entry'><div class='deck-line'>${parsed.original} <span style='color:red;'>[Card Data Not Found]</span></div></div>`);
                 }
@@ -553,14 +722,16 @@ const htmlTemplateStart = `<!DOCTYPE html>
 <title>Annotated Decklist</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.5; max-width: 900px; margin: 20px auto; padding: 0 15px; background: #fff; color: #333; }
-  h2, h3 { color: #111; margin-top: 1.5em; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+  h2 { color: #111; margin-top: 1.5em; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+  h3 { color: #222; margin-top: 1.5em; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+  h4 { color: #444; margin-top: 1.2em; margin-bottom: 0.5em; font-size: 1.1em; }
   
   .deck-entry { margin-bottom: 25px; page-break-inside: avoid; }
-  .deck-line { font-weight: bold; font-size: 1.1em; background: #f8f9fa; padding: 8px 12px; border-radius: 4px; }
+  .deck-line { font-weight: bold; font-size: 1.1em; background: #f8f9fa; padding: 8px 12px; border-radius: 4px; color: #333; }
   
   .card-note { font-weight: normal; font-style: italic; color: #556677; font-size: 0.9em; margin: 6px 0 10px 20px; }
   
-  .card-body { margin-left: 15px; padding-left: 15px; border-left: 3px solid #e2e8f0; margin-top: 10px; }
+  .card-body { margin-left: 15px; padding-left: 15px; border-left: 3px solid #e2e8f0; margin-top: 10px; color: #333; }
 
   .card-header { font-size: 1.1em; margin-bottom: 8px; }
   .set-name { font-size: 0.8em; color: #666; font-weight: normal; float: right; margin-top: 2px; }
@@ -593,14 +764,10 @@ const htmlTemplateEnd = `
 </body>
 </html>`;
 
-async function handleDecklistExport(type, isPreview) {
-    const rawText = textDecklist.value;
+async function executeExport(rawText, formatMode, textStyle, type, isPreview) {
     if (!rawText.trim()) return alert("Decklist is empty.");
     
-    const formatMode = comboFormat.value;
-    const textStyle = document.getElementById('combo-export-style').value;
     const isHtml = (type === 'html');
-    
     const content = await processDecklist(rawText, formatMode, isHtml, textStyle);
     
     let finalContent = isHtml ? htmlTemplateStart + content + htmlTemplateEnd : content;
