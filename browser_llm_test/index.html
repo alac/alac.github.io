@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Rewriter: Local LLM Test</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --panel-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .header-panel {
+            background-color: var(--panel-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        h1 { margin: 0 0 15px 0; font-size: 1.5rem; }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        select, button, input {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-size: 14px;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        button:hover:not(:disabled) { background: var(--primary-hover); }
+        button:disabled { background: var(--border); cursor: not-allowed; opacity: 0.7; }
+        
+        #unloadBtn { background: var(--danger); }
+        #unloadBtn:hover:not(:disabled) { background: #dc2626; }
+
+        .status-bar {
+            margin-top: 15px;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #progressContainer {
+            width: 100%;
+            background: var(--bg-color);
+            border-radius: 4px;
+            height: 8px;
+            margin-top: 10px;
+            overflow: hidden;
+            display: none;
+        }
+
+        #progressBar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .chat-history {
+            flex-grow: 1;
+            background-color: var(--panel-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .interaction {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .interaction-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .original-text {
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .rewritten-text {
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .input-panel {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-panel textarea {
+            flex-grow: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--panel-bg);
+            color: var(--text-main);
+            resize: none;
+            font-family: inherit;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-panel">
+        <h1>Sentence Rewriter Test Bench</h1>
+        <div class="controls">
+            <select id="modelSelect">
+                <!-- Using onnx-community for modern v3 compatible models -->
+                <option value="Xenova/flan-t5-small" data-task="text2text-generation">flan-t5-small (~77M)</option>
+                <option value="Xenova/flan-t5-base" data-task="text2text-generation" selected>flan-t5-base (~250M)</option>
+                <option value="onnx-community/SmolLM2-360M-Instruct" data-task="text-generation">SmolLM2-360M-Instruct</option>
+                <option value="onnx-community/Qwen2.5-0.5B-Instruct" data-task="text-generation">Qwen (0.5B-0.6B)</option>
+            </select>
+            <button id="loadBtn">Load Model</button>
+            <button id="unloadBtn" disabled>Unload & Free Memory</button>
+        </div>
+        
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+        </div>
+
+        <div class="status-bar">
+            <span id="statusText">Status: Waiting to load model...</span>
+            <span id="deviceText">Target: WebGPU</span>
+        </div>
+    </div>
+
+    <div class="chat-history" id="chatHistory">
+        <!-- Interactions will appear here -->
+    </div>
+
+    <div class="input-panel">
+        <textarea id="inputText" rows="2" placeholder="Paste some AI slop here..." disabled></textarea>
+        <button id="sendBtn" disabled>Rewrite</button>
+    </div>
+</div>
+
+<script type="module">
+    // Import Transformers.js v3
+    import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
+
+    // Disable local models to ensure it fetches from Hugging Face Hub
+    env.allowLocalModels = false;
+
+    // UI Elements
+    const modelSelect = document.getElementById('modelSelect');
+    const loadBtn = document.getElementById('loadBtn');
+    const unloadBtn = document.getElementById('unloadBtn');
+    const sendBtn = document.getElementById('sendBtn');
+    const inputText = document.getElementById('inputText');
+    const statusText = document.getElementById('statusText');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+    const chatHistory = document.getElementById('chatHistory');
+
+    let generator = null;
+    let currentTask = null;
+
+    // Handle Loading the Model
+    loadBtn.addEventListener('click', async () => {
+        const modelId = modelSelect.value;
+        const selectedOption = modelSelect.options[modelSelect.selectedIndex];
+        currentTask = selectedOption.getAttribute('data-task');
+
+        try {
+            loadBtn.disabled = true;
+            modelSelect.disabled = true;
+            statusText.textContent = `Status: Loading ${modelId}...`;
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+
+            // Initialize the pipeline
+            generator = await pipeline(currentTask, modelId, {
+                device: 'webgpu', // Force WebGPU
+                dtype: 'q8',      // 8-bit quantization for balance of speed/quality
+                progress_callback: (data) => {
+                    if (data.status === 'progress') {
+                        // Approximate overall progress using the files being downloaded
+                        progressBar.style.width = `${Math.round(data.progress)}%`;
+                    }
+                }
+            });
+
+            statusText.textContent = `Status: ${modelId} loaded successfully via WebGPU!`;
+            unloadBtn.disabled = false;
+            sendBtn.disabled = false;
+            inputText.disabled = false;
+            inputText.focus();
+
+            // Perform a tiny warmup inference (compiles WebGPU shaders)
+            statusText.textContent = `Status: Warming up shaders...`;
+            if (currentTask === 'text-generation') {
+                await generator([{ role: 'user', content: 'hi' }], { max_new_tokens: 1 });
+            } else {
+                await generator('hi', { max_new_tokens: 1 });
+            }
+            statusText.textContent = `Status: Ready.`;
+
+        } catch (error) {
+            console.error(error);
+            statusText.textContent = `Error: ${error.message}`;
+            loadBtn.disabled = false;
+            modelSelect.disabled = false;
+        } finally {
+            progressContainer.style.display = 'none';
+        }
+    });
+
+    // Handle Unloading (Switching models)
+    unloadBtn.addEventListener('click', async () => {
+        if (generator) {
+            await generator.dispose(); // Frees WebGPU/WASM memory
+            generator = null;
+        }
+        
+        loadBtn.disabled = false;
+        modelSelect.disabled = false;
+        unloadBtn.disabled = true;
+        sendBtn.disabled = true;
+        inputText.disabled = true;
+        statusText.textContent = 'Status: Model unloaded. Memory freed.';
+    });
+
+    // Handle Rewriting
+    sendBtn.addEventListener('click', async () => {
+        const text = inputText.value.trim();
+        if (!text) return;
+
+        inputText.value = '';
+        sendBtn.disabled = true;
+        statusText.textContent = 'Status: Generating...';
+
+        const startTime = performance.now();
+        let outputText = "";
+
+        try {
+            if (currentTask === 'text-generation') {
+                // Formatting for chat-based decoder models (Qwen, SmolLM)
+                const messages = [
+                    { role: 'system', content: 'You are an expert editor. Rewrite the user\'s text to remove AI clichés and make it sound natural and human-like.' },
+                    { role: 'user', content: `Rewrite this: ${text}` }
+                ];
+                
+                const result = await generator(messages, {
+                    max_new_tokens: 128,
+                    temperature: 0.4,
+                    do_sample: true
+                });
+                
+                // Extract generated text from the array returned by v3
+                const finalMessage = result[0].generated_text.at(-1);
+                outputText = finalMessage.content;
+            } 
+            else {
+                // Formatting for text2text models (Flan-T5)
+                const prompt = `Rewrite this sentence to be natural and remove AI jargon: ${text}`;
+                
+                const result = await generator(prompt, {
+                    max_new_tokens: 128,
+                    temperature: 0.4,
+                    do_sample: true
+                });
+                
+                outputText = result[0].generated_text;
+            }
+
+            const duration = (performance.now() - startTime).toFixed(0);
+            appendInteraction(text, outputText, duration, modelSelect.value);
+            statusText.textContent = 'Status: Ready.';
+
+        } catch (error) {
+            console.error(error);
+            statusText.textContent = `Error during generation: ${error.message}`;
+        } finally {
+            sendBtn.disabled = false;
+            inputText.focus();
+        }
+    });
+
+    // Allow pressing "Enter" to send
+    inputText.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            if (!sendBtn.disabled) sendBtn.click();
+        }
+    });
+
+    // UI helper to add history
+    function appendInteraction(original, rewritten, ms, modelName) {
+        const div = document.createElement('div');
+        div.className = 'interaction';
+        
+        // Calculate throughput
+        const approxTokens = rewritten.split(' ').length * 1.3; // Rough word-to-token ratio
+        const tps = (approxTokens / (ms / 1000)).toFixed(1);
+
+        div.innerHTML = `
+            <div class="interaction-meta">
+                <span>Model: ${modelName}</span>
+                <span>Latency: ${ms}ms (~${tps} tok/s)</span>
+            </div>
+            <div class="original-text">${original}</div>
+            <div class="rewritten-text">${rewritten}</div>
+        `;
+        
+        chatHistory.appendChild(div);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+</script>
+
+</body>
+</html>
