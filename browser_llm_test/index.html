@@ -223,6 +223,17 @@
         const selectedOption = modelSelect.options[modelSelect.selectedIndex];
         currentTask = selectedOption.getAttribute('data-task');
 
+        if (!navigator.gpu) {
+            alert("WebGPU is not supported by this browser. It will fall back to slow CPU/WASM.");
+        } else {
+            const adapter = await navigator.gpu.requestAdapter();
+            if (!adapter) {
+                alert("WebGPU is supported, but could not connect to your GPU. Falling back to CPU/WASM.");
+            } else {
+                console.log("WebGPU hardware found:", adapter);
+            }
+        }
+
         try {
             loadBtn.disabled = true;
             modelSelect.disabled = true;
@@ -233,7 +244,7 @@
             // Initialize the pipeline
             generator = await pipeline(currentTask, modelId, {
                 device: 'webgpu', // Force WebGPU
-                dtype: 'q8',      // 8-bit quantization for balance of speed/quality
+                dtype: 'q4',      // q4 (4-bit) has much better-tested shader kernels in ONNX Runtime Web
                 progress_callback: (data) => {
                     if (data.status === 'progress') {
                         // Approximate overall progress using the files being downloaded
@@ -303,9 +314,8 @@
                 ];
                 
                 const result = await generator(messages, {
-                    max_new_tokens: 128,
-                    temperature: 0.4,
-                    do_sample: true
+                    max_new_tokens: 64,
+                    do_sample: false
                 });
                 
                 // Extract generated text from the array returned by v3
