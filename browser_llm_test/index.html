@@ -245,7 +245,7 @@
             // Initialize the pipeline
             generator = await pipeline(currentTask, modelId, {
                 device: 'webgpu',
-                dtype: 'q8',
+                dtype: 'fp16',
                 progress_callback: (data) => {
                     if (data.status === 'progress') {
                         progressBar.style.width = `${Math.round(data.progress)}%`;
