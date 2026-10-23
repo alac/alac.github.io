@@ -167,10 +167,11 @@
         <div class="controls">
             <select id="modelSelect">
                 <!-- Using onnx-community for modern v3 compatible models -->
-                <option value="Xenova/flan-t5-small" data-task="text2text-generation">flan-t5-small (~77M)</option>
-                <option value="Xenova/flan-t5-base" data-task="text2text-generation" selected>flan-t5-base (~250M)</option>
-                <option value="onnx-community/SmolLM2-360M-Instruct-ONNX" data-task="text-generation">SmolLM2-360M-Instruct</option>
-                <option value="onnx-community/Qwen2.5-0.5B-Instruct" data-task="text-generation">Qwen (0.5B-0.6B)</option>
+                <option value="alac/flan-t5-deslop-onnx" data-task="text2text-generation" data-dtype="q4f16" selected>My Fine-tuned Flan-T5 (WebGPU)</option>
+                <option value="Xenova/flan-t5-small" data-task="text2text-generation" data-dtype="q4f16">flan-t5-small (~77M)</option>
+                <option value="Xenova/flan-t5-base" data-task="text2text-generation" data-dtype="q4f16">flan-t5-base (~250M)</option>
+                <option value="onnx-community/SmolLM2-360M-Instruct-ONNX" data-task="text-generation" data-dtype="q4f16">SmolLM2-360M-Instruct</option>
+                <option value="onnx-community/Qwen2.5-0.5B-Instruct" data-task="text-generation" data-dtype="q4f16">Qwen (0.5B-0.6B)</option>
             </select>
             <button id="loadBtn">Load Model</button>
             <button id="unloadBtn" disabled>Unload & Free Memory</button>
@@ -198,7 +199,7 @@
 
 <script type="module">
     // Import Transformers.js v3
-    import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
+    import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1';
 
     // Disable local models to ensure it fetches from Hugging Face Hub
     env.allowLocalModels = false;
@@ -222,6 +223,7 @@
         const modelId = modelSelect.value;
         const selectedOption = modelSelect.options[modelSelect.selectedIndex];
         currentTask = selectedOption.getAttribute('data-task');
+        const currentDtype = selectedOption.getAttribute('data-dtype') || 'q4f16';
 
         if (!navigator.gpu) {
             alert("WebGPU is not supported by this browser. It will fall back to slow CPU/WASM.");
@@ -241,13 +243,12 @@
             progressContainer.style.display = 'block';
             progressBar.style.width = '0%';
 
-            // Initialize the pipeline
+            // Initialize the pipeline with the selected dtype
             generator = await pipeline(currentTask, modelId, {
-                device: 'webgpu', // Force WebGPU
-                dtype: 'q4f16',      // q4 (4-bit) has much better-tested shader kernels in ONNX Runtime Web
+                device: 'webgpu',
+                dtype: currentDtype,
                 progress_callback: (data) => {
                     if (data.status === 'progress') {
-                        // Approximate overall progress using the files being downloaded
                         progressBar.style.width = `${Math.round(data.progress)}%`;
                     }
                 }
@@ -259,7 +260,7 @@
             inputText.disabled = false;
             inputText.focus();
 
-            // Perform a tiny warmup inference (compiles WebGPU shaders)
+            // Perform a tiny warmup inference
             statusText.textContent = `Status: Warming up shaders...`;
             if (currentTask === 'text-generation') {
                 await generator([{ role: 'user', content: 'hi' }], { max_new_tokens: 1 });
@@ -324,12 +325,11 @@
             } 
             else {
                 // Formatting for text2text models (Flan-T5)
-                const prompt = `Rewrite this sentence to be natural and remove AI jargon: ${text}`;
+                const prompt = `unslop: ${text}`;
                 
                 const result = await generator(prompt, {
                     max_new_tokens: 128,
-                    temperature: 0.4,
-                    do_sample: true
+                    do_sample: false
                 });
                 
                 outputText = result[0].generated_text;
