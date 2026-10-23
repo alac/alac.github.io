@@ -244,12 +244,12 @@
 
             // Initialize the pipeline
             generator = await pipeline(currentTask, modelId, {
-                device: 'webgpu', // Force WebGPU
-                // dtype: 'q4f16',      // q4 (4-bit) has much better-tested shader kernels in ONNX Runtime Web
+                device: 'webgpu',
                 dtype: 'q8',
+                // Tell it to load the non-merged decoder:
+                use_cache: false,
                 progress_callback: (data) => {
                     if (data.status === 'progress') {
-                        // Approximate overall progress using the files being downloaded
                         progressBar.style.width = `${Math.round(data.progress)}%`;
                     }
                 }
