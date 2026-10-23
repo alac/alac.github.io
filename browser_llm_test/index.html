@@ -167,6 +167,7 @@
         <div class="controls">
             <select id="modelSelect">
                 <!-- Using onnx-community for modern v3 compatible models -->
+                <option value="alac/flan-t5-deslop-onnx" data-task="text2text-generation" selected>My Fine-tuned Flan-T5 (WebGPU)</option>
                 <option value="Xenova/flan-t5-small" data-task="text2text-generation">flan-t5-small (~77M)</option>
                 <option value="Xenova/flan-t5-base" data-task="text2text-generation" selected>flan-t5-base (~250M)</option>
                 <option value="onnx-community/SmolLM2-360M-Instruct-ONNX" data-task="text-generation">SmolLM2-360M-Instruct</option>
@@ -244,7 +245,8 @@
             // Initialize the pipeline
             generator = await pipeline(currentTask, modelId, {
                 device: 'webgpu', // Force WebGPU
-                dtype: 'q4f16',      // q4 (4-bit) has much better-tested shader kernels in ONNX Runtime Web
+                // dtype: 'q4f16',      // q4 (4-bit) has much better-tested shader kernels in ONNX Runtime Web
+                dtype: 'q8',
                 progress_callback: (data) => {
                     if (data.status === 'progress') {
                         // Approximate overall progress using the files being downloaded
@@ -324,12 +326,11 @@
             } 
             else {
                 // Formatting for text2text models (Flan-T5)
-                const prompt = `Rewrite this sentence to be natural and remove AI jargon: ${text}`;
+                const prompt = `unslop: ${text}`;
                 
                 const result = await generator(prompt, {
                     max_new_tokens: 128,
-                    temperature: 0.4,
-                    do_sample: true
+                    do_sample: false
                 });
                 
                 outputText = result[0].generated_text;
