@@ -169,7 +169,7 @@
                 <!-- Using onnx-community for modern v3 compatible models -->
                 <option value="Xenova/flan-t5-small" data-task="text2text-generation">flan-t5-small (~77M)</option>
                 <option value="Xenova/flan-t5-base" data-task="text2text-generation" selected>flan-t5-base (~250M)</option>
-                <option value="onnx-community/SmolLM2-360M-Instruct" data-task="text-generation">SmolLM2-360M-Instruct</option>
+                <option value="onnx-community/SmolLM2-360M-Instruct-ONNX" data-task="text-generation">SmolLM2-360M-Instruct</option>
                 <option value="onnx-community/Qwen2.5-0.5B-Instruct" data-task="text-generation">Qwen (0.5B-0.6B)</option>
             </select>
             <button id="loadBtn">Load Model</button>
@@ -244,7 +244,7 @@
             // Initialize the pipeline
             generator = await pipeline(currentTask, modelId, {
                 device: 'webgpu', // Force WebGPU
-                dtype: 'q4',      // q4 (4-bit) has much better-tested shader kernels in ONNX Runtime Web
+                dtype: 'q4f16',      // q4 (4-bit) has much better-tested shader kernels in ONNX Runtime Web
                 progress_callback: (data) => {
                     if (data.status === 'progress') {
                         // Approximate overall progress using the files being downloaded
