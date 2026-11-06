@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentence Rewriter: Local LLM Test</title>
+    <title>DeSlop — On-Device AI Sentence Simplifier</title>
     <style>
         :root {
-            --bg-color: #0f172a;
+            --bg-color: #0b1120;
             --panel-bg: #1e293b;
+            --panel-card: #0f172a;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: #334155;
+            --border-highlight: #475569;
             --primary: #3b82f6;
             --primary-hover: #2563eb;
+            --accent: #06b6d4;
             --danger: #ef4444;
+            --success: #10b981;
+            --diff-del-bg: rgba(239, 68, 68, 0.2);
+            --diff-del-text: #fca5a5;
+            --diff-add-bg: rgba(16, 185, 129, 0.2);
+            --diff-add-text: #6ee7b7;
         }
 
+        * { box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
@@ -25,27 +35,92 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh;
-            box-sizing: border-box;
+            min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            height: 100%;
+            gap: 16px;
+            height: calc(100vh - 40px);
         }
 
+        /* Top Header */
         .header-panel {
             background-color: var(--panel-bg);
-            padding: 20px;
-            border-radius: 12px;
+            padding: 18px 24px;
+            border-radius: 14px;
             border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        h1 { margin: 0 0 15px 0; font-size: 1.5rem; }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .title-group h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #60a5fa, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-group p {
+            margin: 4px 0 0 0;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .header-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .badge-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            background: var(--panel-card);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .badge-link:hover {
+            border-color: var(--primary);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .badge-link.primary {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #93c5fd;
+        }
+
+        .badge-link.primary:hover {
+            background: rgba(59, 130, 246, 0.3);
+        }
 
         .controls {
             display: flex;
@@ -55,12 +130,13 @@
         }
 
         select, button, input {
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 8px 14px;
+            border-radius: 8px;
             border: 1px solid var(--border);
-            background: var(--bg-color);
+            background: var(--panel-card);
             color: var(--text-main);
-            font-size: 14px;
+            font-size: 13px;
+            font-family: inherit;
         }
 
         button {
@@ -69,113 +145,463 @@
             border: none;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.2s;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         button:hover:not(:disabled) { background: var(--primary-hover); }
-        button:disabled { background: var(--border); cursor: not-allowed; opacity: 0.7; }
+        button:disabled { background: var(--border); cursor: not-allowed; opacity: 0.6; }
         
-        #unloadBtn { background: var(--danger); }
-        #unloadBtn:hover:not(:disabled) { background: #dc2626; }
+        #unloadBtn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); }
+        #unloadBtn:hover:not(:disabled) { background: rgba(239, 68, 68, 0.15); border-color: var(--danger); color: var(--danger); }
 
         .status-bar {
-            margin-top: 15px;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         #progressContainer {
             width: 100%;
-            background: var(--bg-color);
-            border-radius: 4px;
-            height: 8px;
-            margin-top: 10px;
+            background: var(--panel-card);
+            border-radius: 6px;
+            height: 6px;
             overflow: hidden;
             display: none;
         }
 
         #progressBar {
             height: 100%;
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             width: 0%;
             transition: width 0.1s;
         }
 
+        /* Preset Pills */
+        .preset-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .preset-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .preset-chip {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: var(--panel-card);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .preset-chip:hover {
+            color: var(--text-main);
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Chat / History */
         .chat-history {
             flex-grow: 1;
             background-color: var(--panel-bg);
-            border-radius: 12px;
+            border-radius: 14px;
             border: 1px solid var(--border);
             padding: 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
+        }
+
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--text-muted);
+            text-align: center;
+            gap: 10px;
+        }
+
+        .empty-state svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.4;
         }
 
         .interaction {
-            background: var(--bg-color);
-            padding: 15px;
-            border-radius: 8px;
+            background: var(--panel-card);
+            padding: 16px;
+            border-radius: 10px;
             border: 1px solid var(--border);
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .interaction-meta {
             font-size: 12px;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
         }
 
-        .original-text {
-            color: var(--text-muted);
-            text-decoration: line-through;
-            margin-bottom: 8px;
+        .pass-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pass-row {
+            display: flex;
+            gap: 12px;
             font-size: 14px;
-        }
-
-        .rewritten-text {
-            color: var(--text-main);
             line-height: 1.5;
         }
 
+        .pass-tag {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            height: fit-content;
+            margin-top: 2px;
+            white-space: nowrap;
+        }
+
+        .tag-original { background: rgba(148, 163, 184, 0.15); color: var(--text-muted); }
+        .tag-pass { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .tag-final { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; }
+
+        .pass-content { flex-grow: 1; }
+        .original-text { color: var(--text-muted); }
+        .rewritten-text { color: var(--text-main); font-weight: 450; }
+
+        /* Input Controls */
         .input-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-box-wrapper {
             display: flex;
             gap: 10px;
         }
 
         .input-panel textarea {
             flex-grow: 1;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 12px 16px;
+            border-radius: 10px;
             border: 1px solid var(--border);
             background: var(--panel-bg);
             color: var(--text-main);
             resize: none;
             font-family: inherit;
+            font-size: 14px;
+            line-height: 1.5;
+            transition: border-color 0.2s;
+        }
+
+        .input-panel textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .input-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal {
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            max-width: 760px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+            animation: modalScale 0.25s ease-out;
+        }
+
+        @keyframes modalScale {
+            from { transform: scale(0.96); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .close-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        .close-btn:hover { color: var(--text-main); }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .modal-intro {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            background: var(--panel-card);
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .modal-intro strong { color: var(--text-main); }
+
+        /* Showcase Carousel/Tabs */
+        .example-tabs {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid transparent;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover { color: var(--text-main); background: var(--panel-card); }
+        .tab-btn.active {
+            color: #fff;
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .example-card {
+            background: var(--panel-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .example-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .example-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .example-source {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .example-source a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .example-source a:hover { text-decoration: underline; }
+
+        /* Diff Display Inside Modal */
+        .diff-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .diff-step {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .step-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .step-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .diff-del {
+            background-color: var(--diff-del-bg);
+            color: var(--diff-del-text);
+            text-decoration: line-through;
+            padding: 1px 4px;
+            border-radius: 3px;
+            margin: 0 1px;
+        }
+
+        .diff-add {
+            background-color: var(--diff-add-bg);
+            color: var(--diff-add-text);
+            font-weight: 600;
+            padding: 1px 4px;
+            border-radius: 3px;
+            margin: 0 1px;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--panel-card);
+        }
+
+        .modal-footer-left {
+            font-size: 12px;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Header -->
     <div class="header-panel">
-        <h1>Sentence Rewriter Test Bench</h1>
+        <div class="header-top">
+            <div class="title-group">
+                <h1>
+                    <span>DeSlop</span>
+                    <span style="font-size: 0.8rem; font-weight: normal; color: var(--accent); border: 1px solid rgba(6, 182, 212, 0.4); padding: 2px 8px; border-radius: 12px; vertical-align: middle;">WebGPU</span>
+                </h1>
+                <p>On-Device AI Sentence Simplifier & De-bloater &bull; Zero Server Latency</p>
+            </div>
+            
+            <div class="header-links">
+                <button id="showcaseModalBtn" class="badge-link primary">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    Examples &amp; Showcase
+                </button>
+                <a href="https://huggingface.co/alac/flan-t5-deslopV4-onnx" target="_blank" rel="noopener noreferrer" class="badge-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    Hugging Face Model
+                </a>
+            </div>
+        </div>
+
         <div class="controls">
             <select id="modelSelect">
-                <!-- Using onnx-community for modern v3 compatible models -->
-                <option value="alac/flan-t5-deslop-onnx" data-task="text2text-generation" data-dtype="q4" selected>flan-t5-deslop-onnx</option>
-                <option value="alac/flan-t5-deslopV2-onnx" data-task="text2text-generation" data-dtype="q4" selected>flan-t5-deslopV2-onnx</option>
-                <option value="Xenova/flan-t5-small" data-task="text2text-generation" data-dtype="q4">flan-t5-small (~77M)</option>
-                <option value="Xenova/flan-t5-base" data-task="text2text-generation" data-dtype="q4">flan-t5-base (~250M)</option>
-                <option value="onnx-community/SmolLM2-360M-Instruct-ONNX" data-task="text-generation" data-dtype="q4f16">SmolLM2-360M-Instruct</option>
-                <option value="onnx-community/Qwen2.5-0.5B-Instruct" data-task="text-generation" data-dtype="q4f16">Qwen (0.5B-0.6B)</option>
+                <option value="alac/flan-t5-deslopV4-onnx" data-task="text2text-generation" data-dtype="q4" selected>
+                    alac/flan-t5-deslopV4-onnx (Q4 &bull; 130MB)
+                </option>
             </select>
-            <button id="loadBtn">Load Model</button>
-            <button id="unloadBtn" disabled>Unload & Free Memory</button>
+            <button id="loadBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Load In-Browser Model
+            </button>
+            <button id="unloadBtn" disabled>Unload</button>
         </div>
         
         <div id="progressContainer">
@@ -183,29 +609,315 @@
         </div>
 
         <div class="status-bar">
-            <span id="statusText">Status: Waiting to load model...</span>
+            <span id="statusText">Status: Model ready to be loaded into browser memory.</span>
             <span id="deviceText">Target: WebGPU</span>
         </div>
     </div>
 
+    <!-- Playground History -->
     <div class="chat-history" id="chatHistory">
-        <!-- Interactions will appear here -->
+        <div class="empty-state" id="emptyState">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <div>Load the model and enter an overwritten sentence below.</div>
+            <div style="font-size: 12px; color: var(--border-highlight);">Runs completely locally on your GPU via WebGPU and Transformers.js.</div>
+        </div>
     </div>
 
+    <!-- Input Panel -->
     <div class="input-panel">
-        <textarea id="inputText" rows="2" placeholder="Paste some AI slop here..." disabled></textarea>
-        <button id="sendBtn" disabled>Rewrite</button>
+        <div class="preset-bar">
+            <span class="preset-label">Quick Presets:</span>
+            <button class="preset-chip" data-sample="0">Digital Ecosystem</button>
+            <button class="preset-chip" data-sample="1">Melodrama Fiction</button>
+            <button class="preset-chip" data-sample="2">Elsevier Slop (Batteries)</button>
+            <button class="preset-chip" data-sample="3">Elsevier Slop (Storage)</button>
+            <button class="preset-chip" data-sample="4">PubPeer (Vascular)</button>
+            <button class="preset-chip" data-sample="5">PubPeer (Anecdotal)</button>
+        </div>
+
+        <div class="input-box-wrapper">
+            <textarea id="inputText" rows="2" placeholder="Paste some AI slop or verbose text here..." disabled></textarea>
+            <button id="sendBtn" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Rewrite
+            </button>
+        </div>
+
+        <div class="input-options">
+            <label class="checkbox-label">
+                <input type="checkbox" id="multiPassCheck" checked>
+                Auto-run 3 passes (Iterative simplification)
+            </label>
+            <span>Tip: Press Enter to send, Shift+Enter for new line</span>
+        </div>
+    </div>
+</div>
+
+<!-- Showcase / Intro Modal -->
+<div class="modal-overlay" id="showcaseModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2>
+                <span>DeSlop Showcase</span>
+                <span style="font-size: 12px; color: var(--text-muted); font-weight: normal;">(Multi-pass Pruning)</span>
+            </h2>
+            <button class="close-btn" id="closeModalBtn">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="modal-intro">
+                <strong>How it works:</strong> DeSlop is a 4-bit quantized Seq2Seq model running directly in your browser. It takes bloated, decorative, or AI-generated prose and non-destructively simplifies it through <strong>subtractive pruning</strong>. When passed repeatedly, sentences converge on concise, natural human prose.
+            </div>
+
+            <!-- Tab selector for examples -->
+            <div class="example-tabs" id="exampleTabs">
+                <button class="tab-btn active" data-index="0">Corporate Slop</button>
+                <button class="tab-btn" data-index="1">Melodramatic Prose</button>
+                <button class="tab-btn" data-index="2">Elsevier Paper #1</button>
+                <button class="tab-btn" data-index="3">Elsevier Paper #2</button>
+                <button class="tab-btn" data-index="4">PubPeer Paper #1</button>
+                <button class="tab-btn" data-index="5">PubPeer Paper #2</button>
+            </div>
+
+            <!-- Card displaying the active sample -->
+            <div class="example-card" id="exampleCard">
+                <div class="example-header">
+                    <span class="example-title" id="cardCategory">Corporate Slop</span>
+                    <span class="example-source" id="cardSource">Classic LLM fluff</span>
+                </div>
+
+                <div class="diff-steps" id="cardSteps">
+                    <!-- Steps injected dynamically with diffs -->
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <span class="modal-footer-left">Diffs highlight deletions in red and additions in green.</span>
+            <button id="tryExampleBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                Try This in Editor
+            </button>
+        </div>
     </div>
 </div>
 
 <script type="module">
-    // Import Transformers.js v3
     import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1';
 
-    // Disable local models to ensure it fetches from Hugging Face Hub
     env.allowLocalModels = false;
 
-    // UI Elements
+    // Showcase data provided by user
+    const SHOWCASE_EXAMPLES = [
+        {
+            category: "Corporate Slop",
+            source: "Common LLM generation pattern",
+            input: "In today's multifaceted digital ecosystem, it is of paramount importance that businesses facilitate the implementation of modern security protocols.",
+            passes: [
+                "In today's multifaceted digital environment, it is essential that businesses implement modern security protocols.",
+                "In today's digital world, it is essential that businesses implement modern security protocols.",
+                "In today's digital world, it is essential that businesses implement modern security protocols."
+            ]
+        },
+        {
+            category: "Melodramatic Fiction",
+            source: "AI fiction stock tropes",
+            input: "He maintained his composure and held his head high despite the overwhelming agony that threatened to consume him.",
+            passes: [
+                "He remained calm and held his head high, even though the pain was so intense that it would devour him.",
+                "He remained calm and held his head high, even though it was so intense that it would devour him.",
+                "He remained calm and held his head high, even though it was so intense that it would devour him."
+            ]
+        },
+        {
+            category: "Published AI Slop (Elsevier #1)",
+            source: '<a href="https://www.sciencedirect.com/science/article/pii/S2468023024002402?via%3Dihub" target="_blank" rel="noopener">ScienceDirect Battery Paper</a>',
+            input: "Lithiummetal batteries are promising candidates for high-energy-density rechargeable batteries due to their low electrode potentials and high theoretical capacities.",
+            passes: [
+                "Lithiummetal batteries are a promising candidate for high-energy-density rechargeable batteries due to their low electrode potentials and high theoretical capacities.",
+                "Lithiummetal batteries are a promising candidate for high-energy-density rechargeable batteries due to their low electrode potentials and high theoretical capacities.",
+                "Lithiummetal batteries are a promising candidate for high-energy-density rechargeable batteries due to their low electrode potentials and high theoretical capacities."
+            ]
+        },
+        {
+            category: "Published AI Slop (Elsevier #2)",
+            source: '<a href="https://www.sciencedirect.com/science/article/pii/S2468023024002402?via%3Dihub" target="_blank" rel="noopener">ScienceDirect Battery Paper</a>',
+            input: "Lithium metal, due to its advantages of high theoretical capacity, low density and low electrochemical reaction potential, is used as a negative electrode material for batteries and brings great potential for the next generation of energy storage systems.",
+            passes: [
+                "Lithium metal is a negative electrode material for batteries and is suited for the next generation of energy storage systems.",
+                "Lithium metal is a negative electrode material for batteries and is suited for the next generation of energy storage systems.",
+                "Lithium metal is a negative electrode material for batteries and is suited for the next generation of energy storage systems."
+            ]
+        },
+        {
+            category: "Retracted AI Paper (PubPeer #1)",
+            source: '<a href="https://pubpeer.com/publications/F93A8D69350BC6B12AB48B132161A7#" target="_blank" rel="noopener">PubPeer Discussion</a> &bull; <a href="https://static1.squarespace.com/static/6324e5ee8eb4a828b70ca809/t/65f70a86b557ee7f1af46cd3/1710688909073/Elsevier.pdf" target="_blank" rel="noopener">Full PDF</a>',
+            input: "Serious iatrogenic vascular injuries are considered uncommon; however, they are underreported.",
+            passes: [
+                "Iatrogenic vascular injuries are rare, but they are not reported.",
+                "Iatrogenic vascular injuries are rare, but they are not reported.",
+                "Iatrogenic vascular injuries are rare, but they are not reported."
+            ]
+        },
+        {
+            category: "Retracted AI Paper (PubPeer #2)",
+            source: '<a href="https://pubpeer.com/publications/F93A8D69350BC6B12AB48B132161A7#" target="_blank" rel="noopener">PubPeer Discussion</a> &bull; <a href="https://static1.squarespace.com/static/6324e5ee8eb4a828b70ca809/t/65f70a86b557ee7f1af46cd3/1710688909073/Elsevier.pdf" target="_blank" rel="noopener">Full PDF</a>',
+            input: "There are limited studies discussing the proper management ofthese injuries;therefore, the management is often anecdotal.",
+            passes: [
+                "There are few studies of the proper management of these injuries; therefore, the management is often anecdotal.",
+                "There is little evidence of proper management of these injuries; therefore, the management is often anecdotal.",
+                "There is little evidence of proper management of these injuries; therefore, the management is often anecdotal."
+            ]
+        }
+    ];
+
+    // Lightweight word-level diff generator
+    function generateWordDiff(oldStr, newStr) {
+        if (oldStr === newStr) {
+            return `<span>${escapeHtml(newStr)}</span> <span style="font-size: 11px; color: var(--success); font-weight: 600;">(Converged &bull; No Change)</span>`;
+        }
+
+        const oldWords = oldStr.split(/\s+/);
+        const newWords = newStr.split(/\s+/);
+
+        // Simple LCS matrix calculation
+        const m = oldWords.length, n = newWords.length;
+        const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+
+        for (let i = 1; i <= m; i++) {
+            for (let j = 1; j <= n; j++) {
+                if (oldWords[i - 1].toLowerCase() === newWords[j - 1].toLowerCase()) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+
+        let i = m, j = n;
+        const result = [];
+
+        while (i > 0 || j > 0) {
+            if (i > 0 && j > 0 && oldWords[i - 1].toLowerCase() === newWords[j - 1].toLowerCase()) {
+                result.unshift(`<span>${escapeHtml(newWords[j - 1])}</span>`);
+                i--;
+                j--;
+            } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+                result.unshift(`<span class="diff-add">${escapeHtml(newWords[j - 1])}</span>`);
+                j--;
+            } else if (i > 0 && (j === 0 || dp[i][j - 1] < dp[i - 1][j])) {
+                result.unshift(`<span class="diff-del">${escapeHtml(oldWords[i - 1])}</span>`);
+                i--;
+            }
+        }
+
+        return result.join(' ');
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // Modal Interaction
+    let currentActiveIndex = 0;
+    const showcaseModal = document.getElementById('showcaseModal');
+    const showcaseModalBtn = document.getElementById('showcaseModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const exampleTabs = document.getElementById('exampleTabs');
+    const cardCategory = document.getElementById('cardCategory');
+    const cardSource = document.getElementById('cardSource');
+    const cardSteps = document.getElementById('cardSteps');
+    const tryExampleBtn = document.getElementById('tryExampleBtn');
+
+    function renderModalExample(index) {
+        currentActiveIndex = index;
+        const item = SHOWCASE_EXAMPLES[index];
+        cardCategory.textContent = item.category;
+        cardSource.innerHTML = item.source;
+
+        // Render steps with diff comparisons
+        let html = `
+            <div class="diff-step">
+                <div class="step-title">
+                    <span>Input (Raw Slop)</span>
+                </div>
+                <div class="step-text original-text">${escapeHtml(item.input)}</div>
+            </div>
+        `;
+
+        let previousText = item.input;
+        item.passes.forEach((passText, idx) => {
+            const isLast = (idx === item.passes.length - 1);
+            const isConverged = (passText === previousText);
+            const diffHtml = generateWordDiff(previousText, passText);
+            
+            html += `
+                <div class="diff-step">
+                    <div class="step-title">
+                        <span>Pass ${idx + 1} ${isLast ? ' (Final Convergence)' : ''}</span>
+                        ${isConverged ? '<span style="color: var(--success);">Stabilized</span>' : '<span style="color: var(--accent);">Pruned</span>'}
+                    </div>
+                    <div class="step-text">${diffHtml}</div>
+                </div>
+            `;
+            previousText = passText;
+        });
+
+        cardSteps.innerHTML = html;
+    }
+
+    // Tab buttons click
+    exampleTabs.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+        btn.addEventListener('click', () => {
+            exampleTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderModalExample(idx);
+        });
+    });
+
+    showcaseModalBtn.addEventListener('click', () => {
+        showcaseModal.classList.add('active');
+        renderModalExample(currentActiveIndex);
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        showcaseModal.classList.remove('active');
+    });
+
+    showcaseModal.addEventListener('click', (e) => {
+        if (e.target === showcaseModal) showcaseModal.classList.remove('active');
+    });
+
+    // Populate editor from modal
+    tryExampleBtn.addEventListener('click', () => {
+        const item = SHOWCASE_EXAMPLES[currentActiveIndex];
+        inputText.value = item.input;
+        showcaseModal.classList.remove('active');
+        inputText.focus();
+    });
+
+    // Preset chip buttons in the playground
+    document.querySelectorAll('.preset-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const idx = parseInt(btn.getAttribute('data-sample'), 10);
+            const item = SHOWCASE_EXAMPLES[idx];
+            inputText.value = item.input;
+            inputText.focus();
+        });
+    });
+
+    // Auto-open modal on very first visit
+    if (!localStorage.getItem('deslop_modal_viewed')) {
+        setTimeout(() => {
+            showcaseModal.classList.add('active');
+            renderModalExample(0);
+            localStorage.setItem('deslop_modal_viewed', 'true');
+        }, 300);
+    }
+
+    // --- Core Model Pipeline Logic ---
     const modelSelect = document.getElementById('modelSelect');
     const loadBtn = document.getElementById('loadBtn');
     const unloadBtn = document.getElementById('unloadBtn');
@@ -215,60 +927,48 @@
     const progressContainer = document.getElementById('progressContainer');
     const progressBar = document.getElementById('progressBar');
     const chatHistory = document.getElementById('chatHistory');
+    const emptyState = document.getElementById('emptyState');
+    const multiPassCheck = document.getElementById('multiPassCheck');
 
     let generator = null;
     let currentTask = null;
 
-    // Handle Loading the Model
     loadBtn.addEventListener('click', async () => {
         const modelId = modelSelect.value;
         const selectedOption = modelSelect.options[modelSelect.selectedIndex];
         currentTask = selectedOption.getAttribute('data-task');
-        const currentDtype = selectedOption.getAttribute('data-dtype') || 'q4f16';
+        const currentDtype = selectedOption.getAttribute('data-dtype') || 'q4';
 
         if (!navigator.gpu) {
-            alert("WebGPU is not supported by this browser. It will fall back to slow CPU/WASM.");
-        } else {
-            const adapter = await navigator.gpu.requestAdapter();
-            if (!adapter) {
-                alert("WebGPU is supported, but could not connect to your GPU. Falling back to CPU/WASM.");
-            } else {
-                console.log("WebGPU hardware found:", adapter);
-            }
+            alert("WebGPU is not supported by your browser. It will fall back to CPU WASM.");
         }
 
         try {
             loadBtn.disabled = true;
             modelSelect.disabled = true;
-            statusText.textContent = `Status: Loading ${modelId}...`;
+            statusText.textContent = `Status: Fetching ${modelId} from Hugging Face Hub...`;
             progressContainer.style.display = 'block';
             progressBar.style.width = '0%';
 
-            // Initialize the pipeline with the selected dtype
             generator = await pipeline(currentTask, modelId, {
                 device: 'webgpu',
                 dtype: currentDtype,
                 progress_callback: (data) => {
                     if (data.status === 'progress') {
                         progressBar.style.width = `${Math.round(data.progress)}%`;
+                        statusText.textContent = `Status: Downloading weights (${Math.round(data.progress)}%)...`;
                     }
                 }
             });
 
-            statusText.textContent = `Status: ${modelId} loaded successfully via WebGPU!`;
+            statusText.textContent = `Status: Warming up WebGPU shaders...`;
+            await generator('unslop: warm up text', { max_new_tokens: 1 });
+
+            statusText.textContent = `Status: ${modelId} active & ready on WebGPU!`;
             unloadBtn.disabled = false;
             sendBtn.disabled = false;
             inputText.disabled = false;
             inputText.focus();
-
-            // Perform a tiny warmup inference
-            statusText.textContent = `Status: Warming up shaders...`;
-            if (currentTask === 'text-generation') {
-                await generator([{ role: 'user', content: 'hi' }], { max_new_tokens: 1 });
-            } else {
-                await generator('hi', { max_new_tokens: 1 });
-            }
-            statusText.textContent = `Status: Ready.`;
 
         } catch (error) {
             console.error(error);
@@ -280,10 +980,9 @@
         }
     });
 
-    // Handle Unloading (Switching models)
     unloadBtn.addEventListener('click', async () => {
         if (generator) {
-            await generator.dispose(); // Frees WebGPU/WASM memory
+            await generator.dispose();
             generator = null;
         }
         
@@ -295,61 +994,54 @@
         statusText.textContent = 'Status: Model unloaded. Memory freed.';
     });
 
-    // Handle Rewriting
     sendBtn.addEventListener('click', async () => {
-        const text = inputText.value.trim();
-        if (!text) return;
+        const rawText = inputText.value.trim();
+        if (!rawText || !generator) return;
 
         inputText.value = '';
         sendBtn.disabled = true;
-        statusText.textContent = 'Status: Generating...';
+        statusText.textContent = 'Status: Pruning and de-slopping...';
+
+        if (emptyState) emptyState.remove();
+
+        const isMultiPass = multiPassCheck.checked;
+        const passesToRun = isMultiPass ? 3 : 1;
+        const passesResults = [];
 
         const startTime = performance.now();
-        let outputText = "";
+        let currentInput = rawText;
 
         try {
-            if (currentTask === 'text-generation') {
-                // Formatting for chat-based decoder models (Qwen, SmolLM)
-                const messages = [
-                    { role: 'system', content: 'You are an expert editor. Rewrite the user\'s text to remove AI clichés and make it sound natural and human-like.' },
-                    { role: 'user', content: `Rewrite this: ${text}` }
-                ];
-                
-                const result = await generator(messages, {
-                    max_new_tokens: 64,
-                    do_sample: false
-                });
-                
-                // Extract generated text from the array returned by v3
-                const finalMessage = result[0].generated_text.at(-1);
-                outputText = finalMessage.content;
-            } 
-            else {
-                // Formatting for text2text models (Flan-T5)
-                const prompt = `unslop: ${text}`;
-                
+            for (let pass = 1; pass <= passesToRun; pass++) {
+                const prompt = `unslop: ${currentInput}`;
                 const result = await generator(prompt, {
                     max_new_tokens: 128,
                     do_sample: false
                 });
-                
-                outputText = result[0].generated_text;
+
+                const outText = result[0].generated_text.trim();
+                passesResults.push(outText);
+
+                // Stop early if the output has fully converged
+                if (outText.toLowerCase() === currentInput.toLowerCase() && pass > 1) {
+                    break;
+                }
+                currentInput = outText;
             }
 
             const duration = (performance.now() - startTime).toFixed(0);
-            appendInteraction(text, outputText, duration, modelSelect.value);
+            appendInteraction(rawText, passesResults, duration, modelSelect.value);
             statusText.textContent = 'Status: Ready.';
 
         } catch (error) {
             console.error(error);
-            statusText.textContent = `Error during generation: ${error.message}`;
+            statusText.textContent = `Error: ${error.message}`;
         } finally {
             sendBtn.disabled = false;
             inputText.focus();
         }
     });
 
-    // Allow pressing "Enter" to send
     inputText.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
@@ -357,22 +1049,45 @@
         }
     });
 
-    // UI helper to add history
-    function appendInteraction(original, rewritten, ms, modelName) {
+    function appendInteraction(original, passes, ms, modelName) {
         const div = document.createElement('div');
         div.className = 'interaction';
-        
-        // Calculate throughput
-        const approxTokens = rewritten.split(' ').length * 1.3; // Rough word-to-token ratio
+
+        const totalWords = passes.reduce((acc, p) => acc + p.split(' ').length, 0);
+        const approxTokens = totalWords * 1.3;
         const tps = (approxTokens / (ms / 1000)).toFixed(1);
+
+        let passesHtml = `
+            <div class="pass-row">
+                <span class="pass-tag tag-original">Input</span>
+                <div class="pass-content original-text">${escapeHtml(original)}</div>
+            </div>
+        `;
+
+        let prev = original;
+        passes.forEach((passText, idx) => {
+            const isLast = (idx === passes.length - 1);
+            const tagClass = isLast ? 'tag-final' : 'tag-pass';
+            const tagLabel = isLast && passes.length > 1 ? `Final (Pass ${idx + 1})` : `Pass ${idx + 1}`;
+            const diffHtml = generateWordDiff(prev, passText);
+
+            passesHtml += `
+                <div class="pass-row">
+                    <span class="pass-tag ${tagClass}">${tagLabel}</span>
+                    <div class="pass-content rewritten-text">${diffHtml}</div>
+                </div>
+            `;
+            prev = passText;
+        });
 
         div.innerHTML = `
             <div class="interaction-meta">
                 <span>Model: ${modelName}</span>
-                <span>Latency: ${ms}ms (~${tps} tok/s)</span>
+                <span>Latency: ${ms}ms &bull; ~${tps} tok/s</span>
             </div>
-            <div class="original-text">${original}</div>
-            <div class="rewritten-text">${rewritten}</div>
+            <div class="pass-container">
+                ${passesHtml}
+            </div>
         `;
         
         chatHistory.appendChild(div);
